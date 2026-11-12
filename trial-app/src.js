@@ -12,7 +12,7 @@ let state;try{state=JSON.parse(localStorage.getItem(KEY));}catch{}
 if(!state||!Array.isArray(state.order)||!Array.isArray(state.events))state=fresh();
 state.answers??={};
 state.planned??=state.order.length;
-let walkthroughStep=0, walkthroughTimer=null;
+let walkthroughStep=0;
 const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
 const current=()=>trials.find(t=>t.trial_id===state.order[state.index]);
 let syncing=false, lastError='', onlineHealth='not checked';
@@ -47,7 +47,6 @@ async function health(){
 }
 function button(label,action,cls='primary'){return '<button type="button" class="'+cls+'" data-action="'+action+'">'+label+'</button>';}
 function shell(view,html){
- if(walkthroughTimer){clearInterval(walkthroughTimer);walkthroughTimer=null;}
  root.innerHTML='<div class="wrap"><header><a href="#" data-action="home" class="brand">◧ context<span>.</span>lab</a><span class="tag">RESEARCH STUDY</span><span>'+escapeHTML(view)+'</span></header><main>'+html+'</main><footer><span>Context Lab · HAI research</span><div class="storage"><span id="sync" aria-live="polite">'+(queued()?queued()+' responses pending':'Check storage status')+'</span>'+button('Check storage','health','link-button')+' '+(queued()?button('Retry upload','retry','link-button'):'')+'</div><span>Version 3.1</span></footer></div>';
  root.querySelectorAll('[data-action]').forEach(element=>element.addEventListener('click',event=>{event.preventDefault();actions[element.dataset.action]?.();}));
  if(lastError)setStatus(queued()+' pending · '+lastError,true);
@@ -63,29 +62,51 @@ function welcome(){
  shell('About the study · '+(assisted?'AI-assisted':'Independent'),`<section class="hero purpose-page"><p class="eyebrow">HUMANS + AI · MEME UNDERSTANDING</p><h1>Help AI understand <em>what memes really mean.</em></h1><p class="lead">Memes can communicate sarcasm, stereotypes and subtle hate that AI may miss. Your independent judgments will help researchers evaluate how AI handles those nuances.</p><div class="purpose-flow"><div class="purpose-card"><div class="purpose-icon">◉</div><strong>Human interpretation</strong><p>Judge whether a meme is hateful, and share whether the content felt triggering to you.</p></div><div class="purpose-arrow" aria-hidden="true">→</div><div class="purpose-card"><div class="purpose-icon">✧</div><strong>Better evaluations</strong><p>Human feedback highlights nuanced examples that AI needs to interpret more accurately.</p></div></div><div class="independence"><p class="eyebrow">TWO INDEPENDENT DIMENSIONS</p><h2>Hateful ≠ triggering</h2><p>A meme can be hateful without personally upsetting you, distressing without targeting a group, both, or neither. The two judgments are separate.</p><div class="quadrant"><div><b>Hateful + triggering</b><small>Both apply</small></div><div><b>Hateful + not triggering</b><small>Hate does not always feel personally distressing</small></div><div><b>Not hateful + triggering</b><small>Distressing is not necessarily hateful</small></div><div><b>Neither</b><small>Neither category applies</small></div></div></div><div class="guard-summary"><span class="purpose-icon">`+(assisted?'◈':'◉')+`</span><div><strong>`+(assisted?'AI-assisted evaluation + safety shield':'Independent evaluation · original content')+`</strong><p>`+escapeHTML(intro)+`</p></div></div><div class="notice"><strong>`+(assisted?'Content warning — AI protection is imperfect':'Content warning — no filtering in this version')+`</strong><p>`+escapeHTML(risk)+`</p></div><label class="consent"><input id="consent" type="checkbox"> I am at least 18, understand the study purpose and the content risks of this version, and voluntarily agree to participate.</label><p>`+button('Continue to practice walkthrough →','guide')+`</p></section>`);
 }
 function guide(){
- const steps=CONDITION==='assisted'?[
-  ['Review the meme','Read the image and caption. When the AI shield flags a potential trigger, you may leave the image blurred or reveal it by choice.','◈','Sensitive content shield'],
-  ['Judge hate, not just offensiveness','Choose whether the meme expresses hate toward an identity group. Look for sarcasm, implication, and contextual clues.','◎','Hateful? Yes / No'],
-  ['Report sensitivity separately','Vote whether the example felt potentially triggering or distressing to you, regardless of what the AI flag says.','◇','Triggering? Yes / No'],
-  ['Add confidence and context','Choose confidence from 1–5 and optionally describe why you interpreted the meme that way.','◴','Confidence 1 — 5'],
-  ['Review an AI disagreement','Only if your hate judgment differs from the AI prediction, read its explanation and decide whether it changes your mind.','≠','Keep judgment / Change it']
- ]:[
-  ['Review the original meme','No image blur, caption replacement, or AI filtering is used in this version. Some content may be distressing.','◉','Original content'],
-  ['Classify hatefulness','Independently decide whether the meme expresses hate toward an identity group.','◎','Hateful? Yes / No'],
-  ['Vote on sensitivity','Tell us whether the meme felt triggering, separately from your hateful-content classification.','◇','Triggering? Yes / No'],
-  ['Share your viewing preference','Would you have preferred not to see it? If yes, specify imagery, text, or both.','◈','Avoid seeing? Why?'],
-  ['Add context','Choose confidence and optionally explain your judgment. No AI prediction or reasoning appears.','◴','Confidence 1 — 5']
+ const assisted=CONDITION==='assisted';
+ const steps=[
+  {
+   title:'Look at the meme',
+   description:assisted?'First, review the image and caption. If AI flags sensitive content, it may blur the image and soften words. You can reveal the original only if you choose.':'First, look at the original image and caption. This version does not filter content; you can skip an item at any point.',
+   visual:'meme'
+  },
+  {
+   title:'Decide whether it is hateful',
+   description:'Choose Yes or No based on the meaning of the meme. Sarcasm, coded messages and context matter. Hateful is not the same as triggering.',
+   visual:'hate'
+  },
+  {
+   title:'Report your experience',
+   description:assisted?'Separately say whether the example felt triggering or distressing to you. This is your own assessment, regardless of the AI flag.':'Separately indicate whether it was triggering, whether you would have preferred not to see it, and whether the reason was the image, the words, or both.',
+   visual:'sensitive'
+  },
+  {
+   title:'Give confidence, or skip the example',
+   description:'Choose confidence from 1 to 5 and optionally explain your choice. Selecting Skip example submits the trial as skipped, with no hatefulness, triggering, or other judgments recorded.',
+   visual:'confidence'
+  },
+  {
+   title:assisted?'Review AI reasoning only if you disagree':'Submit and continue',
+   description:assisted?'If your initial hatefulness judgment differs from the AI’s, read its reasoning and decide whether to change your judgment. We save both your first and final answers.':'Submit your evaluation, then move on to the next meme. No AI opinion or disagreement review is shown in this version.',
+   visual:assisted?'disagreement':'done'
+  }
  ];
- const n=Math.min(steps.length-1,Math.max(0,walkthroughStep));const step=steps[n];
- const controls=steps.map((s,i)=>'<button type="button" data-guide-step="'+i+'" class="demo-dot '+(i===n?'active':'')+'" aria-label="View step '+(i+1)+'" aria-current="'+(i===n?'step':'false')+'"></button>').join('');
- shell('Practice + setup',`<section class="guide-page"><p class="eyebrow">PRACTICE BEFORE YOU START</p><h1>Here's how a <em>task trial works.</em></h1><p class="lead">This animated walkthrough uses only a harmless illustrative example—not a real study item.</p><div class="walkthrough"><div class="demo-visual" aria-label="Illustrative example"><div class="demo-toolbar"><span>DEMO MEME</span><span>ILLUSTRATION ONLY</span></div><div class="demo-art"><div class="demo-bubble">☁️</div><strong>When the meeting could have been an email…</strong><p>…but we all showed up anyway.</p></div><div class="demo-highlight"><span>`+escapeHTML(step[2])+`</span><b>`+escapeHTML(step[3])+`</b></div></div><div class="demo-explain" aria-live="polite"><span class="demo-count">STEP `+(n+1)+` OF `+steps.length+`</span><h2>`+escapeHTML(step[0])+`</h2><p>`+escapeHTML(step[1])+`</p><div class="demo-dots">`+controls+`</div><div class="demo-controls">`+button('← Previous','demo-prev','secondary')+button('Next step →','demo-next','secondary')+button('Replay','demo-replay','link-button')+`</div></div></div><div class="setup-card"><div><p class="eyebrow">CHOOSE YOUR SESSION LENGTH</p><h2>How many memes would you like to evaluate today?</h2><p class="muted">Choose 1–30 trials. You may still stop or skip individual items. This website uses a fixed evaluation workflow.</p></div><div class="number-config"><button type="button" data-count-change="-1" aria-label="One fewer trial">−</button><input type="number" id="trial-count" min="1" max="30" step="1" value="`+state.planned+`" aria-label="Number of task trials"><button type="button" data-count-change="1" aria-label="One more trial">+</button></div></div><div class="notice"><strong>`+(CONDITION==='assisted'?'AI guard is not a guarantee':'Original content is shown without filtering')+`</strong><p>`+escapeHTML(CONDITION==='assisted'?'AI may miss sensitive content. You may skip any item and leave shielded images blurred.':'You may encounter disturbing original images or words. Nothing is blurred or euphemized in this version. You may skip items or stop participating.')+`</p></div><div class="guide-actions">`+button('← Back','back-to-purpose','secondary')+button('Start my trials →','begin')+`</div><p id="guide-error" class="error" role="alert"></p></section>`);
+ const n=Math.min(steps.length-1,Math.max(0,walkthroughStep)),step=steps[n];
+ const mockMeme='<div class="guide-mock-meme"><span class="mock-meme-icon" aria-hidden="true">✉</span><strong>When the 60-minute meeting could have been an email…</strong><small>Harmless illustrative meme · not part of this study</small></div>';
+ let mockControls='';
+ if(step.visual==='meme')mockControls='<div class="guide-mock-tip">'+(assisted?'In assisted sessions, potentially sensitive real images may appear blurred.':'In independent sessions, real images and text will be shown unfiltered.')+'</div>';
+ if(step.visual==='hate')mockControls='<div class="guide-mock-panel"><b>Does this example express hate?</b><div class="guide-mock-choice">○ Yes, hateful</div><div class="guide-mock-choice selected">● No, not hateful</div></div>';
+ if(step.visual==='sensitive')mockControls='<div class="guide-mock-panel"><b>Was this example triggering?</b><div class="guide-mock-choice selected">● No, not triggering</div>'+(assisted?'':'<b class="guide-mock-subtitle">Would you rather not have seen it?</b><div class="guide-mock-choice selected">● No</div><small>If yes: imagery / text / both</small>')+'</div>';
+ if(step.visual==='confidence')mockControls='<div class="guide-mock-panel"><b>How confident are you?</b><div class="guide-mock-scale"><span>1</span><span>2</span><strong>3</strong><span>4</span><span>5</span></div><div class="guide-mock-buttons"><span>Skip example</span><strong>Save & continue</strong></div></div>';
+ if(step.visual==='disagreement')mockControls='<div class="guide-mock-panel"><b>Your judgment: Not hateful</b><div class="guide-mock-choice">AI judgment: Hateful</div><small>Read the AI’s explanation, then decide:</small><div class="guide-mock-choice">Change my answer</div><div class="guide-mock-choice selected">Keep my answer</div></div>';
+ if(step.visual==='done')mockControls='<div class="guide-mock-panel"><b>Response submitted</b><p>Move on to the next sample. Your initial judgment is saved.</p></div>';
+ const dots=steps.map((_,i)=>'<button type="button" data-guide-step="'+i+'" class="demo-dot '+(i===n?'active':'')+'" aria-label="Show walkthrough step '+(i+1)+'" aria-current="'+(i===n?'step':'false')+'"></button>').join('');
+ shell('Practice + setup',`<section class="guide-page"><p class="eyebrow">PRACTICE BEFORE YOU START</p><h1>One example, <em>five easy steps.</em></h1><p class="lead">This interactive preview shows what you'll do in a trial. Click Next or Previous to go through the steps at your own pace. The example below is safe and illustrative.</p><div class="walkthrough guide-walkthrough"><div class="guide-mock-screen"><div class="guide-mock-header"><span>EXAMPLE TRIAL</span><span>PREVIEW ONLY</span></div>`+mockMeme+mockControls+`</div><div class="demo-explain" aria-live="polite"><span class="demo-count">STEP `+(n+1)+` OF `+steps.length+`</span><h2>`+escapeHTML(step.title)+`</h2><p>`+escapeHTML(step.description)+`</p><div class="demo-dots">`+dots+`</div><div class="demo-controls">`+button('← Previous','demo-prev','secondary')+button(n===steps.length-1?'Back to step 1 ↺':'Next step →','demo-next','secondary')+`</div><p class="muted">Select a dot or use the buttons to change steps. Nothing advances automatically.</p></div></div><div class="setup-card"><div><p class="eyebrow">CHOOSE YOUR SESSION LENGTH</p><h2>How many memes would you like to evaluate today?</h2><p class="muted">Choose 1–30 trials (12 by default). You can skip an entire example or stop at any time.</p></div><div class="number-config"><button type="button" data-count-change="-1" aria-label="One fewer trial">−</button><input type="number" id="trial-count" min="1" max="30" step="1" value="`+state.planned+`" aria-label="Number of task trials"><button type="button" data-count-change="1" aria-label="One more trial">+</button></div></div><div class="notice"><strong>`+(assisted?'AI filtering is not a guarantee':'Original content is shown without filtering')+`</strong><p>`+escapeHTML(assisted?'AI may miss triggering images or language. Keep protected content hidden, skip any item, or stop at any point.':'Real examples may include sensitive imagery and language. Nothing is blurred or euphemized in the independent version. You can skip the whole example or stop participating.')+`</p></div><div class="guide-actions">`+button('← Back','back-to-purpose','secondary')+button('Start my trials →','begin')+`</div><p id="guide-error" class="error" role="alert"></p></section>`);
  const countInput=document.querySelector('#trial-count');
  const saveCount=()=>{const count=Number(countInput.value);if(Number.isInteger(count)&&count>=1&&count<=MAX_COUNT){state.planned=count;save();document.querySelector('#guide-error').textContent='';}};
  countInput.addEventListener('change',saveCount);
  countInput.addEventListener('input',()=>{const n=Number(countInput.value);if(Number.isInteger(n)&&n>=1&&n<=MAX_COUNT){state.planned=n;save();}});
  document.querySelectorAll('[data-count-change]').forEach(el=>el.addEventListener('click',()=>{countInput.value=String(Math.min(MAX_COUNT,Math.max(1,(Number(countInput.value)||DEFAULT_COUNT)+Number(el.dataset.countChange))));saveCount();}));
  document.querySelectorAll('[data-guide-step]').forEach(el=>el.addEventListener('click',()=>{walkthroughStep=Number(el.dataset.guideStep);guide();}));
- if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) walkthroughTimer=setInterval(()=>{if(state.stage==='guide'&&document.activeElement?.id!=='trial-count'){walkthroughStep=(walkthroughStep+1)%steps.length;guide();}},6000);
 }
 function task(){
  const item=current();
@@ -102,8 +123,8 @@ function task(){
  ? '<div class="trigger-question"><h2>Was this example triggering or distressing to you?</h2><p class="muted">Your personal assessment, independent of the AI trigger flag. Answer based on what you saw, including any shielding.</p><div class="choices trigger-choices"><button class="choice '+(answer.triggering===1?'chosen':'')+'" data-triggering="1"><b>Yes, potentially triggering</b><small>Disturbing, upsetting or sensitive</small></button><button class="choice '+(answer.triggering===0?'chosen':'')+'" data-triggering="0"><b>No, not triggering to me</b><small>I did not find it distressing</small></button></div></div>'
  : '<div class="trigger-question"><h2>Was this meme triggering or distressing to you?</h2><p class="muted">This is your personal experience, separate from whether the meme is hateful.</p><div class="choices trigger-choices"><button class="choice '+(answer.triggering===1?'chosen':'')+'" data-triggering="1"><b>Yes, triggering</b><small>Disturbing or upsetting to me</small></button><button class="choice '+(answer.triggering===0?'chosen':'')+'" data-triggering="0"><b>No, not triggering</b><small>Not distressing to me</small></button></div><h2>Would you have preferred not being shown this meme?</h2><p class="muted">You can prefer not to see content whether or not you felt triggered by it.</p><div class="choices trigger-choices"><button class="choice '+(answer.avoid_preference===1?'chosen':'')+'" data-avoid="1"><b>Yes, I would rather not have seen it</b></button><button class="choice '+(answer.avoid_preference===0?'chosen':'')+'" data-avoid="0"><b>No, I was okay seeing it</b></button></div><div id="avoid-reason" class="avoid-reason '+(answer.avoid_preference===1?'':'hidden')+'"><h3>What made you prefer not seeing it?</h3><p class="muted">Select the main reason.</p><div class="choices trigger-choices"><button class="choice '+(answer.avoid_reason==='imagery'?'chosen':'')+'" data-avoid-reason="imagery"><b>Imagery</b><small>What the image showed</small></button><button class="choice '+(answer.avoid_reason==='text'?'chosen':'')+'" data-avoid-reason="text"><b>Text</b><small>Words or caption</small></button><button class="choice '+(answer.avoid_reason==='both'?'chosen':'')+'" data-avoid-reason="both"><b>Both</b><small>Image and wording</small></button></div></div></div>';
  shell('Question '+(state.index+1)+' / '+state.order.length,
- '<div class="study-head"><p class="eyebrow">EVALUATION IN PROGRESS</p><h1>Look closely. Think critically.</h1><p>Consider how the meme might be interpreted. You can evaluate it without revealing shielded details.</p><div class="progress"><div style="width:'+(100*state.index/state.order.length)+'%"></div></div></div>'+
- '<div class="grid"><section class="panel"><p class="eyebrow">CONTENT TO REVIEW</p>'+notice+image+caption+'</section><section class="panel"><p class="eyebrow">YOUR EVALUATION</p><h2>Does this meme convey hateful content?</h2><p class="muted">Does the content demean, attack, or promote hostility toward an identity group?</p><div class="choices"><button class="choice '+(answer.label===1?'chosen':'')+'" data-choice="1"><b>Yes, hateful</b><small>Targets or demeans an identity group</small></button><button class="choice '+(answer.label===0?'chosen':'')+'" data-choice="0"><b>No, not hateful</b><small>No apparent identity-based hostility</small></button></div>'+sensitivityQuestion+'<h3>How confident are you?</h3><div class="slider-label"><span>Not confident</span><strong id="conf-value">'+(answer.confidence?answer.confidence+' / 5':'Not selected')+'</strong><span>Very confident</span></div><input id="confidence" type="range" min="1" max="5" value="'+(answer.confidence||3)+'"><div class="slider-label"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div><h3>Why did you choose this answer? <small>Optional</small></h3><textarea id="reason" maxlength="1500" rows="4" placeholder="Describe context, cues or uncertainty…">'+escapeHTML(answer.reason||'')+'</textarea><div class="actions"><button class="skip" data-action="skip">Skip hateful judgment</button>'+button(state.index===state.order.length-1?'Finish evaluation →':'Save & continue →','next')+'</div><p class="error" id="error" role="alert"></p></section></div>');
+ '<div class="study-head"><p class="eyebrow">EVALUATION IN PROGRESS</p><h1>Thanks for your contribution to help improve hate speech detection</h1><p>Evaluate each sample at your own pace, or skip the entire example whenever you wish.</p><div class="progress"><div style="width:'+(100*state.index/state.order.length)+'%"></div></div></div>'+
+ '<div class="grid"><section class="panel"><p class="eyebrow">CONTENT TO REVIEW</p>'+notice+image+caption+'</section><section class="panel"><p class="eyebrow">YOUR EVALUATION</p><h2>Does this meme convey hateful content?</h2><p class="muted">Does the content demean, attack, or promote hostility toward an identity group?</p><div class="choices"><button class="choice '+(answer.label===1?'chosen':'')+'" data-choice="1"><b>Yes, hateful</b><small>Targets or demeans an identity group</small></button><button class="choice '+(answer.label===0?'chosen':'')+'" data-choice="0"><b>No, not hateful</b><small>No apparent identity-based hostility</small></button></div>'+sensitivityQuestion+'<h3>How confident are you?</h3><div class="slider-label"><span>Not confident</span><strong id="conf-value">'+(answer.confidence?answer.confidence+' / 5':'Not selected')+'</strong><span>Very confident</span></div><input id="confidence" type="range" min="1" max="5" value="'+(answer.confidence||3)+'"><div class="slider-label"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div><h3>Why did you choose this answer? <small>Optional</small></h3><textarea id="reason" maxlength="1500" rows="4" placeholder="Describe context, cues or uncertainty…">'+escapeHTML(answer.reason||'')+'</textarea><div class="actions"><button class="skip" data-action="skip">Skip example</button>'+button(state.index===state.order.length-1?'Finish evaluation →':'Save & continue →','next')+'</div><p class="error" id="error" role="alert"></p></section></div>');
  document.querySelectorAll('[data-choice]').forEach(element=>element.addEventListener('click',()=>{answer.label=Number(element.dataset.choice);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-choice]').forEach(x=>x.classList.toggle('chosen',x===element));}));
  document.querySelectorAll('[data-triggering]').forEach(element=>element.addEventListener('click',()=>{answer.triggering=Number(element.dataset.triggering);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-triggering]').forEach(x=>x.classList.toggle('chosen',x===element));}));
  document.querySelectorAll('[data-avoid]').forEach(element=>element.addEventListener('click',()=>{answer.avoid_preference=Number(element.dataset.avoid);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-avoid]').forEach(x=>x.classList.toggle('chosen',x===element));const reason=document.querySelector('#avoid-reason');if(reason)reason.classList.toggle('hidden',answer.avoid_preference!==1);}));
@@ -123,9 +144,9 @@ function reveal(kind){
 function submit(skipped){
  const item=current(), answer=state.answers[item.trial_id]||{};
  const error=document.querySelector('#error');
- if(![0,1].includes(answer.triggering)){error.textContent='Please vote whether this example felt triggering before continuing.';return;}
- if(CONDITION==='independent'&&![0,1].includes(answer.avoid_preference)){error.textContent='Please answer whether you would have preferred not to see this sample.';return;}
- if(CONDITION==='independent'&&answer.avoid_preference===1&&!['imagery','text','both'].includes(answer.avoid_reason)){error.textContent='Please select imagery, text, or both as the reason you would rather not have seen this meme.';return;}
+ if(!skipped&&![0,1].includes(answer.triggering)){error.textContent='Please vote whether this example felt triggering before continuing.';return;}
+ if(!skipped&&CONDITION==='independent'&&![0,1].includes(answer.avoid_preference)){error.textContent='Please answer whether you would have preferred not to see this sample.';return;}
+ if(!skipped&&CONDITION==='independent'&&answer.avoid_preference===1&&!['imagery','text','both'].includes(answer.avoid_reason)){error.textContent='Please select imagery, text, or both as the reason you would rather not have seen this meme.';return;}
  if(!skipped&&(![0,1].includes(answer.label)||!answer.confidence)){error.textContent='Select a hateful-content classification and adjust the confidence slider, or skip that judgment.';return;}
  answer.skipped=Boolean(skipped);
  answer.initialLabel=skipped?null:answer.label;
@@ -155,9 +176,9 @@ function completeResponse({review_response,review_shown,final_label}){
   initial_classification:initial,
   final_classification:final_label,
   confidence:answer.skipped?null:answer.initialConfidence,
-  triggering_vote:answer.triggering,
-  preferred_not_shown:CONDITION==='independent'?answer.avoid_preference:null,
-  preferred_not_shown_reason:CONDITION==='independent'&&answer.avoid_preference===1?answer.avoid_reason:null,
+  triggering_vote:answer.skipped===true?null:answer.triggering,
+  preferred_not_shown:!answer.skipped&&CONDITION==='independent'?answer.avoid_preference:null,
+  preferred_not_shown_reason:!answer.skipped&&CONDITION==='independent'&&answer.avoid_preference===1?answer.avoid_reason:null,
   website_variant:CONDITION,
   ai_trigger_detected:CONDITION==='assisted'?item.ai_trigger_flag===true:null,
   ai_hateful_prediction:CONDITION==='assisted'?item.ai_hateful_prediction:null,
@@ -167,6 +188,7 @@ function completeResponse({review_response,review_shown,final_label}){
   participant_changed_answer:review_response==='ai_correct_changed',
   reason:answer.skipped?'':(answer.reason||''),
   skipped:answer.skipped===true,
+  skip_scope:answer.skipped===true?'entire_example':null,
   elapsed_ms:Math.max(0,Date.now()-(state.opened||Date.now())),
   image_initially_blurred:CONDITION==='assisted'&&item.ai_trigger_flag===true,
   caption_euphemized:CONDITION==='assisted'&&item.ai_trigger_flag===true,

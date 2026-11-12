@@ -55,3 +55,30 @@
 
 /* Independent-only preference reason is shown after a Yes answer. */
 .hidden{display:none!important}
+
+/* v3.2: compact participant heading and manual, non-animated guide */
+.study-head h1{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(21px,2.15vw,29px);line-height:1.2;letter-spacing:-.35px;max-width:100%;margin:9px 0 9px}
+.guide-walkthrough{min-height:410px}
+.guide-mock-screen{background:#f0f6f2;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.guide-mock-header{display:flex;justify-content:space-between;gap:10px;font-size:10px;letter-spacing:1.2px;font-weight:700;color:#4a8464}
+.guide-mock-meme{background:#fff;border:1px solid #d6e5d9;border-radius:13px;padding:22px;display:flex;flex-direction:column;text-align:center;align-items:center;justify-content:center;gap:10px;min-height:155px}
+.guide-mock-meme strong{font:400 clamp(19px,2vw,26px)/1.18 'DM Serif Display',Georgia,serif;color:#284834}
+.guide-mock-meme small{color:#81958b;font-size:11px}
+.mock-meme-icon{font-size:32px;display:grid;place-items:center;border-radius:50%;width:56px;height:56px;background:#dff3e6;color:#27845d}
+.guide-mock-tip,.guide-mock-panel{background:white;border:1px solid #c8dfcf;border-radius:11px;padding:13px 17px;font-size:13px;color:#315f49}
+.guide-mock-panel{display:grid;gap:9px}
+.guide-mock-panel>b{font-size:14px}
+.guide-mock-panel small{font-size:11px;color:#7d9484}
+.guide-mock-choice{padding:9px 11px;border:1px solid #dce9df;border-radius:8px;color:#617b6b}
+.guide-mock-choice.selected{border-color:#2c9872;background:#e7f5ed;color:#1b7655;font-weight:700}
+.guide-mock-scale,.guide-mock-buttons{display:flex;align-items:center;justify-content:space-between;gap:5px}
+.guide-mock-scale span,.guide-mock-scale strong{padding:6px 10px;border-radius:7px}
+.guide-mock-scale strong{background:#d6efdf;color:#15734f}
+.guide-mock-buttons{border-top:1px solid #e5eee7;padding-top:10px;margin-top:3px}
+.guide-mock-buttons span{color:#687e71;text-decoration:underline}
+.guide-mock-buttons strong{padding:8px;background:#258963;color:white;border-radius:7px}
+.guide-mock-subtitle{margin-top:9px}
+.guide-walkthrough .demo-explain{padding:30px}
+.guide-walkthrough .demo-explain>p{min-height:110px}
+.guide-walkthrough .demo-controls{margin-top:17px}
+@media(max-width:800px){.study-head h1{font-size:clamp(21px,4.5vw,27px)}.guide-mock-screen{min-height:350px}.guide-walkthrough .demo-explain>p{min-height:0}}
