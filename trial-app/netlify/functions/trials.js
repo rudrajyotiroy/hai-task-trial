@@ -1,0 +1,2 @@
+import {handle} from '../../api/trials.js';
+export async function handler(event){const method=event.httpMethod;const req=new Request(`https://${event.headers.host||'localhost'}/api/trials${event.rawQuery?'?'+event.rawQuery:''}`,{method,headers:event.headers,body:method==='POST'?event.body:undefined});const response=await handle(req);return {statusCode:response.status,headers:Object.fromEntries(response.headers.entries()),body:await response.text()};}

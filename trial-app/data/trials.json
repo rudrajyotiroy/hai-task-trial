@@ -1,0 +1,1402 @@
+[
+  {
+    "trial_id": "A2_001",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/61082.png",
+    "meme_text": "i know thats really roger from american dad but imma chill",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a joke based on a visual resemblance between a real person and a fictional animated character. It does not target any protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_002",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3499.png",
+    "meme_text": "ME\n2 WEEKS\nQUARANTINE\nWORK\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common format to express a personal preference for staying in quarantine rather than going to work, likely referencing the COVID-19 pandemic era. It does not target any identity group."
+  },
+  {
+    "trial_id": "A2_003",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50186.png",
+    "meme_text": "don't be a fool it is a bomb",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses personification to humorously suggest the dog is warning someone about a suitcase. It does not target any protected identity group with hostility."
+  },
+  {
+    "trial_id": "A2_004",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/58604.png",
+    "meme_text": "i got 99 problems and chromosomes are one",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a person's genetic disability as the central subject of a joke, framing their existence or condition as a 'problem,' which constitutes demeaning prejudice against people with disabilities."
+  },
+  {
+    "trial_id": "A2_005",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/91738.png",
+    "meme_text": "i'm just gon sit here & mind my business",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme appears to be a relatable expression of wanting to avoid drama or social conflict, using a solitary figure to represent detachment."
+  },
+  {
+    "trial_id": "A2_006",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/63281.png",
+    "meme_text": "muslims muslims",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a violent scene of a shooting to target a specific religious identity group, implying that the group is either inherently violent or inherently victims of such violence in a dehumanizing manner."
+  },
+  {
+    "trial_id": "A2_007",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50293.png",
+    "meme_text": "aids gays it really be like that",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a reductive and stigmatizing association between gay men and a serious medical condition, which serves to demean the identity group."
+  },
+  {
+    "trial_id": "A2_008",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/68094.png",
+    "meme_text": "black boyfriend white boyfriend",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a visual trope of domestic violence to imply a causal link between having a Black boyfriend and suffering physical harm, thereby promoting a harmful racial stereotype."
+  },
+  {
+    "trial_id": "A2_009",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4548.png",
+    "meme_text": "Media: Stay indoors and avoid public places\nto limit your risk of catching Corona Virus.\nMillennials:\nUNDE\nMIFFL\nwo tickets to paradise\nmematio\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common generational trope to joke about the perceived tendency of Millennials to ignore safety warnings in favor of social experiences. It does not express hostility or demeaning prejudice."
+  },
+  {
+    "trial_id": "A2_010",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/40865.png",
+    "meme_text": "and then i said, mr. president there's no walmart's in north korea only targets",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a play on words (a pun) regarding the lack of Walmart stores in North Korea, suggesting only 'Target' stores exist. It does not target a protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_011",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/26174.png",
+    "meme_text": "a muslim ban would've stopped that",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme promotes the idea that a ban on Muslims would prevent unspecified harm, which functions as a demeaning generalization and advocates for religious discrimination."
+  },
+  {
+    "trial_id": "A2_012",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/82593.png",
+    "meme_text": "overly attached muslim girlfriend i killed your other 4 wives so you have more time to beat me",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a religious identity to promote harmful stereotypes regarding polygamy, violence, and domestic abuse, presenting these extreme scenarios as a comedic trope."
+  },
+  {
+    "trial_id": "A2_013",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/59471.png",
+    "meme_text": "i bet her pillows dont have pillowcases",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a sexual innuendo to make a joke about the subject's body. While suggestive and potentially objectifying, it does not target a protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_014",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/02918.png",
+    "meme_text": "a islamic leader among his followers",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and caption appear to be a literal description of the scene, showing a man with a weapon alongside a religious figure. There is no explicit slur, dehumanizing language, or call for violence against a protected group."
+  },
+  {
+    "trial_id": "A2_015",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/47609.png",
+    "meme_text": "when your friend has been posting suicidal memes in the group chat all day then you hear an ambulance drive past you did it you crazy son of a bitch you did it",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses dark humor to joke about a friend's mental health crisis, but it does not target a protected identity group with prejudice or hostility."
+  },
+  {
+    "trial_id": "A2_016",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1295.png",
+    "meme_text": "are you ok with this Nandosuk\nMe: Should I buy it?\nExto\nHOt\nHOt\nBrain: No\nCOVID\nAlert\nPartner: No\nLevels\nBank account: No\n1.\nMedim\nMe: Sold\nPER\nomete,\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a lighthearted joke about impulse buying and the conflict between desire and logic/finances. It does not target any identity group."
+  },
+  {
+    "trial_id": "A2_017",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2534.png",
+    "meme_text": "CNN Reporter Who Attacked Trump For Not\nWearing Mask Caught Removing Mask When\nCameras Stop Rolling\nHа\nНа На!\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme targets a specific individual and a news organization to allege hypocrisy regarding COVID-19 mask protocols. While mocking and politically charged, it does not target a protected identity group with prejudice or dehumanization."
+  },
+  {
+    "trial_id": "A2_018",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_5363.png",
+    "meme_text": "JUST NOW IN !\nHDOLE STUP CRICKET\nSHAHID AFRIDI TESTS POSITIVE\nFOR COVID-19\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and text function as a news report regarding a professional athlete's health status. There is no language or imagery targeting an identity group with hostility."
+  },
+  {
+    "trial_id": "A2_019",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/06874.png",
+    "meme_text": "ach!! thats my car volkswagen cars produce more gaz than expected",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a play on words regarding vehicle emissions and the 'Dieselgate' emissions scandal involving Volkswagen. It uses a pun on 'gas' (exhaust vs. flatulence) and a comedic reaction image, targeting a corporation rather than a protected identity group."
+  },
+  {
+    "trial_id": "A2_020",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_210.png",
+    "meme_text": "When you're at your favorite\nChinese food place and hear a\ncough from the kitchen\n",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a common trope that associates Chinese restaurants with poor sanitary conditions or illness, targeting a specific ethnic group through a disparaging stereotype."
+  },
+  {
+    "trial_id": "A2_021",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50489.png",
+    "meme_text": "the face you make after you just finished your morning prayer",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme appears to be a lighthearted, relatable post about the feeling of peace or satisfaction following a religious ritual. There is no evidence of hostility, dehumanization, or prejudice against the identity group depicted."
+  },
+  {
+    "trial_id": "A2_022",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/24537.png",
+    "meme_text": "normie: \"your meme's are racist and offensive, i'm unfollowing\" nigger me: \"take this on your way out\"",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a high-intensity racial slur and adopts a hostile stance toward individuals who call out racism, effectively mocking the concept of being offended by racist content."
+  },
+  {
+    "trial_id": "A2_023",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/75230.png",
+    "meme_text": "how to remember kid in hot car keep 2nd road beer with them!",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses dark, edgy humor regarding a tragic real-world scenario (childhood car deaths) rather than targeting a protected identity group with prejudice."
+  },
+  {
+    "trial_id": "A2_024",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/37084.png",
+    "meme_text": "stay in step you loser",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common, mild insult directed at the children in the image. It does not target a protected identity group or express prejudice based on religion, race, or other characteristics."
+  },
+  {
+    "trial_id": "A2_025",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/57618.png",
+    "meme_text": "kanye west? we lost some good men there",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses an exaggerated facial expression to react to the mention of Kanye West, likely implying a strong or controversial opinion about him. It does not target a protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_026",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/57938.png",
+    "meme_text": "the jewish are strong for having survived this",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme appears to be a statement of solidarity and respect for the resilience of Jewish people in the face of the Holocaust. It does not use slurs or promote violence, but rather acknowledges historical suffering."
+  },
+  {
+    "trial_id": "A2_027",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/15728.png",
+    "meme_text": "this head diaper is proof indians have poo poo in their brains still not defamation",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a dehumanizing and insulting metaphor to claim that people of Indian descent have inferior intelligence, which constitutes demeaning prejudice against an identity group."
+  },
+  {
+    "trial_id": "A2_028",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/03271.png",
+    "meme_text": "when your wife and girlfriend dont get along",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common humorous trope regarding complicated personal relationships and an obscene gesture to express frustration or a 'not my problem' attitude. It does not target a protected identity group with hostility."
+  },
+  {
+    "trial_id": "A2_029",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/82947.png",
+    "meme_text": "sure timmy i'll hold your mayo",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The caption uses coded language ('hold your mayo') that functions as a slur or derogatory remark directed at the LGBTQ+ community, specifically targeting perceived sexual orientation through mockery."
+  },
+  {
+    "trial_id": "A2_030",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/46318.png",
+    "meme_text": "when you don't have to see your ex future mother-in-lav anymore",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme expresses a personal sentiment regarding the relief of no longer being associated with a former partner's family. It does not target a protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_031",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/27843.png",
+    "meme_text": "a transgendered 4 year old is like a vegan cat we all know who is making their lifestyle choices",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme demeans transgender identity by trivializing it through a comparison to a pet's diet, suggesting that a child's gender identity is an absurd or irrational 'lifestyle choice' rather than a valid identity."
+  },
+  {
+    "trial_id": "A2_032",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/76095.png",
+    "meme_text": "haters",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common social media trope where one person acts 'unimpressed' or 'serious' while another is being expressive. It does not target any protected identity group."
+  },
+  {
+    "trial_id": "A2_033",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/29084.png",
+    "meme_text": "africans be like -\"we were fine killing each other for land\" \"until the white man showed up, killing us for land\"",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common internet format to comment on the historical irony of pre-colonial tribal warfare versus the violence of European colonization. It functions as a critique of colonialism rather than an attack on African people."
+  },
+  {
+    "trial_id": "A2_034",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/DBSMGfC.png",
+    "meme_text": "800 PM ET BREAKING NEWS CLINTON-TRUMP DEBATE BEGINS MOMENTARILY ON CNN LIVE ON CNN ",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The content is a standard political meme regarding a televised debate. It does not target any identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_035",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/46872.png",
+    "meme_text": "how does he drive his car? he hits the gas",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a historical figure to deliver a simple play on words regarding driving. While the imagery is highly sensitive, the text itself does not express hostility or prejudice toward a protected group, but rather functions as a non-sequitur joke."
+  },
+  {
+    "trial_id": "A2_036",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1267.png",
+    "meme_text": "Parents in drop off line\nThe night before schools\nOpen back up...\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a relatable joke about the anticipation or dread parents feel regarding the return of school routines and morning drop-off lines. It does not target any protected identity group."
+  },
+  {
+    "trial_id": "A2_037",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/23046.png",
+    "meme_text": "jewish",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses dehumanizing imagery by equating a Jewish person with a monkey, a common antisemitic trope used to strip individuals of their humanity."
+  },
+  {
+    "trial_id": "A2_038",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3249.png",
+    "meme_text": "ANYTIME FITNESS\nnduly\nTURNS OUT THAT WAS A LIE\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a joke directed at a commercial business (Anytime Fitness), suggesting that their name or service claims are untrue. It does not target any protected identity group."
+  },
+  {
+    "trial_id": "A2_039",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/28479.png",
+    "meme_text": "is someone using the oven? cuz i smell gas",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The caption uses 'oven' and 'gas' as a coded reference to the Holocaust, trivializing the genocide of Jewish people through dark humor."
+  },
+  {
+    "trial_id": "A2_040",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/07623.png",
+    "meme_text": "a handful of rich people should not run the country a handful of politicians should",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme expresses a political opinion regarding the influence of wealth versus political leadership. It does not target a protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_041",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/31295.png",
+    "meme_text": "i'm a simple man i like beer and boobs",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a 'simple man' trope to express basic, albeit crude, preferences. It does not target, dehumanize, or incite violence against a protected identity group."
+  },
+  {
+    "trial_id": "A2_042",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4253.png",
+    "meme_text": "Corona Virus High Quality Mask Anti\nBacteria Corona Virus Mouth Face\nMask\nBrand New Unbranded\n$7.55 - $8.90\nFree Shipping from Chng\n9%\n286\nD.12%\n1.519\n63\nstonks\n280\n...\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses the 'stonks' format to satirize the perceived profit-seeking or market fluctuations related to the sale of face masks during the pandemic. It does not target a protected group with hostility."
+  },
+  {
+    "trial_id": "A2_043",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/12093.png",
+    "meme_text": "if you see me in public looking a hot mess, just know; my bills are paid, my children have food, & i ain't trying to impress you",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a self-deprecating statement about prioritizing family needs and financial stability over personal appearance. It does not target any identity group with hostility."
+  },
+  {
+    "trial_id": "A2_044",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/41092.png",
+    "meme_text": "ana frank at 14 years old ana frank at 15 years old",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a historical figure associated with the Holocaust to make a joke about extreme weight loss, using a bar of soap as a metaphor for emaciation. This trivializes both the tragedy of the Holocaust and the severity of eating disorders."
+  },
+  {
+    "trial_id": "A2_045",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/67319.png",
+    "meme_text": "happy birthday sister",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and text appear to be a benign, celebratory greeting. The term 'sister' is used in a way that is consistent with both religious titles and familial relations, without any indicators of hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_046",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/14769.png",
+    "meme_text": "god loves all of his children",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses an individual with a visible disability to create a patronizing or mocking tone, implying that the person is an object of pity or a caricature rather than a person, which demeans the dignity of people with disabilities."
+  },
+  {
+    "trial_id": "A2_047",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/15690.png",
+    "meme_text": "muslims when someone uses kilometres per hour instead of wifes per child sex slaves",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a harmful and extreme stereotype to characterize Muslims by equating their existence or culture with child sexual slavery, which constitutes demeaning prejudice against a religious identity group."
+  },
+  {
+    "trial_id": "A2_048",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3816.png",
+    "meme_text": "WHEN YOU NOT SURE\nWHAT THAT COVID DO\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses humor to depict the anxiety and improvised measures taken by individuals during the COVID-19 pandemic. It does not target any protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_049",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_998.png",
+    "meme_text": "The test only\nhas 2\nquestions\nIt's 2 really big\nquestions\nYou don't\nunderstand\nquestion 1\nQuestion 2 is\nbased on your\nanswer to\nquestion 1\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common comedic trope regarding the overwhelming nature of academic or life challenges. It does not target any protected identity group."
+  },
+  {
+    "trial_id": "A2_050",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/18490.png",
+    "meme_text": "the rosenbergs were executed 1953 for selling nuclear secrets to russia the clintons actually sold nuclear material for development of weaponsto russia",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a historical comparison to make a serious political accusation of treason against Bill and Hillary Clinton. While inflammatory and conspiratorial, it targets political figures based on alleged actions rather than targeting a protected identity group with prejudice."
+  },
+  {
+    "trial_id": "A2_051",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/nqfekut.png",
+    "meme_text": "Jommen is starting to Feel the Bern ",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a play on words using a common idiom and likely references a specific character or political context. It does not target any protected identity group with hostility."
+  },
+  {
+    "trial_id": "A2_052",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2577.png",
+    "meme_text": "The reason Trump agreed\nto wear a mask\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a visual metaphor to mock Donald Trump by implying he is infantile or needs a pacifier, which is a common form of political satire/insult rather than hate speech against a protected identity group."
+  },
+  {
+    "trial_id": "A2_053",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/41270.png",
+    "meme_text": "adult diapers for complete shitheads",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common insult to express contempt for a group of people, but it does not target a protected identity group or use identity-based slurs."
+  },
+  {
+    "trial_id": "A2_054",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/78402.png",
+    "meme_text": "\"state your name for the record\" what page is it on?",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme appears to be a humorous commentary on bureaucratic or legal procedures, likely poking fun at someone's confusion or lack of preparation during a formal proceeding. It does not target any identity group."
+  },
+  {
+    "trial_id": "A2_055",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/47608.png",
+    "meme_text": "indian fans in real life indian fans on facebook",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common comparison format to joke about the difference between real-world behavior and online behavior for a specific nationality. It does not use slurs, promote violence, or dehumanize the group."
+  },
+  {
+    "trial_id": "A2_056",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/58029.png",
+    "meme_text": "i don't always roll a joint but when i do it's my ankle",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a pun playing on the double meaning of the word 'joint' (a cannabis cigarette vs. a body part). It does not target any identity group with hostility."
+  },
+  {
+    "trial_id": "A2_057",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/89275.png",
+    "meme_text": "please give me more white nessa fanarts i can't cum to nigger",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a highly offensive racial slur and pairs it with an image of a primate, which is a common dehumanizing trope used to target Black individuals."
+  },
+  {
+    "trial_id": "A2_058",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/10453.png",
+    "meme_text": "all men are pigs women are equal to men",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a dehumanizing animal slur to characterize an entire gender, which constitutes hostility and prejudice against men."
+  },
+  {
+    "trial_id": "A2_059",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1797.png",
+    "meme_text": "IF PROPERLY FITTED, ONE MASK CAN\nSAVE MANY THOUSANDS OF LIVES\nDr. Fauci\nXESH\nHE WH\nWASE\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a visual metaphor (gagging) to criticize a political figure's perceived silence or compliance regarding mask mandates. While aggressive and mocking, it targets political behavior and public health policy rather than an identity group."
+  },
+  {
+    "trial_id": "A2_060",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4610.png",
+    "meme_text": "When you work from home and you're still\nin your pajamas at 3pm\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a lighthearted observation about the casual nature of remote work, using a cute animal to illustrate a relatable situation."
+  },
+  {
+    "trial_id": "A2_061",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/49703.png",
+    "meme_text": "3 jews walked into a bar kidding it was a gas chamber",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a joke format to trivialize the mass murder of Jewish people during the Holocaust, paired with the image of the leader of the Nazi regime."
+  },
+  {
+    "trial_id": "A2_062",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4074.png",
+    "meme_text": "akaraaoicial Soo 3\nAirport fashian 2019 vs Airport fashion 2020\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a satirical commentary on the shift in public behavior and safety precautions (likely due to the COVID-19 pandemic) between 2019 and 2020. It uses visual irony to contrast normal fashion with protective gear."
+  },
+  {
+    "trial_id": "A2_063",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4966.png",
+    "meme_text": "THE\nDAILY, CORONAVIRUS:\nREVOR NOAN\nSOCIAL DISTANCING\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and text appear to be a standard title card or promotional graphic for an episode of 'The Daily Show with Trevor Noah' regarding the COVID-19 pandemic. There is no evidence of hostility or prejudice toward any identity group."
+  },
+  {
+    "trial_id": "A2_064",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/93702.png",
+    "meme_text": "handjob sold separately",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a sexual joke using a common marketing phrase ('sold separately') applied to an intimate encounter. It does not target any protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_065",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/26709.png",
+    "meme_text": "when i was in high school i got braces a friend told me, \"you're so black, even your teeth are behind bars,\"",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme depicts a comedian recounting a childhood experience of being teased. While the comment mentioned is racially charged, the context is a personal anecdote about facing prejudice rather than an expression of hate by the creator."
+  },
+  {
+    "trial_id": "A2_066",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4177.png",
+    "meme_text": "Me after I eat all of\nmy quarantine\nsnacks in one night\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a self-deprecating joke about overeating during the COVID-19 quarantine period. It uses the baby's expression to humorously represent the feeling of regret or fullness."
+  },
+  {
+    "trial_id": "A2_067",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/26980.png",
+    "meme_text": "myth: gingers don't have souls fact: gingers earn a freckle for everey soul they steal",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme utilizes a common, lighthearted internet trope/myth regarding people with red hair. It does not express genuine hostility, dehumanization, or a call for violence against the group."
+  },
+  {
+    "trial_id": "A2_068",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/12547.png",
+    "meme_text": "gonna go outside #yolo anne frankly i thought she should have stayed home",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a play on words involving the name of Anne Frank to make a dark joke about her death during the Holocaust. While irreverent and potentially offensive due to the subject matter, it does not express hostility or demeaning prejudice toward a protected group, but rather functions as dark humor."
+  },
+  {
+    "trial_id": "A2_069",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/76239.png",
+    "meme_text": "50 jews walk into a train, what do you call them? fuel",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a joke format to trivialize the mass murder of Jewish people during the Holocaust, utilizing Hitler's image to reinforce the antisemitic theme."
+  },
+  {
+    "trial_id": "A2_070",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/68540.png",
+    "meme_text": "i'm sorry i made the chewbacca sound but maybe if you shaved next time...",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a joke about body hair and a pop-culture sound reference to mock a person's grooming habits. While it is insulting and demeaning toward the individual's appearance, it does not target a protected identity group."
+  },
+  {
+    "trial_id": "A2_071",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50142.png",
+    "meme_text": "2017 the year of the triggered left",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses political slang to mock the emotional reactions of left-leaning individuals. While dismissive and partisan, it targets a political ideology rather than a protected identity group."
+  },
+  {
+    "trial_id": "A2_072",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/71048.png",
+    "meme_text": "in england they drive on the left in canada we drive on what's left",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a play on words (a pun) using the double meaning of 'left'. It does not target a protected group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_073",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50312.png",
+    "meme_text": "i normally rape goats. but little boys are okay",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme combines a portrait of a man of a specific ethnic background with a caption accusing him of heinous sexual crimes. This functions as a dehumanizing trope used to target and vilify a specific identity group through extreme, unfounded criminal accusations."
+  },
+  {
+    "trial_id": "A2_074",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/9BmlvFy.png",
+    "meme_text": "AS WORTHLESS AS STATES AMMEEREEA 0 0 c U 8 12 THREE 0 0 ICU 8 12 MILARS A CLINTON PROMISE made on imgur ",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses political satire to criticize a specific political figure (Clinton) by comparing their promises to a worthless novelty bill. It targets political efficacy rather than an identity group."
+  },
+  {
+    "trial_id": "A2_075",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2313.png",
+    "meme_text": "Northside Lyrics\nWith a tight mask on\nMac Dre\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The content appears to be a lyric snippet and image related to the musical artist Mac Dre. It depicts a common aesthetic in certain hip-hop subgenres rather than targeting an identity group with hate."
+  },
+  {
+    "trial_id": "A2_076",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/76250.png",
+    "meme_text": "chillin with my chromies",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The caption uses a specific ableist slur to refer to the individuals in the image, which serves to demean and dehumanize people with intellectual disabilities."
+  },
+  {
+    "trial_id": "A2_077",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/56104.png",
+    "meme_text": "african children seeing a caucasian boy for their first time ever",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme employs a trope that characterizes different racial groups as being in a state of perpetual shock or novelty when encountering one another, which can be used to dehumanize or mock specific identities by framing them as 'primitive' or 'unfamiliar'."
+  },
+  {
+    "trial_id": "A2_078",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/67142.png",
+    "meme_text": "baby look like he pay his own child support",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses hyperbole to suggest the baby's facial expression looks like that of an adult burdened by financial responsibilities. While it touches on a sensitive social topic, it does not target a protected identity group with hostility."
+  },
+  {
+    "trial_id": "A2_079",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/58679.png",
+    "meme_text": "it's called fuck off and it's located over there",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common, aggressive idiom to express dismissal or a desire to be left alone. It does not target any protected identity group or express prejudice."
+  },
+  {
+    "trial_id": "A2_080",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/12483.png",
+    "meme_text": "islam is a religion of peace behead those who mock islam",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses irony to characterize Islam as inherently violent by juxtaposing a claim of peace with a command to kill those who criticize the faith. This promotes a hostile stereotype of the religion as violent and intolerant."
+  },
+  {
+    "trial_id": "A2_081",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/39416.png",
+    "meme_text": "are u a wizard?",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and caption do not contain slurs, threats, or demeaning language. The text appears to be a nonsensical or playful question that does not target the child's identity."
+  },
+  {
+    "trial_id": "A2_082",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/15490.png",
+    "meme_text": "9/11 gets a mourning day while gays get a \"pride\" month because homosexuality is a bigger tragedy",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme expresses hostility by characterizing a sexual orientation as a 'tragedy,' which serves to dehumanize and demean the LGBTQ+ community."
+  },
+  {
+    "trial_id": "A2_083",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/X7mEejq.jpg.png",
+    "meme_text": "Aw look how cute Oh no I 'm voting Democrat this election cycle . It 's retarded . ",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "While the meme uses an ableist slur, the hostility is directed at the speaker's own political affiliation (voting Democrat) rather than targeting a protected identity group with prejudice. The slur is used as a pejorative for a situation rather than as an attack on people with disabilities."
+  },
+  {
+    "trial_id": "A2_084",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/61894.png",
+    "meme_text": "when your put in fb jail ..but your not... even sweatin cause of your back up account",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a common format used to express a relatable feeling of anxiety or relief regarding social media account status. It does not target any identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_085",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/73105.png",
+    "meme_text": "excitement across the capital",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and caption depict a scene of celebration and positive energy. There is no evidence of hostility, slurs, or demeaning prejudice toward any identity group."
+  },
+  {
+    "trial_id": "A2_086",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/15839.png",
+    "meme_text": "\"if that fuckin bastard wins, we're all going to hang g from nooses! you better fix this shit!\" -hillary clinton email to donna brazile october 17, 2016",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses hyperbolic and aggressive language to attribute a fake or exaggerated quote to a political figure regarding election outcomes. While the language is violent and profane, it targets a political opponent rather than a protected identity group."
+  },
+  {
+    "trial_id": "A2_087",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/10493.png",
+    "meme_text": "stevie wonder is \"wonder\"ful",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a simple play on words using the artist's name to express a positive sentiment. There is no evidence of hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_088",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2164.png",
+    "meme_text": "I'M AMERICA'S RECKONING\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses pop culture imagery to make a political statement or characterization. While it portrays the figure as a formidable or disruptive force, it does not target a protected identity group with hate speech or dehumanization."
+  },
+  {
+    "trial_id": "A2_089",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/03418.png",
+    "meme_text": "i got a flat on my way to the store",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The combination of the image and text does not target any identity group. The caption appears to be a non-sequitur or a simple statement of fact that does not convey hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_090",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_925.png",
+    "meme_text": "ME REALIZING WE CAN\nSTILL PARTYIN QUARANTINE\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a relatable joke about finding ways to have fun during pandemic lockdowns. It does not target any identity group or express hostility."
+  },
+  {
+    "trial_id": "A2_091",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4381.png",
+    "meme_text": "Jason Mustian\n@jasonmustian\nOh sweet, I was wondering how every\ncorporation l've ever given my email to\nwas handling COVID-19.\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The post is a sarcastic commentary on corporate communication practices during the COVID-19 pandemic. It does not target any identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_092",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/38460.png",
+    "meme_text": "i told them to get chick fil a . but it was sunday",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a joke about the logistical impossibility of ordering from a restaurant known for being closed on Sundays. It does not target any identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_093",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3977.png",
+    "meme_text": "Introverts\nng dredhind\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses personality types as a humorous comparison regarding social behavior during lockdown. It does not target a protected group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_094",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/97481.png",
+    "meme_text": "not a creature was stirring, not even a mouse... cause i ate him",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common trope of a predator (a cat) jokingly claiming to have eaten a small animal (a mouse). It does not target any protected identity groups."
+  },
+  {
+    "trial_id": "A2_095",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50876.png",
+    "meme_text": "pace secondary [heritage trails] women don't let the female looks fool you! realistically, these are retarded male homosexuals wearing women suits!",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses offensive slurs and explicitly targets individuals based on their perceived gender identity and sexual orientation, characterizing them as deceptive and using derogatory labels."
+  },
+  {
+    "trial_id": "A2_096",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/81934.png",
+    "meme_text": "brows can't be rushed just like a mustache can't be rushed, you'll end up with too little or the wrong shape",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a visual comparison between beauty grooming and a historical figure's iconic mustache. While it uses a symbol of hate, the intent appears to be a trivial joke about grooming rather than promoting Nazi ideology or attacking a protected group."
+  },
+  {
+    "trial_id": "A2_097",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_5647.png",
+    "meme_text": "Trump: \"Covid-19 is a hoax\"\nCovid-19:\nayFerm of\nhoplete alter\nany l'erm\nw it is the\n. y\nd yan\nC uch p\non in Will you shut up man. w\nmant\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a political satire directed at Donald Trump's rhetoric regarding the COVID-19 pandemic. It does not target a protected identity group with prejudice or hostility, but rather critiques a specific political viewpoint."
+  },
+  {
+    "trial_id": "A2_098",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/38069.png",
+    "meme_text": "morgan freeman morgan not-so-freeman",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a wordplay joke based on the actor's name, 'Morgan Freeman,' using the phrase 'not-so-freeman.' It does not target his identity or express hostility."
+  },
+  {
+    "trial_id": "A2_099",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/65730.png",
+    "meme_text": "last year tyrone got a new job, started building his credit, and spending more time with his kids then something amazing started to happen!",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme employs a microaggressive trope where the success and stability of a Black individual are framed as surprising or miraculous, implying that such behavior is contrary to negative stereotypes of the group."
+  },
+  {
+    "trial_id": "A2_100",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/71839.png",
+    "meme_text": "let me be perfectly clear... i will never stop lying to you suckers!!!",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common political trope of accusing a leader of dishonesty. While insulting and derogatory toward the audience, it does not target a protected identity group with prejudice or hate."
+  },
+  {
+    "trial_id": "A2_101",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/67859.png",
+    "meme_text": "lets hope that one day our landfills don't look like this anymore",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and text focus on environmental issues and waste management. There is no targeting of any identity group or expression of prejudice."
+  },
+  {
+    "trial_id": "A2_102",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_176.png",
+    "meme_text": "Chinese woman dodges airport screening in France,\ntravellers told to heed checks for Wuhan virus\nWhat an idiot. What a Idiotic idiot.\n",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a specific virus name associated with a location to stigmatize a person based on their nationality, combined with aggressive insults."
+  },
+  {
+    "trial_id": "A2_103",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/08613.png",
+    "meme_text": "on my way to run over w*men and minorities",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The caption expresses a direct threat of physical violence against women and minority groups, which constitutes demeaning prejudice and hostility toward these identities."
+  },
+  {
+    "trial_id": "A2_104",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/70426.png",
+    "meme_text": "how long can he run? till the chain tightens",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The caption uses a metaphor of a tightening chain to describe a Black man, which invokes historical imagery of slavery and physical subjugation to dehumanize the subject."
+  },
+  {
+    "trial_id": "A2_105",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1037.png",
+    "meme_text": "Vt ta\nYour pererta geva be home in 10ntes, what da you\nWife:- I'm going to London,\nwhat gift do you want?\nHusband: One british girl.\n*Wife return from London\nHusband:- Where is my gift?\nXavier\nCome back in 11 minutes & ask\nthem what's going on\nWife:- Wait for 9 months...!\nLike Peply - Message\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a common joke format involving a 'twist' ending about pregnancy. It does not target a protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_106",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/84907.png",
+    "meme_text": "i keep asking what lgbtq stands for. so many letters to remember",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common 'dog progression' template to express a lighthearted or confused sentiment regarding the length of an acronym. It does not use slurs, express animosity, or call for harm against the group."
+  },
+  {
+    "trial_id": "A2_107",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/W0Nh6hc.png",
+    "meme_text": "THE PERFECT GOP CANDIDATE IN 2016 ? All of these men believe they can lead America through strength , exhibit conservative beliefs , stand up to the world 's bullies , and bring America together ( within their national/moral view ) . But Sadly , none of them have any experience . The potential candidate who has experience with strong leadership & best reflects Republican values and thinking is : Uote Putin for America ! In your heart you know he is right . We 'll work out the constitutional stuff later . ",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a piece of political satire directed at the Republican Party's platform and candidate selection process in 2016. It uses irony to suggest that the party's desire for 'strength' aligns more with an authoritarian foreign leader than its own candidates, rather than attacking a protected identity group."
+  },
+  {
+    "trial_id": "A2_108",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/78243.png",
+    "meme_text": "you call me a goat fucker like it's a bad thing",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The caption employs a specific, dehumanizing sexual slur frequently used to disparage Middle Eastern men. When paired with the visual of a Middle Eastern protest, it functions as a hateful trope targeting an ethnic/regional identity."
+  },
+  {
+    "trial_id": "A2_109",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/34250.png",
+    "meme_text": "beer goggles helping fat chicks get laid for thousands of years",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses demeaning language to mock women based on their body size, implying their sexual success is only due to intoxication."
+  },
+  {
+    "trial_id": "A2_110",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/59817.png",
+    "meme_text": "putting bows on your pet",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses dehumanizing imagery by equating a human child to a pet through the text and visual comparison, which targets the child's identity by stripping them of human dignity."
+  },
+  {
+    "trial_id": "A2_111",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/18362.png",
+    "meme_text": "if they don't like it here they can leave!",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The combination of Confederate flags—symbols historically used to represent racial hierarchy and oppression—with a caption demanding that certain people 'leave' functions as a demeaning and exclusionary message targeting marginalized groups."
+  },
+  {
+    "trial_id": "A2_112",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/56123.png",
+    "meme_text": "\"if you kill your enemies, they win.\" justin trudeau share if this is the dumbest comment ever by anyone",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a political critique directed at Justin Trudeau, mocking a specific quote. It does not target a protected identity group with prejudice or hostility."
+  },
+  {
+    "trial_id": "A2_113",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/59684.png",
+    "meme_text": "how to keep the thefts out",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a literal depiction of using a security system to prevent theft. There is no indication that 'thefts' refers to a protected identity group; it appears to be a simple, albeit grammatically awkward, statement about home security."
+  },
+  {
+    "trial_id": "A2_114",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/31782.png",
+    "meme_text": "gets kicked out of every country they been to blames you",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses dehumanizing imagery by equating a person or group of people to a cockroach, a common trope in hate speech to imply they are pests or subhuman. The text reinforces this by characterizing them as unwanted transients who shift blame."
+  },
+  {
+    "trial_id": "A2_115",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/21749.png",
+    "meme_text": "this one time at camp someone had too much gas",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a non-sequitur joke that pairs a historical or formal-looking image of children with a caption about a common, humorous bodily function. It does not target any protected identity group."
+  },
+  {
+    "trial_id": "A2_116",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/16783.png",
+    "meme_text": "a lynching in indiana in the early 30s",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and caption appear to be documenting or referencing a historical event of racial terror rather than promoting or celebrating it. The caption acts as a label for the historical atrocity shown."
+  },
+  {
+    "trial_id": "A2_117",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/58974.png",
+    "meme_text": "violence is never the answer",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme combines a pacifist slogan with a stylized portrait. There is no evidence of hostility, slurs, or demeaning prejudice toward any identity group."
+  },
+  {
+    "trial_id": "A2_118",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/58130.png",
+    "meme_text": "behind this smile is an evil man known as hitler",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a condemnation of a historical figure, labeling him as evil. It does not promote his ideology or target a protected group, but rather identifies him as a villain."
+  },
+  {
+    "trial_id": "A2_119",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/15439.png",
+    "meme_text": "goat yoga is my favorite sport",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and caption are benign, referring to a real-world wellness activity involving animals. There is no targeting of any identity group."
+  },
+  {
+    "trial_id": "A2_120",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_418.png",
+    "meme_text": "Coronavirus: spreads\nMe realizing my shirt is made in China:\nGET THIS SIT OFF ME!!\n",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses the context of the COVID-19 pandemic to imply that products from China are inherently contaminated or dangerous, promoting xenophobic anxiety and prejudice against Chinese origin."
+  },
+  {
+    "trial_id": "A2_121",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/16502.png",
+    "meme_text": "admins be like this my group",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a crying baby to mock the perceived over-protectiveness or emotional outbursts of online group administrators. It is a common form of internet satire regarding power dynamics in digital communities."
+  },
+  {
+    "trial_id": "A2_122",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/75193.png",
+    "meme_text": "muhammed... get the roof",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme pairs a name strongly associated with Islam with a mugshot and a cryptic command that implies physical violence, which functions as a dog whistle or stereotype targeting Muslims."
+  },
+  {
+    "trial_id": "A2_123",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/68270.png",
+    "meme_text": "all part of satan's plan. the anti christ will come from this",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses hyperbolic religious imagery to jokingly suggest that the tiger cub is something ominous or evil. It does not target a protected identity group."
+  },
+  {
+    "trial_id": "A2_124",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/79845.png",
+    "meme_text": "number of pictures from when michelle obama was pregnant with sasha and malia zero",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme makes a factual or observational claim regarding the lack of public photographic documentation of Michelle Obama's pregnancies. It does not use slurs, promote violence, or express hostility toward her identity."
+  },
+  {
+    "trial_id": "A2_125",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/19650.png",
+    "meme_text": "when it's the 1600s and you just got here from africa master looks after us now",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a metaphor of a person tending to a captive animal to mock the historical trauma of the Transatlantic slave trade and the dehumanization of African people."
+  },
+  {
+    "trial_id": "A2_126",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1575.png",
+    "meme_text": "Troy Johnson\n@ troyjohnson\nDay 1 of Quarantine: \"I'm going to\nmeditate and do body-weight\ntraining.\"\nDay 4: *just pours the ice cream\ninto the pasta*\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The content is a self-deprecating joke about how quarantine affects one's discipline and diet. It does not target any protected identity group."
+  },
+  {
+    "trial_id": "A2_127",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/79516.png",
+    "meme_text": "i'm not saying you are a slut but you are easier than poland",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme combines a sexual insult with a historical reference to the partitions of Poland, implying the country is 'easy' to take over, which demeans the national identity through a sexualized metaphor."
+  },
+  {
+    "trial_id": "A2_128",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/04316.png",
+    "meme_text": "algebra and geometry are fine, but graphing is where you draw a line",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a harmless play on words (a pun) using mathematical terminology. It does not target any identity group or express hostility."
+  },
+  {
+    "trial_id": "A2_129",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/28369.png",
+    "meme_text": "brother.... a day without peace is a day wasted",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme contains a sentiment promoting peace and does not target any identity group with hostility or prejudice. The combination of the image and text is benign."
+  },
+  {
+    "trial_id": "A2_130",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/14268.png",
+    "meme_text": "you've heard of elf on a shelf, now get ready for",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a harmless play on words regarding the 'Elf on the Shelf' holiday tradition, using a visual pun of a child literally being an elf on a shelf."
+  },
+  {
+    "trial_id": "A2_131",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/07239.png",
+    "meme_text": "a head diaper is required when you have shit for brains",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a generic insult directed at someone's intelligence. It does not target a specific race, religion, gender, or other protected identity group."
+  },
+  {
+    "trial_id": "A2_132",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/14327.png",
+    "meme_text": "hunting it's not a hobby, it's a way of life",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and text represent a common sentiment among hunting enthusiasts and do not target any protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_133",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3334.png",
+    "meme_text": "MR. PRESIDENT, THEY'RE SAYING\nCALLING IT THE WUHAN VIRUS IS RACIST\nHOLD MY DIET COKE\nTHE \"CHINESE VIRUS\nTrumpArea.com\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is satirical in nature, portraying a political figure as being intentionally provocative or 'anti-woke' in response to accusations of racism. It mocks the tension between political correctness and nationalist rhetoric rather than directly attacking a protected group itself."
+  },
+  {
+    "trial_id": "A2_134",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/94017.png",
+    "meme_text": "i bet they make squeaky toy sounds when they fuck",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses crude, dehumanizing language to make a joke about the subjects' physical nature, but it does not target a protected identity group or express systemic prejudice."
+  },
+  {
+    "trial_id": "A2_135",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1655.png",
+    "meme_text": "Michael Jackson e @michoelja. 3h\nBe smart and stay safel\nD Worthy\n@TheeYoungDrek\nReplying to @michaeljscknan\nWhere you tweeting from??\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme appears to be a humorous observation regarding the impossibility of Michael Jackson tweeting while wearing a mask or perhaps a joke about his whereabouts, but it does not target an identity group with hostility."
+  },
+  {
+    "trial_id": "A2_136",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/13067.png",
+    "meme_text": "when you found out your wife is cheating on you",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a juxtaposition of animal behavior and human emotion to joke about infidelity. It does not target an identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_137",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/24651.png",
+    "meme_text": "dad: we need to tell you something.. your mother and i are siblings alabama kids:",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a common internet trope to mock residents of Alabama by implying they engage in incest, which serves to demean the identity group through a harmful stereotype."
+  },
+  {
+    "trial_id": "A2_138",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/48039.png",
+    "meme_text": "hello everyone, this is m and welcome to jackass: umbra edition!",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme appears to be a playful or ironic introduction to a video or series, referencing the stunt-based comedy show 'Jackass'. There is no evidence of hostility or prejudice against any identity group."
+  },
+  {
+    "trial_id": "A2_139",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2975.png",
+    "meme_text": "Okilled\n3000\nNew Yorkers\nduring 911\nHold my\nbeer. Ikilled\n30,000\nNew Yorkers\nAMERICAN\nCRISIS\nand\nwrote\na book!\nLEADERSHIP\nLESSONS\nFROM THE\nCOVID-19\nPANDEMIC\nANDREW\nCUOMO\nON SALE OCTOBER 13, 2020\nimgflip.com\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses dark satire to criticize former Governor Andrew Cuomo's leadership during the COVID-19 pandemic by comparing his perceived failures to the actions of a terrorist. It targets a political figure's competence rather than an identity group."
+  },
+  {
+    "trial_id": "A2_140",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/57423.png",
+    "meme_text": "let's play the game of flags",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The combination of a prominent white supremacist symbol with a caption suggesting a 'game' implies a trivialization of racial trauma and promotes the use of hate symbols for provocation."
+  },
+  {
+    "trial_id": "A2_141",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_476.png",
+    "meme_text": "#ImStaying\nright where I am. in traffic.\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a common expression of frustration regarding traffic congestion. There is no indication of hostility or prejudice toward any identity group."
+  },
+  {
+    "trial_id": "A2_142",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_576.png",
+    "meme_text": "Me trying to catch up on some sleep\nin the morning zoom meeting.\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a relatable joke about the difficulty of staying awake during early morning virtual meetings. It does not target any identity group or express hostility."
+  },
+  {
+    "trial_id": "A2_143",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_419.png",
+    "meme_text": "1华人只共和\nTHE W\nSE\ninistr Fore\nWA\nTRUMP ANGERS CHINA\nWITH 'CHINESE VIRUS TWEET\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and text function as a news report documenting a specific political controversy and the resulting diplomatic tension. It describes an event rather than expressing the creator's own hateful sentiment."
+  },
+  {
+    "trial_id": "A2_144",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3753.png",
+    "meme_text": "i've looked like this for a week now\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a humorous comparison between a person's disheveled state and the appearance of a primate. It does not target any protected identity group."
+  },
+  {
+    "trial_id": "A2_145",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/40217.png",
+    "meme_text": "2 years on the job... 4 million jobs gained 1 month on the job... 25,000 jobs lost",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a political critique regarding economic performance and corporate impact. It uses juxtaposition to contrast the job numbers associated with different political figures and a corporation, which constitutes political commentary rather than hate speech."
+  },
+  {
+    "trial_id": "A2_146",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/82743.png",
+    "meme_text": "whatever this is... it's an auburn fan",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a lighthearted joke about the intense or eccentric behavior of sports fans, specifically those of Auburn University. It does not target a protected identity group with hostility."
+  },
+  {
+    "trial_id": "A2_147",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/72903.png",
+    "meme_text": "bombers under attack",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a well-known image of Gordon Ramsay's intense facial expression to humorously describe a situation of high tension or aggression. There is no evidence of targeting a protected identity group."
+  },
+  {
+    "trial_id": "A2_148",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/13976.png",
+    "meme_text": "this is why no one likes black people",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The caption makes a broad, derogatory generalization about Black people, implying they are universally disliked, which constitutes demeaning prejudice against a protected identity group."
+  },
+  {
+    "trial_id": "A2_149",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2329.png",
+    "meme_text": "IF TRUMP HAD\nSLAPPED HIS FACE ON MASK\nWOULD THE\nCORONAVIRUS BE OVER BY NOW\nngico\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common internet format to make a satirical or nonsensical comment regarding a political figure's response to the pandemic. It does not target a protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_150",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/38179.png",
+    "meme_text": "i fucking hate dog shagging islamist cunts",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The caption uses aggressive profanity and derogatory tropes to express intense hatred toward a specific religious group, which constitutes hate speech."
+  },
+  {
+    "trial_id": "A2_151",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4857.png",
+    "meme_text": "SCHOOL LAST WEEK\nSCHOOL NEXT WEEK\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a common format used to express a change in mood or atmosphere, likely implying that school was exciting/heroic previously and will be dark/robotic or repetitive in the future. It does not target any identity group."
+  },
+  {
+    "trial_id": "A2_152",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2031.png",
+    "meme_text": "Rebecca Loye\ntetecca Lina\nMy favorite one so far!\necoronavirusmemes\nIf the schools are\nclosed for too long, the\nparents are gonna find\na vaccine before the\nscientists...\n40 AM Ma 19. 2 Twitte to itone\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The content is a joke regarding the perceived desperation or resourcefulness of parents during pandemic-related school closures. It does not target any protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_153",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2664.png",
+    "meme_text": "When you work from home but you're still\nlate for work\nTruly pathetic\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a piece of self-deprecating humor regarding work habits and does not target any protected identity group."
+  },
+  {
+    "trial_id": "A2_154",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4163.png",
+    "meme_text": "Coronavirus Cases:\n5,004,129\nvit by.country\noc\nFive mil in six months, never done before,\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The content discusses the scale of the COVID-19 pandemic using statistical figures and a reaction image. It does not target any identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_155",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_207.png",
+    "meme_text": "Donald J. Trumpp arody\n@DonaldJTrummp\nChina wants their name on\neverything but this virus\n3:25 PM · 3/19/20 · Twitter for iPhone\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The content is a political satire piece using a parody account to comment on China's global influence and its relationship to the origins of a virus. It does not use slurs or call for violence against a protected group."
+  },
+  {
+    "trial_id": "A2_156",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2846.png",
+    "meme_text": "government:\nwork from home\nchemistry teachers:\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a joke about the impracticality of chemistry teachers working from home due to the need for specialized laboratory equipment and safety gear. It does not target any identity group with hostility."
+  },
+  {
+    "trial_id": "A2_157",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/80165.png",
+    "meme_text": "look! johnny knoxville! it's ba'am!",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme appears to be a nonsensical or humorous caption referencing a celebrity, lacking any indicators of hostility or prejudice against a protected group."
+  },
+  {
+    "trial_id": "A2_158",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/25904.png",
+    "meme_text": "hide and seek european champion 1942-1944",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses dark irony to equate the survival tactics of victims of the Holocaust with a game of 'hide and seek,' trivializing genocide and the suffering of targeted identity groups."
+  },
+  {
+    "trial_id": "A2_159",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/59061.png",
+    "meme_text": "these are not the terrorists terrorists want to brutally murderer you for being human. i do not. ω you're looking for",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a person in a vulnerable state to contrast them with the concept of a terrorist, explicitly stating that the person shown is not a threat and does not wish harm."
+  },
+  {
+    "trial_id": "A2_160",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/05612.png",
+    "meme_text": "of all time the most underrated cook",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and caption are benign, presenting a playful or cute sentiment about a child pretending to be a chef. There is no targeting of any identity group."
+  },
+  {
+    "trial_id": "A2_161",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/10589.png",
+    "meme_text": "i love coke more than pepsi",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common brand comparison (Coke vs. Pepsi) which contains no indicators of hostility or prejudice toward any identity group."
+  },
+  {
+    "trial_id": "A2_162",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4946.png",
+    "meme_text": "Me: 2020 can't surprise\nme now\n2020: Vin Diesel with hair\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a joke about the unpredictable and bizarre nature of the year 2020, using a hypothetical absurd scenario involving a celebrity to illustrate the theme of being constantly surprised."
+  },
+  {
+    "trial_id": "A2_163",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/C2Rjlth.png",
+    "meme_text": "R/ENOUGH JILL STEIN SPAM comments If this gets 690 upvotes Bernie Sanders will be deported to Sweden ( self enoughsandersspam ) Aa submitted 20 hours ago by 30 comments share save hide give gold report sorted by : best you are viewing a single comment 's thread . view the rest of the comments -1 9 points 16 hours ago Fuck it , put him in Gitmo permalink embed save report give gold reply ",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The content is political satire/shitposting directed at a public political figure. While it uses aggressive language regarding detention, it does not target a protected identity group with hate speech."
+  },
+  {
+    "trial_id": "A2_164",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/72318.png",
+    "meme_text": "trayvon martin update ever since he turned white, he stopped being a criminal",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses the death of Trayvon Martin to suggest that his perceived criminality was tied to his race, implying that changing his race would change his character. This promotes a racial stereotype and demeans the memory of a victim of racial violence."
+  },
+  {
+    "trial_id": "A2_165",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/49863.png",
+    "meme_text": "calling white people racist is racism",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme expresses a specific viewpoint on the definition of racism, but it does not use slurs, incite violence, or dehumanize a protected group. It functions as a social/political commentary rather than an expression of hate."
+  },
+  {
+    "trial_id": "A2_166",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/85167.png",
+    "meme_text": "finding a bomb in a video game",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common gaming scenario to create a humorous juxtaposition between a real-world dangerous object and its digital counterpart. It does not target any protected identity group."
+  },
+  {
+    "trial_id": "A2_167",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/89745.png",
+    "meme_text": "when cops see an unarmed black youth: \"i want every gun we have to fire on that man.\"",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a piece of social commentary/satire criticizing perceived police brutality and racial profiling. It targets the actions of law enforcement rather than expressing hatred toward a protected identity group."
+  },
+  {
+    "trial_id": "A2_168",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2578.png",
+    "meme_text": "MASKS MATTER.\nTHEY SAVE LIVES.\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image uses political figures to comment on the debate surrounding mask mandates and public health. While it takes a stance on a polarizing political issue, it does not target an identity group with hostility or demeaning prejudice."
+  },
+  {
+    "trial_id": "A2_169",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1883.png",
+    "meme_text": "M3 Sweat\nmsweant\nA thread with a few real thoughts and observations on\n#WFH 1/n\n„I'm 'working' from home\n195 PM Mar 7, 2020 - Twitter for iPhone\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses irony to joke about the perceived lack of productivity or the different nature of working from home, rather than targeting a protected identity group."
+  },
+  {
+    "trial_id": "A2_170",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/75832.png",
+    "meme_text": "\"never forget\" - you said.. i am the proof you have forgotten",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses the imagery of the 9/11 memorial lights to personify the tragedy, expressing a melancholic sentiment that the significance of the event is fading from public memory. It does not target an identity group with hostility."
+  },
+  {
+    "trial_id": "A2_171",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/48136.png",
+    "meme_text": "meanwhile at the isis strip club",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses the name of a terrorist organization in a derogatory, sexualized context ('strip club') alongside imagery of Middle Eastern men, which serves to mock and dehumanize people from that cultural/religious background through crude stereotyping."
+  },
+  {
+    "trial_id": "A2_172",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/96784.png",
+    "meme_text": "keeping your dishwasher clean will make it last longer",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and caption are entirely literal and provide standard advice regarding appliance maintenance. There is no indication of hostility or prejudice toward any identity group."
+  },
+  {
+    "trial_id": "A2_173",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/92637.png",
+    "meme_text": "i almost joined the kkk once.. but there weren't enough gay, black women in town to justify me volunteering that much free time",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses a joke format to trivialize white supremacist activity by suggesting the 'lack' of specific marginalized groups is the only reason the speaker didn't join. This mocks the identities of the groups mentioned by framing them as targets for a hate group."
+  },
+  {
+    "trial_id": "A2_174",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/46352.png",
+    "meme_text": "some people hate trump some people hate hillary but everyone hates duke",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a joke comparing political polarization to the universal dislike of a fictional character, likely referring to Tony Soprano from The Sopranos. It does not target a protected identity group with hostility."
+  },
+  {
+    "trial_id": "A2_175",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/25017.png",
+    "meme_text": "sorry i'm late. having tranny problems",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The caption employs a slur specifically used to dehumanize and mock transgender individuals, framing their identity or struggles through a lens of derision."
+  },
+  {
+    "trial_id": "A2_176",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_391.png",
+    "meme_text": "When your friend order a mask for\nCorona Virus protection\nBut it was shipped from China\n",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses the context of the COVID-19 pandemic to imply a connection between Chinese products and the virus, playing into xenophobic tropes that associate China with the spread of the disease."
+  },
+  {
+    "trial_id": "A2_177",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/TFRcH6Q.png",
+    "meme_text": "Instead of doing my chem homework , I am a democrat who voted for Donald Trump and not feel anything . loose skin from weight loss and I want my girlfriend [ light ] ( self subredditsimulator ) submitted 8 hours ago by confession ss # 45 268 ( 7.79 ) ",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The text appears to be a nonsensical or 'shitposting' style collection of unrelated thoughts, likely simulating a chaotic subreddit. It does not target any identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_178",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/62314.png",
+    "meme_text": "manditory vaccinations with no exemptions i do nazi the problem....",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a pun ('i do nazi the problem') to equate mandatory vaccination policies with Nazi authoritarianism. While it uses a sensitive historical figure, the intent is to criticize a policy rather than to promote Nazi ideology or attack a protected group."
+  },
+  {
+    "trial_id": "A2_179",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/CpGttnLXYAATNHh.jpg",
+    "meme_text": "Enter to wi n dinner with Donald Trump ",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and text appear to be a promotional or satirical advertisement for a contest involving Donald Trump. There is no language or imagery targeting any identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_180",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/37601.png",
+    "meme_text": "my favorite sex position is the challenger i go hard for 73 seconds then prematurley blow",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a self-deprecating or observational joke regarding sexual stamina, using the 73-second flight time of the Challenger shuttle as a punchline. It does not target any protected identity group."
+  },
+  {
+    "trial_id": "A2_181",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/43271.png",
+    "meme_text": "auschwitz gas chamber",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and text appear to be a literal, albeit blunt, identification of the historical site depicted. There is no explicit slur, call for violence, or demeaning commentary directed at a protected group present in the text."
+  },
+  {
+    "trial_id": "A2_182",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/13894.png",
+    "meme_text": "putting bows on your pet",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and text are benign, depicting a pet with a decorative accessory. There is no targeting of any identity group."
+  },
+  {
+    "trial_id": "A2_183",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/SXvE9sL.png",
+    "meme_text": "Harold M . for STATE District 6 Endorsed Democrat l Vote November Ath Democratic V A Balanced Approach to State Policy Making I will continue to support education funding to produce an educated workforce with the skills to to Island . I will to it is important for the least of society , as ect the to maintain the social safety network des advocating ( seniors and ised for re-entry programs for prison . orted trong ",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and text consist of a standard political campaign flyer outlining a candidate's policy positions on education, social safety nets, and prison re-entry. There is no language or imagery that targets or demeans any identity group."
+  },
+  {
+    "trial_id": "A2_184",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/49126.png",
+    "meme_text": "if you see this you might be in the country",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is politically charged and uses a common trope regarding national identity or immigration, but it does not use slurs or direct calls for violence against a protected group."
+  },
+  {
+    "trial_id": "A2_185",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4508.png",
+    "meme_text": "show me the best\nhome delivery servioe\ncompany\nSWIGGY\nzomato\ni said best\nperfect V\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme is a lighthearted comparison between two competing food delivery services, Swiggy and Zomato, expressing a personal preference for one over the other using a standard meme template."
+  },
+  {
+    "trial_id": "A2_186",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/16254.png",
+    "meme_text": "define nowfag i want it now!",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The caption utilizes a common internet slur derived from a homophobic term to demand a definition, which functions to demean or mock individuals based on perceived sexual orientation or social standing."
+  },
+  {
+    "trial_id": "A2_187",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/56891.png",
+    "meme_text": "i don't always go to black peoples garage sales, but when i do, it's to get my stuff back",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme employs a harmful racial stereotype that characterizes a specific group as dishonest or prone to theft, using the 'Most Interesting Man in the World' format to deliver a prejudiced punchline."
+  },
+  {
+    "trial_id": "A2_188",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/52783.png",
+    "meme_text": "when your white friends invite you to dinner and tell you to bring whatever you want",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a common social trope regarding cultural differences in hosting and food expectations. It is a lighthearted observation about social etiquette rather than an expression of hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_189",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/17354.png",
+    "meme_text": "mlk giving a powerful speech",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and caption are respectful and celebratory, acknowledging the historical significance of Martin Luther King Jr.'s oratory."
+  },
+  {
+    "trial_id": "A2_190",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/07218.png",
+    "meme_text": "when you and ya classmate are hiding from the school shooter, but you wanna die so you sneeze to get his attention hehehehehe my bad guys",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses dark humor to reference school shootings and self-harm, but it does not target a specific identity group with prejudice or hostility. It is a form of nihilistic internet humor rather than hate speech."
+  },
+  {
+    "trial_id": "A2_191",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/42093.png",
+    "meme_text": "'those that attack one muslim, are attacking all muslims\" those that attack one american, are attacking all americans!!",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses an analogy to argue for the protection of Muslims by equating it to the protection of Americans. It does not target Muslims with hostility, but rather advocates for their collective safety through a comparison to nationalistic sentiment."
+  },
+  {
+    "trial_id": "A2_192",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/45167.png",
+    "meme_text": "when republicans freed the slaves this is how democrats responded",
+    "ai_hateful_prediction": 1,
+    "ai_explanation": "The meme uses imagery of a violent white supremacist organization to characterize the Democratic Party, implying a direct historical or ideological link between the party and racial terrorism."
+  },
+  {
+    "trial_id": "A2_193",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_657.png",
+    "meme_text": "Corona Virus\n•poverty\n•child slavery\n•pedophiles in\npositions of power\n•wealth inequality\n•mind control\n•sex trafficking\n•5g causing\ncancer\n",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses irony to criticize the disproportionate public concern or media coverage given to the Coronavirus compared to much more severe or systemic global issues. It is a social commentary on misplaced priorities rather than an attack on a protected identity group."
+  },
+  {
+    "trial_id": "A2_194",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/JvY4wYr.png",
+    "meme_text": "I DONT ALLWAYS GO TO WORK ... UK OFCOURSELDO BECAUSE IM NOT A FREELOADING BERNIE SANDERS SUPPORTER ",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses political satire to criticize supporters of Bernie Sanders by labeling them as 'freeloading.' While insulting to a political group, it does not target a protected identity group with hate speech or dehumanization."
+  },
+  {
+    "trial_id": "A2_195",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/69234.png",
+    "meme_text": "do i need to dig up hitler to show you how to use an oven",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a dark, hyperbolic comparison to express extreme frustration regarding cooking skills. While it references a genocidal figure, the intent appears to be a joke about incompetence rather than promoting Nazi ideology or attacking a protected group."
+  },
+  {
+    "trial_id": "A2_196",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/67384.png",
+    "meme_text": "what's hillary's favorite pizza? little seizures",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses a joke about medical episodes to mock a political figure. While insensitive and mocking of a health condition, it does not target a protected group with prejudice or dehumanization."
+  },
+  {
+    "trial_id": "A2_197",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/89061.png",
+    "meme_text": "you find it offensive i find it funny.. that's why i'm happier than you",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme expresses a personal attitude regarding sensitivity and humor but does not target, demean, or express hostility toward any specific identity group."
+  },
+  {
+    "trial_id": "A2_198",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/35618.png",
+    "meme_text": "i woke up like this",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and caption are a common meme format used to express confidence or natural beauty; there is no evidence of hostility or prejudice toward any identity group."
+  },
+  {
+    "trial_id": "A2_199",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/64172.png",
+    "meme_text": "bro you didn't go through extensive childhood trauma? that's pretty cringe",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The meme uses hyperbole to joke about the internet trend of equating trauma with personality or depth. It does not target a protected identity group with hostility or prejudice."
+  },
+  {
+    "trial_id": "A2_200",
+    "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/70912.png",
+    "meme_text": "i see american troops coming this way",
+    "ai_hateful_prediction": 0,
+    "ai_explanation": "The image and caption depict a historical military context. While it references an adversary (American troops), it does not use slurs, promote violence against a protected group, or express dehumanizing prejudice; it functions as a situational observation within a wartime context."
+  }
+]
