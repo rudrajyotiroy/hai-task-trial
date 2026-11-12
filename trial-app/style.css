@@ -92,3 +92,12 @@
 .uniqname-card input{width:100%;padding:13px 14px;border:1px solid #bcd4c4;border-radius:9px;outline-offset:3px;max-width:390px}
 .uniqname-card p{margin:10px 0 0}
 @media(max-width:600px){.course-header{font-size:16px;flex-wrap:wrap;gap:3px}.course-subtitle{font-size:11px}header .tag{display:none}}
+
+/* Assignment 3 protocol v4 */
+.attention-check{background:#f3f8f4;border:1px solid #bfd9c8;border-radius:13px;padding:18px 22px;margin:20px 0}
+.attention-check h3{margin:0 0 8px}.attention-check p{margin:8px 0}
+.attention-option{display:flex;align-items:flex-start;gap:10px;margin:10px 0;padding:11px;background:#fff;border-radius:9px;border:1px solid #d8e8df;cursor:pointer}
+.attention-option input{accent-color:#248362;margin-top:3px}
+.hateful-choices{gap:6px!important}
+.hateful-choices .choice{padding:12px 15px;font-size:14px}
+@media(max-width:650px){.attention-check{padding:14px}.hateful-choices .choice{padding:10px 12px}}

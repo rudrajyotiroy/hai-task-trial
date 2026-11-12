@@ -1,0 +1,8 @@
+# Never commit participant-identifying exports or local analysis scratch data
+**/task_trial_events_rows.csv
+**/*supabase*export*.csv
+**/participant_uniqnames*.csv
+**/*raw_responses*.csv
+.env
+*.env.local
+__pycache__/
