@@ -7,3 +7,25 @@
   from = "/api/trials"
   to = "/.netlify/functions/trials"
   status = 200
+
+# Two participant-facing sites in ONE Netlify project and ONE build.
+# Keep the API redirect above these HTML rewrites.
+[[redirects]]
+  from = "/assisted"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/assisted/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/independent"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/independent/"
+  to = "/index.html"
+  status = 200
