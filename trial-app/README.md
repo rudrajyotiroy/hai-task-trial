@@ -1,4 +1,13 @@
-# Context Lab — two participant websites, one Netlify project
+# CSE 594 Class Assignment — Hateful Meme Detection Study
+
+This site is a **CSE 594 class assignment**, with assisted and independent participant versions hosted in one Netlify project. The Context Lab logo and branding have been removed.
+
+## Optional participant uniqname
+
+The first (purpose/consent) page includes an optional **University of Michigan uniqname** field. It is not required to enter the walkthrough or submit any trials. A supplied uniqname is validated as 1–32 characters starting with a letter and containing letters, numbers, dots, underscores, or hyphens.
+
+On study start, the browser stores the uniqname (or `null` if blank) only in the **start event’s `payload.uniqname`**. Every start, trial response, and finish event is joined by `session_id`, so the identity can be associated with all answers from that session without duplicating it on every response. Supabase’s existing `payload jsonb` field requires **no schema migration**. The submitted field is explicitly disclosed as identifiable when filled out; leaving it blank enables participation without providing a name. The app stores the in-progress uniqname in local browser storage until the session is restarted; the study owner should protect and appropriately retain identifiable records.
+
 
 This is a controlled study about how humans interpret hateful memes, including sarcasm and implied meaning, and how AI-assisted review affects judgments. **Hateful / not hateful and triggering / not triggering are separate judgments.**
 

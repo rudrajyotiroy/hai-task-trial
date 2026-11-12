@@ -7,10 +7,11 @@ const KEY='hai-task-trial-v3-'+CONDITION, STUDY='hai-meme-evaluation-v1', DEFAUL
 const id=()=>crypto.randomUUID();
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const randomized=list=>{const values=[...list];for(let i=values.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[values[i],values[j]]=[values[j],values[i]];}return values;};
-const fresh=()=>({id:id(),condition:CONDITION,order:randomized(trials).slice(0,MAX_COUNT).map(t=>t.trial_id),planned:DEFAULT_COUNT,index:0,stage:'welcome',consented:false,answers:{},events:[],started:null,opened:null,sessionVersion:3});
+const fresh=()=>({id:id(),condition:CONDITION,order:randomized(trials).slice(0,MAX_COUNT).map(t=>t.trial_id),planned:DEFAULT_COUNT,index:0,stage:'welcome',consented:false,uniqname:'',answers:{},events:[],started:null,opened:null,sessionVersion:3});
 let state;try{state=JSON.parse(localStorage.getItem(KEY));}catch{}
 if(!state||!Array.isArray(state.order)||!Array.isArray(state.events))state=fresh();
 state.answers??={};
+state.uniqname??='';
 state.planned??=state.order.length;
 let walkthroughStep=0;
 const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
@@ -47,7 +48,7 @@ async function health(){
 }
 function button(label,action,cls='primary'){return '<button type="button" class="'+cls+'" data-action="'+action+'">'+label+'</button>';}
 function shell(view,html){
- root.innerHTML='<div class="wrap"><header><a href="#" data-action="home" class="brand">◧ context<span>.</span>lab</a><span class="tag">RESEARCH STUDY</span><span>'+escapeHTML(view)+'</span></header><main>'+html+'</main><footer><span>Context Lab · HAI research</span><div class="storage"><span id="sync" aria-live="polite">'+(queued()?queued()+' responses pending':'Check storage status')+'</span>'+button('Check storage','health','link-button')+' '+(queued()?button('Retry upload','retry','link-button'):'')+'</div><span>Version 3.1</span></footer></div>';
+ root.innerHTML='<div class="wrap"><header><span class="course-header">CSE 594 <span class="course-subtitle">Class Assignment</span></span><span class="tag">HUMAN–AI INTERACTION STUDY</span><span>'+escapeHTML(view)+'</span></header><main>'+html+'</main><footer><span>CSE 594 · Class Assignment</span><div class="storage"><span id="sync" aria-live="polite">'+(queued()?queued()+' responses pending':'Check storage status')+'</span>'+button('Check storage','health','link-button')+' '+(queued()?button('Retry upload','retry','link-button'):'')+'</div><span>Version 3.3</span></footer></div>';
  root.querySelectorAll('[data-action]').forEach(element=>element.addEventListener('click',event=>{event.preventDefault();actions[element.dataset.action]?.();}));
  if(lastError)setStatus(queued()+' pending · '+lastError,true);
 }
@@ -59,7 +60,7 @@ function welcome(){
  const risk=assisted
   ? 'AI filtering is imperfect. Some examples may still contain triggering imagery, hateful language, violence or other disturbing material, even if no warning appears.'
   : 'Unfiltered-content warning: This version deliberately shows original, unblurred memes. Examples may contain slurs, violent imagery, abuse, discrimination, sexual material or other potentially distressing content. You may skip an item or stop at any time.';
- shell('About the study · '+(assisted?'AI-assisted':'Independent'),`<section class="hero purpose-page"><p class="eyebrow">HUMANS + AI · MEME UNDERSTANDING</p><h1>Help AI understand <em>what memes really mean.</em></h1><p class="lead">Memes can communicate sarcasm, stereotypes and subtle hate that AI may miss. Your independent judgments will help researchers evaluate how AI handles those nuances.</p><div class="purpose-flow"><div class="purpose-card"><div class="purpose-icon">◉</div><strong>Human interpretation</strong><p>Judge whether a meme is hateful, and share whether the content felt triggering to you.</p></div><div class="purpose-arrow" aria-hidden="true">→</div><div class="purpose-card"><div class="purpose-icon">✧</div><strong>Better evaluations</strong><p>Human feedback highlights nuanced examples that AI needs to interpret more accurately.</p></div></div><div class="independence"><p class="eyebrow">TWO INDEPENDENT DIMENSIONS</p><h2>Hateful ≠ triggering</h2><p>A meme can be hateful without personally upsetting you, distressing without targeting a group, both, or neither. The two judgments are separate.</p><div class="quadrant"><div><b>Hateful + triggering</b><small>Both apply</small></div><div><b>Hateful + not triggering</b><small>Hate does not always feel personally distressing</small></div><div><b>Not hateful + triggering</b><small>Distressing is not necessarily hateful</small></div><div><b>Neither</b><small>Neither category applies</small></div></div></div><div class="guard-summary"><span class="purpose-icon">`+(assisted?'◈':'◉')+`</span><div><strong>`+(assisted?'AI-assisted evaluation + safety shield':'Independent evaluation · original content')+`</strong><p>`+escapeHTML(intro)+`</p></div></div><div class="notice"><strong>`+(assisted?'Content warning — AI protection is imperfect':'Content warning — no filtering in this version')+`</strong><p>`+escapeHTML(risk)+`</p></div><label class="consent"><input id="consent" type="checkbox"> I am at least 18, understand the study purpose and the content risks of this version, and voluntarily agree to participate.</label><p>`+button('Continue to practice walkthrough →','guide')+`</p></section>`);
+ shell('About the study · '+(assisted?'AI-assisted':'Independent'),`<section class="hero purpose-page"><p class="eyebrow">HUMANS + AI · MEME UNDERSTANDING</p><h1>Help AI understand <em>what memes really mean.</em></h1><p class="lead">Memes can communicate sarcasm, stereotypes and subtle hate that AI may miss. Your independent judgments will help researchers evaluate how AI handles those nuances.</p><div class="purpose-flow"><div class="purpose-card"><div class="purpose-icon">◉</div><strong>Human interpretation</strong><p>Judge whether a meme is hateful, and share whether the content felt triggering to you.</p></div><div class="purpose-arrow" aria-hidden="true">→</div><div class="purpose-card"><div class="purpose-icon">✧</div><strong>Better evaluations</strong><p>Human feedback highlights nuanced examples that AI needs to interpret more accurately.</p></div></div><div class="independence"><p class="eyebrow">TWO INDEPENDENT DIMENSIONS</p><h2>Hateful ≠ triggering</h2><p>A meme can be hateful without personally upsetting you, distressing without targeting a group, both, or neither. The two judgments are separate.</p><div class="quadrant"><div><b>Hateful + triggering</b><small>Both apply</small></div><div><b>Hateful + not triggering</b><small>Hate does not always feel personally distressing</small></div><div><b>Not hateful + triggering</b><small>Distressing is not necessarily hateful</small></div><div><b>Neither</b><small>Neither category applies</small></div></div></div><div class="guard-summary"><span class="purpose-icon">`+(assisted?'◈':'◉')+`</span><div><strong>`+(assisted?'AI-assisted evaluation + safety shield':'Independent evaluation · original content')+`</strong><p>`+escapeHTML(intro)+`</p></div></div><div class="notice"><strong>`+(assisted?'Content warning — AI protection is imperfect':'Content warning — no filtering in this version')+`</strong><p>`+escapeHTML(risk)+`</p></div><div class="uniqname-card"><label for="uniqname" class="uniqname-label">University of Michigan uniqname <span class="optional-label">Optional</span></label><input id="uniqname" name="uniqname" type="text" maxlength="32" autocomplete="off" spellcheck="false" placeholder="e.g., youruniqname" value="`+escapeHTML(state.uniqname||'')+`"><p class="muted">You can leave this blank. If supplied, your uniqname will be saved with your session responses and can identify you. Your responses are linked through a session ID.</p><p id="uniqname-error" class="error" role="alert"></p></div><label class="consent"><input id="consent" type="checkbox"> I am at least 18, understand the study purpose and the content risks of this version, and voluntarily agree to participate.</label><p>`+button('Continue to practice walkthrough →','guide')+`</p></section>`);
 }
 function guide(){
  const assisted=CONDITION==='assisted';
@@ -206,6 +207,13 @@ const actions={
  home:render,health,retry:()=>{lastError='';flush();},
  guide:()=>{
   if(!document.querySelector('#consent')?.checked){document.querySelector('#consent')?.focus();return;}
+  const field=document.querySelector('#uniqname');
+  const typed=field?.value.trim()||'';
+  if(typed&&!/^[a-zA-Z][a-zA-Z0-9._-]{0,31}$/.test(typed)){
+   document.querySelector('#uniqname-error').textContent='Please enter a valid uniqname (letters, digits, dots, underscores, hyphens; start with a letter) or leave it blank.';
+   field?.focus();return;
+  }
+  state.uniqname=typed;
   state.consented=true;state.stage='guide';walkthroughStep=0;save();render();
  },
  'back-to-purpose':()=>{state.stage='welcome';save();render();},
@@ -219,7 +227,7 @@ const actions={
   if(!Number.isInteger(value)||value<1||value>MAX_COUNT){document.querySelector('#guide-error').textContent='Enter a whole number of trials between 1 and 30.';return;}
   state.planned=value;state.order=state.order.slice(0,value);
   state.stage='task';state.started=Date.now();state.opened=Date.now();save();
-  emit('start',{planned_items:value,consented:true,study_version:'3.1.0',content_shield:CONDITION==='assisted',website_variant:CONDITION});
+  emit('start',{planned_items:value,consented:true,uniqname:state.uniqname||null,study_version:'3.3.0',content_shield:CONDITION==='assisted',website_variant:CONDITION});
   render();
  },
  next:()=>submit(false),skip:()=>submit(true),
