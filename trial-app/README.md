@@ -2,6 +2,23 @@
 
 This is a controlled study about how humans interpret hateful memes, including sarcasm and implied meaning, and how AI-assisted review affects judgments. **Hateful / not hateful and triggering / not triggering are separate judgments.**
 
+
+## Trial-page and skip behavior (v3.2)
+
+The task-page headline now reads **“Thanks for your contribution to help improve hate speech detection”**, with a compact font size. The practice walkthrough on screen 2 shows a harmless illustrated meme and step-specific example interface previews. Participants advance with Previous/Next buttons or step indicators; there is **no automatic playback or animation**.
+
+**Skip example means skip the entire trial**, in both variants. The participant can skip without providing any answers, even if partially selected before skipping. No AI disagreement review is displayed for skipped items. A single \`response\` event is still saved in Supabase for every skipped item, containing:
+
+- \`skipped: true\`
+- \`skip_scope: "entire_example"\`
+- \`classification: null\`, \`initial_classification: null\`, \`final_classification: null\`, \`confidence: null\`
+- \`triggering_vote: null\`
+- \`preferred_not_shown: null\`, \`preferred_not_shown_reason: null\`
+- \`ai_reasoning_presented: false\`, \`ai_reasoning_verdict: null\`
+
+Item identifier, condition, position, elapsed time, and visibility/reveal metadata still accompany the skip event. On *submitted* (non-skipped) items, the assisted review saves both \`initial_classification\` and \`final_classification\`, allowing before/after comparisons.
+
+
 ## Participant links
 
 Both study variants run in the **same Netlify project and deployment**, with one Supabase table and common serverless API:
@@ -31,7 +48,7 @@ The site root \`/\` defaults to assisted, so distribute explicit links rather th
 ### Both versions
 
 1. Purpose and consent screen explaining why human feedback helps catch sarcasm, subtext and context, and why hateful and triggering are independent categories.
-2. Five-step animated practice walkthrough using a harmless illustration, with previous/next/replay and accessible reduced-motion behavior.
+2. Five-step manually navigated practice walkthrough using a harmless illustration, with Previous/Next buttons and clickable step indicators, without autoplay.
 3. Choose **1–30 task trials** (default **12**).
 4. Trial classifications, confidence, sensitivity and any requested preference/review fields are stored in the same Supabase database. Progress survives page refreshes via browser-local state.
 
