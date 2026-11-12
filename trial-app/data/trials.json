@@ -3,1400 +3,2192 @@
     "trial_id": "A2_001",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/61082.png",
     "meme_text": "i know thats really roger from american dad but imma chill",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a joke based on a visual resemblance between a real person and a fictional animated character. It does not target any protected identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "The text states that the person in the top image is actually the character Roger from American Dad, but the speaker intends to remain calm.",
+    "ai_image_description": "A two-panel meme. The top panel shows a close-up of a bald man's eyes and forehead against a white brick wall. The bottom panel shows a woman with long dark hair looking at the camera against a grey background."
   },
   {
     "trial_id": "A2_002",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3499.png",
     "meme_text": "ME\n2 WEEKS\nQUARANTINE\nWORK\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common format to express a personal preference for staying in quarantine rather than going to work, likely referencing the COVID-19 pandemic era. It does not target any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The person in the center is labeled 'ME', the woman in red is labeled '2 WEEKS QUARANTINE', and the woman in blue is labeled 'WORK'.",
+    "ai_image_description": "A low-resolution photo of three people on a street. A woman in a red shirt is in the foreground on the left, a man in a blue plaid shirt is in the center looking back, and a woman in a light blue tank top is on the right looking toward the man."
   },
   {
     "trial_id": "A2_003",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50186.png",
     "meme_text": "don't be a fool it is a bomb",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses personification to humorously suggest the dog is warning someone about a suitcase. It does not target any protected identity group with hostility."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "threats of violence"
+    ],
+    "ai_trigger_notice": "This content contains a textual reference to an explosive device.",
+    "ai_euphemized_caption": "don't be a fool it is an explosive device",
+    "ai_image_description": "A light-colored dog wearing a black vest labeled 'K-9 POLICE DOG' is sniffing a brown suitcase on a sidewalk next to a car."
   },
   {
     "trial_id": "A2_004",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/58604.png",
     "meme_text": "i got 99 problems and chromosomes are one",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a person's genetic disability as the central subject of a joke, framing their existence or condition as a 'problem,' which constitutes demeaning prejudice against people with disabilities."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "disability-related mockery"
+    ],
+    "ai_trigger_notice": "This content contains a joke referencing genetic conditions.",
+    "ai_euphemized_caption": "I have 99 problems and chromosomal issues are one.",
+    "ai_image_description": "A man with Down syndrome is in a gym setting, holding a dumbbell in each hand and looking toward the camera."
   },
   {
     "trial_id": "A2_005",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/91738.png",
     "meme_text": "i'm just gon sit here & mind my business",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme appears to be a relatable expression of wanting to avoid drama or social conflict, using a solitary figure to represent detachment."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "nudity"
+    ],
+    "ai_trigger_notice": "This image contains nudity.",
+    "ai_euphemized_caption": "I am just going to sit here and mind my own business.",
+    "ai_image_description": "A photograph of a person sitting nude on a concrete ledge in an urban, industrial-looking setting."
   },
   {
     "trial_id": "A2_006",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/63281.png",
     "meme_text": "muslims muslims",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a violent scene of a shooting to target a specific religious identity group, implying that the group is either inherently violent or inherently victims of such violence in a dehumanizing manner."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "violence"
+    ],
+    "ai_trigger_notice": "This content contains a depiction of a person being shot and visible blood.",
+    "ai_euphemized_caption": "muslims muslims",
+    "ai_image_description": "A two-panel meme. The top panel shows three men in suits pointing a handgun at a fourth man in a suit who is bleeding from a chest wound. The bottom panel shows a close-up of a man with a mustache wearing a white fedora. Both panels have the word 'muslims' overlaid in white text."
   },
   {
     "trial_id": "A2_007",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50293.png",
     "meme_text": "aids gays it really be like that",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a reductive and stigmatizing association between gay men and a serious medical condition, which serves to demean the identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "medical conditions",
+      "sexual orientation references"
+    ],
+    "ai_trigger_notice": "This content contains references to a serious medical condition and sexual orientation.",
+    "ai_euphemized_caption": "A reference to a medical condition and gay men, followed by the phrase 'it really be like that'.",
+    "ai_image_description": "A close-up shot of two muscular arms engaged in an arm wrestling match against a dark, spotlighted background."
   },
   {
     "trial_id": "A2_008",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/68094.png",
     "meme_text": "black boyfriend white boyfriend",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a visual trope of domestic violence to imply a causal link between having a Black boyfriend and suffering physical harm, thereby promoting a harmful racial stereotype."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "physical injury",
+      "domestic violence imagery"
+    ],
+    "ai_trigger_notice": "The image contains depictions of facial bruising and a wound on a person's lip.",
+    "ai_euphemized_caption": "black boyfriend, white boyfriend",
+    "ai_image_description": "A two-panel meme. The top panel shows a woman with dark hair, visible bruising around her eyes, and a wound on her lip. The bottom panel shows a smiling Black woman."
   },
   {
     "trial_id": "A2_009",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4548.png",
     "meme_text": "Media: Stay indoors and avoid public places\nto limit your risk of catching Corona Virus.\nMillennials:\nUNDE\nMIFFL\nwo tickets to paradise\nmematio\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common generational trope to joke about the perceived tendency of Millennials to ignore safety warnings in favor of social experiences. It does not express hostility or demeaning prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Media: Stay indoors and avoid public places to limit your risk of catching Corona Virus. Millennials: Two tickets to paradise.",
+    "ai_image_description": "A split-screen meme. The top half contains text regarding COVID-19 precautions. The bottom half shows a man from 'The Office' looking excited while holding two blue tickets, next to a character in a red and white costume."
   },
   {
     "trial_id": "A2_010",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/40865.png",
     "meme_text": "and then i said, mr. president there's no walmart's in north korea only targets",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a play on words (a pun) regarding the lack of Walmart stores in North Korea, suggesting only 'Target' stores exist. It does not target a protected identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "and then i said, mr. president there's no walmart's in north korea only targets",
+    "ai_image_description": "A portrait of a smiling man in a dark coat and tie, positioned above a circular graphic of the United States flag."
   },
   {
     "trial_id": "A2_011",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/26174.png",
     "meme_text": "a muslim ban would've stopped that",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme promotes the idea that a ban on Muslims would prevent unspecified harm, which functions as a demeaning generalization and advocates for religious discrimination."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "religious discrimination"
+    ],
+    "ai_trigger_notice": "The content contains text discussing the implementation of a ban on a religious group.",
+    "ai_euphemized_caption": "A ban on Muslims would have prevented that.",
+    "ai_image_description": "A photograph of Donald Trump in a dark suit and blue tie, pointing his finger toward the left side of the frame."
   },
   {
     "trial_id": "A2_012",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/82593.png",
     "meme_text": "overly attached muslim girlfriend i killed your other 4 wives so you have more time to beat me",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a religious identity to promote harmful stereotypes regarding polygamy, violence, and domestic abuse, presenting these extreme scenarios as a comedic trope."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "violence",
+      "domestic abuse"
+    ],
+    "ai_trigger_notice": "This content contains text referencing homicide and domestic physical abuse.",
+    "ai_euphemized_caption": "An overly attached Muslim girlfriend says she eliminated your other four spouses so you can spend more time physically striking her.",
+    "ai_image_description": "A close-up photograph of a person wearing a black niqab, showing only their eyes."
   },
   {
     "trial_id": "A2_013",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/59471.png",
     "meme_text": "i bet her pillows dont have pillowcases",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a sexual innuendo to make a joke about the subject's body. While suggestive and potentially objectifying, it does not target a protected identity group with hostility or prejudice."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "sexual content"
+    ],
+    "ai_trigger_notice": "This content contains sexually suggestive imagery involving partial nudity.",
+    "ai_euphemized_caption": "The text suggests a bet regarding the lack of pillowcases on her pillows.",
+    "ai_image_description": "A close-up shot of a person wearing a pink robe that is open, revealing their chest and hand."
   },
   {
     "trial_id": "A2_014",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/02918.png",
     "meme_text": "a islamic leader among his followers",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and caption appear to be a literal description of the scene, showing a man with a weapon alongside a religious figure. There is no explicit slur, dehumanizing language, or call for violence against a protected group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "violence"
+    ],
+    "ai_trigger_notice": "This image contains a depiction of a firearm.",
+    "ai_euphemized_caption": "An Islamic leader among his followers",
+    "ai_image_description": "A man with a beard wearing a green jacket holds a rifle while standing next to a vehicle. Inside the vehicle, an older man with a white beard and head covering is seated."
   },
   {
     "trial_id": "A2_015",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/47609.png",
     "meme_text": "when your friend has been posting suicidal memes in the group chat all day then you hear an ambulance drive past you did it you crazy son of a bitch you did it",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses dark humor to joke about a friend's mental health crisis, but it does not target a protected identity group with prejudice or hostility."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "suicide and self-harm"
+    ],
+    "ai_trigger_notice": "This content contains references to self-harm and suicide.",
+    "ai_euphemized_caption": "when your friend has been posting memes about self-harm in the group chat all day then you hear an ambulance drive past you did it you wild person you did it",
+    "ai_image_description": "A medium shot of a smiling man with glasses and a black turtleneck, set against a blurred background with red and yellow shapes."
   },
   {
     "trial_id": "A2_016",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1295.png",
     "meme_text": "are you ok with this Nandosuk\nMe: Should I buy it?\nExto\nHOt\nHOt\nBrain: No\nCOVID\nAlert\nPartner: No\nLevels\nBank account: No\n1.\nMedim\nMe: Sold\nPER\nomete,\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a lighthearted joke about impulse buying and the conflict between desire and logic/finances. It does not target any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content contains no distressing visual or textual cues.",
+    "ai_euphemized_caption": "A person asks if they should buy something. Their brain, partner, and bank account all say no, but the person says they bought it anyway.",
+    "ai_image_description": "A split image. The left side shows a graphic for 'COVID Alert Levels' next to a colorful scale representing spice levels (Mild, Medium, Hot, Extra Hot) using a chili pepper icon. The right side contains text describing a person's internal conflict over a purchase."
   },
   {
     "trial_id": "A2_017",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2534.png",
     "meme_text": "CNN Reporter Who Attacked Trump For Not\nWearing Mask Caught Removing Mask When\nCameras Stop Rolling\nHа\nНа На!\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme targets a specific individual and a news organization to allege hypocrisy regarding COVID-19 mask protocols. While mocking and politically charged, it does not target a protected identity group with prejudice or dehumanization."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No distressing content identified.",
+    "ai_euphemized_caption": "A CNN reporter who criticized Trump for not wearing a mask was seen taking her mask off once the cameras were no longer recording. Ha Ha!",
+    "ai_image_description": "A three-panel sequence showing a woman in a pink blazer laughing and holding a white object to her face, followed by a large blue block with the text 'Ha Ha!' and a cartoon character from The Simpsons laughing and pointing."
   },
   {
     "trial_id": "A2_018",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_5363.png",
     "meme_text": "JUST NOW IN !\nHDOLE STUP CRICKET\nSHAHID AFRIDI TESTS POSITIVE\nFOR COVID-19\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and text function as a news report regarding a professional athlete's health status. There is no language or imagery targeting an identity group with hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain graphic or distressing material.",
+    "ai_euphemized_caption": "Breaking news from Middle Stump Cricket: Shahid Afridi has tested positive for COVID-19.",
+    "ai_image_description": "A news-style graphic featuring a portrait of a man in a lime green cricket jersey against a blurred background, with text overlays."
   },
   {
     "trial_id": "A2_019",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/06874.png",
     "meme_text": "ach!! thats my car volkswagen cars produce more gaz than expected",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a play on words regarding vehicle emissions and the 'Dieselgate' emissions scandal involving Volkswagen. It uses a pun on 'gas' (exhaust vs. flatulence) and a comedic reaction image, targeting a corporation rather than a protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Ach!! That's my car. Volkswagen cars produce more gas than expected.",
+    "ai_image_description": "A two-panel meme. The top panel shows a close-up of a blue car's exhaust pipe emitting a large cloud of white smoke or gas. The bottom panel is a black and white image of a man in formal attire with his arms raised in a dramatic or startled gesture."
   },
   {
     "trial_id": "A2_020",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_210.png",
     "meme_text": "When you're at your favorite\nChinese food place and hear a\ncough from the kitchen\n",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a common trope that associates Chinese restaurants with poor sanitary conditions or illness, targeting a specific ethnic group through a disparaging stereotype."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "racial stereotypes"
+    ],
+    "ai_trigger_notice": "The content contains a joke based on a racialized stereotype regarding hygiene in ethnic restaurants.",
+    "ai_euphemized_caption": "When you are at your preferred Chinese restaurant and notice someone coughing in the kitchen area.",
+    "ai_image_description": "A man in a green shirt sits at a table with a red tablecloth, holding a glass of red liquid and looking upward with a concerned or wary expression."
   },
   {
     "trial_id": "A2_021",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50489.png",
     "meme_text": "the face you make after you just finished your morning prayer",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme appears to be a lighthearted, relatable post about the feeling of peace or satisfaction following a religious ritual. There is no evidence of hostility, dehumanization, or prejudice against the identity group depicted."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "the face you make after you just finished your morning prayer",
+    "ai_image_description": "Two men wearing traditional white thobes and red-and-white checkered keffiyehs are outdoors near some greenery. The man in the foreground is smiling at the camera, while the man in the background has a more neutral expression."
   },
   {
     "trial_id": "A2_022",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/24537.png",
     "meme_text": "normie: \"your meme's are racist and offensive, i'm unfollowing\" nigger me: \"take this on your way out\"",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a high-intensity racial slur and adopts a hostile stance toward individuals who call out racism, effectively mocking the concept of being offended by racist content."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "racial slurs"
+    ],
+    "ai_trigger_notice": "This content contains a severe racial slur in the text overlay.",
+    "ai_euphemized_caption": "A person labeled 'normie' claims memes are racist and offensive and decides to unfollow, while the speaker, identifying with a racial slur, tells them to take something on their way out.",
+    "ai_image_description": "A photo of people in SpongeBob SquarePants and Patrick Star mascot costumes on a sports field, with a small child in a blue shirt standing in front of them."
   },
   {
     "trial_id": "A2_023",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/75230.png",
     "meme_text": "how to remember kid in hot car keep 2nd road beer with them!",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses dark, edgy humor regarding a tragic real-world scenario (childhood car deaths) rather than targeting a protected identity group with prejudice."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "references to child endangerment"
+    ],
+    "ai_trigger_notice": "This content contains a textual reference to a tragic scenario involving a child in a vehicle.",
+    "ai_euphemized_caption": "A suggestion on how to avoid forgetting a child in a hot vehicle is to keep alcohol with them.",
+    "ai_image_description": "A two-panel meme. The top panel shows a man in a suit receiving flowers from a young girl in a school uniform. The bottom panel shows a kangaroo drinking from an aluminum beer can."
   },
   {
     "trial_id": "A2_024",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/37084.png",
     "meme_text": "stay in step you loser",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common, mild insult directed at the children in the image. It does not target a protected identity group or express prejudice based on religion, race, or other characteristics."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain graphic, violent, or profane material.",
+    "ai_euphemized_caption": "Stay in step, you loser.",
+    "ai_image_description": "A group of young altar servers in white robes are standing in a church aisle; one boy holds a large crucifix."
   },
   {
     "trial_id": "A2_025",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/57618.png",
     "meme_text": "kanye west? we lost some good men there",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses an exaggerated facial expression to react to the mention of Kanye West, likely implying a strong or controversial opinion about him. It does not target a protected identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "kanye west? we lost some good men there",
+    "ai_image_description": "A close-up, high-contrast photograph of an elderly man with white hair and glasses, making an intense, wide-eyed, and grimacing facial expression with his teeth bared."
   },
   {
     "trial_id": "A2_026",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/57938.png",
     "meme_text": "the jewish are strong for having survived this",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme appears to be a statement of solidarity and respect for the resilience of Jewish people in the face of the Holocaust. It does not use slurs or promote violence, but rather acknowledges historical suffering."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "historical trauma",
+      "depictions of concentration camp prisoners"
+    ],
+    "ai_trigger_notice": "This content contains historical imagery of individuals in concentration camp attire.",
+    "ai_euphemized_caption": "The Jewish people are resilient for having endured this.",
+    "ai_image_description": "A black and white historical photograph showing a line of people standing outdoors, most of whom are wearing vertically striped prisoner uniforms."
   },
   {
     "trial_id": "A2_027",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/15728.png",
     "meme_text": "this head diaper is proof indians have poo poo in their brains still not defamation",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a dehumanizing and insulting metaphor to claim that people of Indian descent have inferior intelligence, which constitutes demeaning prejudice against an identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "insulting language"
+    ],
+    "ai_trigger_notice": "The text contains demeaning language involving bodily functions used as an insult.",
+    "ai_euphemized_caption": "This head covering is proof that Indians have excrement in their brains, still not defamation.",
+    "ai_image_description": "A medium shot of an older man with a white beard wearing an orange turban and a grey vest, standing outdoors in a misty environment."
   },
   {
     "trial_id": "A2_028",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/03271.png",
     "meme_text": "when your wife and girlfriend dont get along",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common humorous trope regarding complicated personal relationships and an obscene gesture to express frustration or a 'not my problem' attitude. It does not target a protected identity group with hostility."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "obscene gestures"
+    ],
+    "ai_trigger_notice": "This image contains an obscene hand gesture.",
+    "ai_euphemized_caption": "when your wife and girlfriend dont get along",
+    "ai_image_description": "A medium shot of a Black man with a beard wearing a blue plaid shirt over a white t-shirt, looking at the camera while making an obscene gesture with both hands."
   },
   {
     "trial_id": "A2_029",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/82947.png",
     "meme_text": "sure timmy i'll hold your mayo",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The caption uses coded language ('hold your mayo') that functions as a slur or derogatory remark directed at the LGBTQ+ community, specifically targeting perceived sexual orientation through mockery."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "Sure Timmy, I'll hold your condiment.",
+    "ai_image_description": "A young man with curly hair looks intently at a sandwich he is preparing with a knife. A jar of mayonnaise sits on the table next to him."
   },
   {
     "trial_id": "A2_030",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/46318.png",
     "meme_text": "when you don't have to see your ex future mother-in-lav anymore",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme expresses a personal sentiment regarding the relief of no longer being associated with a former partner's family. It does not target a protected identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "when you don't have to see your ex future mother-in-law anymore",
+    "ai_image_description": "A close-up shot of a bearded man wearing sunglasses and a black cap, tilting his head back to drink from a green aluminum can outdoors."
   },
   {
     "trial_id": "A2_031",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/27843.png",
     "meme_text": "a transgendered 4 year old is like a vegan cat we all know who is making their lifestyle choices",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme demeans transgender identity by trivializing it through a comparison to a pet's diet, suggesting that a child's gender identity is an absurd or irrational 'lifestyle choice' rather than a valid identity."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "discriminatory language"
+    ],
+    "ai_trigger_notice": "This content contains language regarding gender identity that some viewers may find offensive.",
+    "ai_euphemized_caption": "A transgender 4-year-old is compared to a vegan cat, implying that the animal is the one actually making the lifestyle choices.",
+    "ai_image_description": "A three-panel meme. The top panel shows a young child wearing fairy wings. The middle panel shows a woman and a child laughing together. The bottom panel shows a black and white cat lying on a wooden surface with greens."
   },
   {
     "trial_id": "A2_032",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/76095.png",
     "meme_text": "haters",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common social media trope where one person acts 'unimpressed' or 'serious' while another is being expressive. It does not target any protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain any distressing visual or textual cues.",
+    "ai_euphemized_caption": "haters",
+    "ai_image_description": "Two women in red dresses are standing in a clothing store dressing room area. One woman stands with her arms crossed and a serious expression, while the other woman smiles and pulls back a patterned curtain."
   },
   {
     "trial_id": "A2_033",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/29084.png",
     "meme_text": "africans be like -\"we were fine killing each other for land\" \"until the white man showed up, killing us for land\"",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common internet format to comment on the historical irony of pre-colonial tribal warfare versus the violence of European colonization. It functions as a critique of colonialism rather than an attack on African people."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "violence"
+    ],
+    "ai_trigger_notice": "This content contains text discussing historical violence and conflict between groups.",
+    "ai_euphemized_caption": "The caption suggests that African groups were engaged in conflict over territory until European arrival led to different forms of conflict over the same.",
+    "ai_image_description": "A group of people in traditional African warrior attire, including leopard print clothing and shields, holding spears in an outdoor setting."
   },
   {
     "trial_id": "A2_034",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/DBSMGfC.png",
     "meme_text": "800 PM ET BREAKING NEWS CLINTON-TRUMP DEBATE BEGINS MOMENTARILY ON CNN LIVE ON CNN ",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The content is a standard political meme regarding a televised debate. It does not target any identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "8:00 PM ET Breaking News: The Clinton-Trump debate is starting soon on CNN live.",
+    "ai_image_description": "A split-screen image. The top half shows an elderly man looking at a television displaying a news broadcast about a Clinton-Trump debate. The bottom half shows a cartoon character looking through window blinds at two other cartoon characters outside."
   },
   {
     "trial_id": "A2_035",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/46872.png",
     "meme_text": "how does he drive his car? he hits the gas",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a historical figure to deliver a simple play on words regarding driving. While the imagery is highly sensitive, the text itself does not express hostility or prejudice toward a protected group, but rather functions as a non-sequitur joke."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "symbols of hate"
+    ],
+    "ai_trigger_notice": "This image contains historical imagery associated with the Nazi party, including a swastika armband.",
+    "ai_euphemized_caption": "Asking how he operates his vehicle, the answer is that he accelerates.",
+    "ai_image_description": "A black and white portrait of Adolf Hitler wearing a military-style uniform with a swastika armband and an Iron Cross medal."
   },
   {
     "trial_id": "A2_036",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1267.png",
     "meme_text": "Parents in drop off line\nThe night before schools\nOpen back up...\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a relatable joke about the anticipation or dread parents feel regarding the return of school routines and morning drop-off lines. It does not target any protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "Parents in the drop-off line the night before schools reopen...",
+    "ai_image_description": "A nighttime photograph of a line of cars with their headlights on, parked in a lot or driveway."
   },
   {
     "trial_id": "A2_037",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/23046.png",
     "meme_text": "jewish",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses dehumanizing imagery by equating a Jewish person with a monkey, a common antisemitic trope used to strip individuals of their humanity."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "discriminatory language"
+    ],
+    "ai_trigger_notice": "This content contains a text overlay that associates a religious/ethnic identity with an animal.",
+    "ai_euphemized_caption": "jewish",
+    "ai_image_description": "A close-up photograph of a proboscis monkey with a large nose, sitting in a forest setting."
   },
   {
     "trial_id": "A2_038",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3249.png",
     "meme_text": "ANYTIME FITNESS\nnduly\nTURNS OUT THAT WAS A LIE\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a joke directed at a commercial business (Anytime Fitness), suggesting that their name or service claims are untrue. It does not target any protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Anytime Fitness; turns out that was a lie.",
+    "ai_image_description": "A two-panel meme. The top panel shows the exterior of an 'Anytime Fitness' gym at night. The bottom panel shows a man with a head made of many small red and white objects, holding a paper and looking surprised."
   },
   {
     "trial_id": "A2_039",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/28479.png",
     "meme_text": "is someone using the oven? cuz i smell gas",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The caption uses 'oven' and 'gas' as a coded reference to the Holocaust, trivializing the genocide of Jewish people through dark humor."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "references to mass violence"
+    ],
+    "ai_trigger_notice": "This content contains a textual reference to gas and ovens that alludes to historical mass violence.",
+    "ai_euphemized_caption": "Is someone using the oven? Because I smell gas.",
+    "ai_image_description": "A vintage-style color photograph of a young woman with dark hair and a white patterned blouse, smiling at the camera."
   },
   {
     "trial_id": "A2_040",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/07623.png",
     "meme_text": "a handful of rich people should not run the country a handful of politicians should",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme expresses a political opinion regarding the influence of wealth versus political leadership. It does not target a protected identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "A small number of wealthy individuals should not govern the nation, but a small number of politicians should.",
+    "ai_image_description": "A medium shot of Bernie Sanders speaking into microphones with an expressive gesture, set against a background of blurred political signs."
   },
   {
     "trial_id": "A2_041",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/31295.png",
     "meme_text": "i'm a simple man i like beer and boobs",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a 'simple man' trope to express basic, albeit crude, preferences. It does not target, dehumanize, or incite violence against a protected identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "sexual references"
+    ],
+    "ai_trigger_notice": "This content contains a sexualized reference in the text.",
+    "ai_euphemized_caption": "I am a simple man; I like beer and breasts.",
+    "ai_image_description": "A black and white vintage-style photograph of a smiling man in a suit pouring a beverage from a bottle into a tall glass."
   },
   {
     "trial_id": "A2_042",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4253.png",
     "meme_text": "Corona Virus High Quality Mask Anti\nBacteria Corona Virus Mouth Face\nMask\nBrand New Unbranded\n$7.55 - $8.90\nFree Shipping from Chng\n9%\n286\nD.12%\n1.519\n63\nstonks\n280\n...\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses the 'stonks' format to satirize the perceived profit-seeking or market fluctuations related to the sale of face masks during the pandemic. It does not target a protected group with hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "Corona Virus High Quality Mask Anti Bacteria Corona Virus Mouth Face Mask. Brand New Unbranded. $7.55 - $8.90. Free Shipping from China. stonks",
+    "ai_image_description": "A split image showing a screenshot of an online product listing for face masks from China, paired with the 'Meme Man' character over a stock market graph with the word 'stonks'."
   },
   {
     "trial_id": "A2_043",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/12093.png",
     "meme_text": "if you see me in public looking a hot mess, just know; my bills are paid, my children have food, & i ain't trying to impress you",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a self-deprecating statement about prioritizing family needs and financial stability over personal appearance. It does not target any identity group with hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "If you see me in public looking unkempt, just know: my bills are paid, my children have food, and I am not trying to impress you.",
+    "ai_image_description": "A woman in a floral patterned top stands in a kitchen next to a young child in a striped shirt. They are looking at each other near a counter with vegetables."
   },
   {
     "trial_id": "A2_044",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/41092.png",
     "meme_text": "ana frank at 14 years old ana frank at 15 years old",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a historical figure associated with the Holocaust to make a joke about extreme weight loss, using a bar of soap as a metaphor for emaciation. This trivializes both the tragedy of the Holocaust and the severity of eating disorders."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "references to eating disorders"
+    ],
+    "ai_trigger_notice": "This content contains visual metaphors related to eating disorders.",
+    "ai_euphemized_caption": "The top text identifies the girl as Anne Frank at 14, and the bottom text identifies the soap as Anne Frank at 15.",
+    "ai_image_description": "A two-panel meme. The top panel shows a young woman sitting at a table. The bottom panel shows a hand touching a bar of soap on a wooden dish."
   },
   {
     "trial_id": "A2_045",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/67319.png",
     "meme_text": "happy birthday sister",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and text appear to be a benign, celebratory greeting. The term 'sister' is used in a way that is consistent with both religious titles and familial relations, without any indicators of hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "happy birthday sister",
+    "ai_image_description": "A studio portrait of an elderly woman dressed in a traditional black and white nun's habit, smiling with her hands raised in a celebratory gesture against a white background."
   },
   {
     "trial_id": "A2_046",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/14769.png",
     "meme_text": "god loves all of his children",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses an individual with a visible disability to create a patronizing or mocking tone, implying that the person is an object of pity or a caricature rather than a person, which demeans the dignity of people with disabilities."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "disability"
+    ],
+    "ai_trigger_notice": "This content features an individual with a visible physical disability.",
+    "ai_euphemized_caption": "God loves all of his children",
+    "ai_image_description": "A portrait of a smiling man with Down syndrome wearing a light-colored striped shirt and holding a pool cue."
   },
   {
     "trial_id": "A2_047",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/15690.png",
     "meme_text": "muslims when someone uses kilometres per hour instead of wifes per child sex slaves",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a harmful and extreme stereotype to characterize Muslims by equating their existence or culture with child sexual slavery, which constitutes demeaning prejudice against a religious identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "sexual violence references"
+    ],
+    "ai_trigger_notice": "The content contains text referencing sexual exploitation of children.",
+    "ai_euphemized_caption": "Muslims' reaction when someone uses kilometers per hour instead of a metric involving child exploitation.",
+    "ai_image_description": "A close-up photograph of several men with beards, appearing to be shouting or cheering loudly in a crowd."
   },
   {
     "trial_id": "A2_048",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3816.png",
     "meme_text": "WHEN YOU NOT SURE\nWHAT THAT COVID DO\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses humor to depict the anxiety and improvised measures taken by individuals during the COVID-19 pandemic. It does not target any protected identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain graphic violence, slurs, or explicit profanity.",
+    "ai_euphemized_caption": "When you are unsure what that COVID does.",
+    "ai_image_description": "A split-screen image showing two different people in a grocery store wearing improvised, heavy-duty protective gear, including plastic sheeting and tape, to shield themselves."
   },
   {
     "trial_id": "A2_049",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_998.png",
     "meme_text": "The test only\nhas 2\nquestions\nIt's 2 really big\nquestions\nYou don't\nunderstand\nquestion 1\nQuestion 2 is\nbased on your\nanswer to\nquestion 1\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common comedic trope regarding the overwhelming nature of academic or life challenges. It does not target any protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The test only has two questions. It's two really big questions. You don't understand question one. Question 2 is based on your answer to question 1.",
+    "ai_image_description": "A four-panel vertical comic strip featuring an anime-style girl with blue hair. In the first two panels, she is smiling brightly and laughing. In the final two panels, her expression shifts to one of sadness and distress with tearful eyes."
   },
   {
     "trial_id": "A2_050",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/18490.png",
     "meme_text": "the rosenbergs were executed 1953 for selling nuclear secrets to russia the clintons actually sold nuclear material for development of weaponsto russia",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a historical comparison to make a serious political accusation of treason against Bill and Hillary Clinton. While inflammatory and conspiratorial, it targets political figures based on alleged actions rather than targeting a protected identity group with prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content contains political accusations regarding espionage and nuclear materials.",
+    "ai_euphemized_caption": "The Rosenbergs were executed in 1953 for providing nuclear secrets to Russia; the Clintons actually sold nuclear material for the development of weapons to Russia.",
+    "ai_image_description": "A two-panel black and white meme. The top panel shows a historical photo of Julius and Ethel Rosenberg behind a chain-link fence with text about their execution for selling nuclear secrets to Russia. The bottom panel shows a photo of Bill and Hillary Clinton with text alleging they sold nuclear material to Russia for weapon development."
   },
   {
     "trial_id": "A2_051",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/nqfekut.png",
     "meme_text": "Jommen is starting to Feel the Bern ",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a play on words using a common idiom and likely references a specific character or political context. It does not target any protected identity group with hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Tommen is starting to feel the Bern",
+    "ai_image_description": "A close-up shot of an older man with white hair looking toward another person in a dimly lit, stone-walled setting."
   },
   {
     "trial_id": "A2_052",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2577.png",
     "meme_text": "The reason Trump agreed\nto wear a mask\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a visual metaphor to mock Donald Trump by implying he is infantile or needs a pacifier, which is a common form of political satire/insult rather than hate speech against a protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content identified.",
+    "ai_euphemized_caption": "The reason Trump agreed to wear a mask",
+    "ai_image_description": "A split-screen image. The left side shows Donald Trump in a suit and red tie wearing a blue face mask, standing in front of a dark curtain. The right side shows a blue baby pacifier lying on a surface."
   },
   {
     "trial_id": "A2_053",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/41270.png",
     "meme_text": "adult diapers for complete shitheads",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common insult to express contempt for a group of people, but it does not target a protected identity group or use identity-based slurs."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "profanity"
+    ],
+    "ai_trigger_notice": "This content contains strong profanity.",
+    "ai_euphemized_caption": "adult diapers for complete [expletive]",
+    "ai_image_description": "A medium shot of a woman wearing a white headwrap and a grey sweater, looking upward with a thoughtful or skeptical expression, resting her chin on her hand."
   },
   {
     "trial_id": "A2_054",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/78402.png",
     "meme_text": "\"state your name for the record\" what page is it on?",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme appears to be a humorous commentary on bureaucratic or legal procedures, likely poking fun at someone's confusion or lack of preparation during a formal proceeding. It does not target any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain any distressing visual or textual cues.",
+    "ai_euphemized_caption": "\"state your name for the record\" what page is it on?",
+    "ai_image_description": "A group of men in business suits are seated at a hearing table, with one man in the foreground speaking into a microphone."
   },
   {
     "trial_id": "A2_055",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/47608.png",
     "meme_text": "indian fans in real life indian fans on facebook",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common comparison format to joke about the difference between real-world behavior and online behavior for a specific nationality. It does not use slurs, promote violence, or dehumanize the group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain graphic, violent, or profane material.",
+    "ai_euphemized_caption": "The text compares how Indian fans act in person versus how they act on Facebook.",
+    "ai_image_description": "Three young men are sitting at a table outdoors, looking intensely at a smartphone held by one of them, with their fists clenched in excitement."
   },
   {
     "trial_id": "A2_056",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/58029.png",
     "meme_text": "i don't always roll a joint but when i do it's my ankle",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a pun playing on the double meaning of the word 'joint' (a cannabis cigarette vs. a body part). It does not target any identity group with hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain graphic or distressing visual or textual cues.",
+    "ai_euphemized_caption": "The text states that the individual does not always roll a joint, but when they do, it is their ankle.",
+    "ai_image_description": "A portrait of an older man with grey hair and a beard, wearing a black jacket, holding an open book."
   },
   {
     "trial_id": "A2_057",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/89275.png",
     "meme_text": "please give me more white nessa fanarts i can't cum to nigger",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a highly offensive racial slur and pairs it with an image of a primate, which is a common dehumanizing trope used to target Black individuals."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "racial slurs",
+      "profanity"
+    ],
+    "ai_trigger_notice": "This content contains a racial slur and sexually explicit language.",
+    "ai_euphemized_caption": "please give me more white nessa fanarts i can't climax to [racial slur]",
+    "ai_image_description": "A photograph of an orangutan sitting in green foliage with its mouth open."
   },
   {
     "trial_id": "A2_058",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/10453.png",
     "meme_text": "all men are pigs women are equal to men",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a dehumanizing animal slur to characterize an entire gender, which constitutes hostility and prejudice against men."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "insulting language"
+    ],
+    "ai_trigger_notice": "This content contains a derogatory comparison directed at men.",
+    "ai_euphemized_caption": "all men are animals; women are equal to men",
+    "ai_image_description": "A two-panel meme. The top panel shows a woman speaking with a hand gesture, with text overlaid. The bottom panel shows a different woman looking thoughtful with her hand on her chin, also with text overlaid."
   },
   {
     "trial_id": "A2_059",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1797.png",
     "meme_text": "IF PROPERLY FITTED, ONE MASK CAN\nSAVE MANY THOUSANDS OF LIVES\nDr. Fauci\nXESH\nHE WH\nWASE\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a visual metaphor (gagging) to criticize a political figure's perceived silence or compliance regarding mask mandates. While aggressive and mocking, it targets political behavior and public health policy rather than an identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "depictions of physical restraint"
+    ],
+    "ai_trigger_notice": "This image contains a visual depiction of a person having their mouth covered with tape.",
+    "ai_euphemized_caption": "If worn correctly, a single mask is capable of saving many thousands of lives — attributed to Dr. Fauci.",
+    "ai_image_description": "A composite image featuring three men in suits in front of a White House backdrop. The man on the left has silver tape over his mouth. The man in the center holds a roll of silver tape. The man on the right looks forward with a serious expression."
   },
   {
     "trial_id": "A2_060",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4610.png",
     "meme_text": "When you work from home and you're still\nin your pajamas at 3pm\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a lighthearted observation about the casual nature of remote work, using a cute animal to illustrate a relatable situation."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "The text describes a situation where one is working from home and remains in pajamas at 3pm.",
+    "ai_image_description": "A small, fluffy dog wearing pink patterned pajamas is sitting upright at a desk in front of an open laptop."
   },
   {
     "trial_id": "A2_061",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/49703.png",
     "meme_text": "3 jews walked into a bar kidding it was a gas chamber",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a joke format to trivialize the mass murder of Jewish people during the Holocaust, paired with the image of the leader of the Nazi regime."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "references to genocide"
+    ],
+    "ai_trigger_notice": "This content contains references to the Holocaust and Nazi imagery.",
+    "ai_euphemized_caption": "Three Jewish people entered a bar; the joke is that it was actually a gas chamber.",
+    "ai_image_description": "A black and white portrait of Adolf Hitler wearing a Nazi uniform with a swastika armband."
   },
   {
     "trial_id": "A2_062",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4074.png",
     "meme_text": "akaraaoicial Soo 3\nAirport fashian 2019 vs Airport fashion 2020\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a satirical commentary on the shift in public behavior and safety precautions (likely due to the COVID-19 pandemic) between 2019 and 2020. It uses visual irony to contrast normal fashion with protective gear."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Airport fashion 2019 versus Airport fashion 2020",
+    "ai_image_description": "A side-by-side comparison image. The left side shows a woman in casual clothing (a grey t-shirt and jeans) walking with luggage. The right side shows a person completely covered in a white, hooded protective suit, also with luggage."
   },
   {
     "trial_id": "A2_063",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4966.png",
     "meme_text": "THE\nDAILY, CORONAVIRUS:\nREVOR NOAN\nSOCIAL DISTANCING\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and text appear to be a standard title card or promotional graphic for an episode of 'The Daily Show with Trevor Noah' regarding the COVID-19 pandemic. There is no evidence of hostility or prejudice toward any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No distressing content identified.",
+    "ai_euphemized_caption": "The Daily Show, Coronavirus: Social Distancing.",
+    "ai_image_description": "A split-screen image. On the left, a man in a white doctor's coat with a stethoscope around his neck gestures with open arms. On the right, a close-up portrait of Trevor Noah. The bottom of the image features text from 'The Daily Show'."
   },
   {
     "trial_id": "A2_064",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/93702.png",
     "meme_text": "handjob sold separately",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a sexual joke using a common marketing phrase ('sold separately') applied to an intimate encounter. It does not target any protected identity group with hostility or prejudice."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "sexual content"
+    ],
+    "ai_trigger_notice": "This content contains sexually suggestive imagery and text referencing sexual activities.",
+    "ai_euphemized_caption": "Manual sexual stimulation sold separately",
+    "ai_image_description": "A close-up photo of a man and a woman embracing intimately in bed, partially covered by white sheets."
   },
   {
     "trial_id": "A2_065",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/26709.png",
     "meme_text": "when i was in high school i got braces a friend told me, \"you're so black, even your teeth are behind bars,\"",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme depicts a comedian recounting a childhood experience of being teased. While the comment mentioned is racially charged, the context is a personal anecdote about facing prejudice rather than an expression of hate by the creator."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "racial commentary"
+    ],
+    "ai_trigger_notice": "This content contains a joke involving racial identity and a comparison to being behind bars.",
+    "ai_euphemized_caption": "When I was in high school I got braces, a friend told me, 'you're so dark-skinned, even your teeth are behind bars.'",
+    "ai_image_description": "A medium shot of comedian Kevin Hart sitting in a chair, wearing a grey button-down shirt, holding a microphone."
   },
   {
     "trial_id": "A2_066",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4177.png",
     "meme_text": "Me after I eat all of\nmy quarantine\nsnacks in one night\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a self-deprecating joke about overeating during the COVID-19 quarantine period. It uses the baby's expression to humorously represent the feeling of regret or fullness."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The narrator describes their state after consuming all their snacks during quarantine in a single evening.",
+    "ai_image_description": "A close-up photo of a chubby, shirtless infant sitting on a carpeted floor with a serious or grumpy facial expression. A wooden table leg and a toy car are visible in the background."
   },
   {
     "trial_id": "A2_067",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/26980.png",
     "meme_text": "myth: gingers don't have souls fact: gingers earn a freckle for everey soul they steal",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme utilizes a common, lighthearted internet trope/myth regarding people with red hair. It does not express genuine hostility, dehumanization, or a call for violence against the group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain graphic violence, slurs, or severe profanity.",
+    "ai_euphemized_caption": "Myth: people with red hair lack souls. Fact: people with red hair gain a freckle for every soul they take.",
+    "ai_image_description": "Two gingerbread cookies on a dark surface. The cookie on the left is intact with blue and red icing. The cookie on the right is broken into two pieces with red icing appearing to drip from the break."
   },
   {
     "trial_id": "A2_068",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/12547.png",
     "meme_text": "gonna go outside #yolo anne frankly i thought she should have stayed home",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a play on words involving the name of Anne Frank to make a dark joke about her death during the Holocaust. While irreverent and potentially offensive due to the subject matter, it does not express hostility or demeaning prejudice toward a protected group, but rather functions as dark humor."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "gonna go outside #yolo anne frankly i thought she should have stayed home",
+    "ai_image_description": "A medium shot of a young woman with dark wavy hair, wearing a white patterned blouse, sitting at a desk and typing on a vintage typewriter. She is smiling at the camera."
   },
   {
     "trial_id": "A2_069",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/76239.png",
     "meme_text": "50 jews walk into a train, what do you call them? fuel",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a joke format to trivialize the mass murder of Jewish people during the Holocaust, utilizing Hitler's image to reinforce the antisemitic theme."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "antisemitic tropes",
+      "references to genocide"
+    ],
+    "ai_trigger_notice": "This content contains a joke referencing the Holocaust and features an image of Adolf Hitler.",
+    "ai_euphemized_caption": "50 Jewish people enter a train, what is the term for them? fuel",
+    "ai_image_description": "A black and white photograph of Adolf Hitler standing on a beach with waves in the background."
   },
   {
     "trial_id": "A2_070",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/68540.png",
     "meme_text": "i'm sorry i made the chewbacca sound but maybe if you shaved next time...",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a joke about body hair and a pop-culture sound reference to mock a person's grooming habits. While it is insulting and demeaning toward the individual's appearance, it does not target a protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The speaker apologizes for making a specific creature sound but suggests the listener should consider grooming more thoroughly in the future.",
+    "ai_image_description": "A man in a denim shirt leans toward a woman in a sweater who looks downcast and rests her head on her hand at a table."
   },
   {
     "trial_id": "A2_071",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50142.png",
     "meme_text": "2017 the year of the triggered left",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses political slang to mock the emotional reactions of left-leaning individuals. While dismissive and partisan, it targets a political ideology rather than a protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "2017: the year of the easily upset left",
+    "ai_image_description": "A photograph of Donald Trump wearing a dark suit and red tie, gesturing with his hands open while speaking outdoors."
   },
   {
     "trial_id": "A2_072",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/71048.png",
     "meme_text": "in england they drive on the left in canada we drive on what's left",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a play on words (a pun) using the double meaning of 'left'. It does not target a protected group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "In England they drive on the left; in Canada, we drive on what remains.",
+    "ai_image_description": "A person wearing a hat and a red plaid shirt sits in a canoe on a calm turquoise lake, looking toward snow-capped mountains and evergreen trees."
   },
   {
     "trial_id": "A2_073",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50312.png",
     "meme_text": "i normally rape goats. but little boys are okay",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme combines a portrait of a man of a specific ethnic background with a caption accusing him of heinous sexual crimes. This functions as a dehumanizing trope used to target and vilify a specific identity group through extreme, unfounded criminal accusations."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "sexual violence",
+      "child abuse"
+    ],
+    "ai_trigger_notice": "This content contains text referencing sexual violence and child exploitation.",
+    "ai_euphemized_caption": "The text states that the individual normally commits sexual acts with animals, but finds children acceptable.",
+    "ai_image_description": "A medium shot of a man with a dark beard and mustache, wearing a light brown button-down shirt, standing with his arms crossed against a plain wall."
   },
   {
     "trial_id": "A2_074",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/9BmlvFy.png",
     "meme_text": "AS WORTHLESS AS STATES AMMEEREEA 0 0 c U 8 12 THREE 0 0 ICU 8 12 MILARS A CLINTON PROMISE made on imgur ",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses political satire to criticize a specific political figure (Clinton) by comparing their promises to a worthless novelty bill. It targets political efficacy rather than an identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "As worthless as states Ammeeeea... a Clinton promise.",
+    "ai_image_description": "A person holds up a counterfeit or novelty three-dollar bill. The bill features a portrait of Donald Trump and the text 'The Discrintled States of America'."
   },
   {
     "trial_id": "A2_075",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2313.png",
     "meme_text": "Northside Lyrics\nWith a tight mask on\nMac Dre\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The content appears to be a lyric snippet and image related to the musical artist Mac Dre. It depicts a common aesthetic in certain hip-hop subgenres rather than targeting an identity group with hate."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "depiction of criminal imagery"
+    ],
+    "ai_trigger_notice": "The image contains a person wearing a face mask often associated with criminal activity.",
+    "ai_euphemized_caption": "Northside Lyrics: With a tight mask on, Mac Dre",
+    "ai_image_description": "A black and white photograph of a person wearing a dark balaclava, looking toward the camera."
   },
   {
     "trial_id": "A2_076",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/76250.png",
     "meme_text": "chillin with my chromies",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The caption uses a specific ableist slur to refer to the individuals in the image, which serves to demean and dehumanize people with intellectual disabilities."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "discriminatory language"
+    ],
+    "ai_trigger_notice": "This content contains a derogatory term used to mock individuals with intellectual disabilities.",
+    "ai_euphemized_caption": "chillin with my [slur]",
+    "ai_image_description": "Three young girls with Down syndrome are posing together in athletic wear on a blue gym mat, smiling with their arms raised."
   },
   {
     "trial_id": "A2_077",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/56104.png",
     "meme_text": "african children seeing a caucasian boy for their first time ever",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme employs a trope that characterizes different racial groups as being in a state of perpetual shock or novelty when encountering one another, which can be used to dehumanize or mock specific identities by framing them as 'primitive' or 'unfamiliar'."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "African children seeing a Caucasian boy for the first time ever.",
+    "ai_image_description": "A classroom setting showing two young girls sitting at a desk; one girl has dark skin and is looking at a piece of paper, while the other girl has light skin and is smiling. The foreground is blurred, showing the back of a person's head."
   },
   {
     "trial_id": "A2_078",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/67142.png",
     "meme_text": "baby look like he pay his own child support",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses hyperbole to suggest the baby's facial expression looks like that of an adult burdened by financial responsibilities. While it touches on a sensitive social topic, it does not target a protected identity group with hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The baby looks as if he pays his own child support.",
+    "ai_image_description": "A close-up photo of a baby with a pouting, grumpy facial expression."
   },
   {
     "trial_id": "A2_079",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/58679.png",
     "meme_text": "it's called fuck off and it's located over there",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common, aggressive idiom to express dismissal or a desire to be left alone. It does not target any protected identity group or express prejudice."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "profanity"
+    ],
+    "ai_trigger_notice": "This content contains strong profanity in the text overlay.",
+    "ai_euphemized_caption": "it's called [expletive] off and it's located over there.",
+    "ai_image_description": "A man in a black long-sleeved shirt and black pants is performing on a stage with blue and purple lighting."
   },
   {
     "trial_id": "A2_080",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/12483.png",
     "meme_text": "islam is a religion of peace behead those who mock islam",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses irony to characterize Islam as inherently violent by juxtaposing a claim of peace with a command to kill those who criticize the faith. This promotes a hostile stereotype of the religion as violent and intolerant."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "threats of violence"
+    ],
+    "ai_trigger_notice": "This content contains text describing extreme physical violence.",
+    "ai_euphemized_caption": "Islam is a religion of peace; execute those who mock Islam.",
+    "ai_image_description": "A man is kneeling on a patterned red carpet in a dimly lit room with architectural details, appearing to be in prayer."
   },
   {
     "trial_id": "A2_081",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/39416.png",
     "meme_text": "are u a wizard?",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and caption do not contain slurs, threats, or demeaning language. The text appears to be a nonsensical or playful question that does not target the child's identity."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "Are you a wizard?",
+    "ai_image_description": "A young child with Down syndrome wearing glasses and a red jacket is sitting on a swing set outdoors."
   },
   {
     "trial_id": "A2_082",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/15490.png",
     "meme_text": "9/11 gets a mourning day while gays get a \"pride\" month because homosexuality is a bigger tragedy",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme expresses hostility by characterizing a sexual orientation as a 'tragedy,' which serves to dehumanize and demean the LGBTQ+ community."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "discriminatory language"
+    ],
+    "ai_trigger_notice": "This content contains text that characterizes homosexuality as a tragedy.",
+    "ai_euphemized_caption": "The text compares the observance of 9/11 to Pride Month, suggesting that homosexuality is a greater tragedy.",
+    "ai_image_description": "A line drawing of several people holding various signs, including a rainbow flag and gender symbols, set against a plain background."
   },
   {
     "trial_id": "A2_083",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/X7mEejq.jpg.png",
     "meme_text": "Aw look how cute Oh no I 'm voting Democrat this election cycle . It 's retarded . ",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "While the meme uses an ableist slur, the hostility is directed at the speaker's own political affiliation (voting Democrat) rather than targeting a protected identity group with prejudice. The slur is used as a pejorative for a situation rather than as an attack on people with disabilities."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "disability-related slurs"
+    ],
+    "ai_trigger_notice": "This content contains an ableist slur used in the final panel of the meme.",
+    "ai_euphemized_caption": "Aw look how cute. Oh no, I'm voting Democrat this election cycle. It's [slur].",
+    "ai_image_description": "A four-panel black and white line drawing meme. In the first panel, a person looks at a small dog and says 'Aw look how cute'. In the second panel, the dog says 'I'm voting Democrat this election cycle.' In the third panel, the person looks distressed and says 'Oh no'. In the fourth panel, the person says a slur to describe the situation."
   },
   {
     "trial_id": "A2_084",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/61894.png",
     "meme_text": "when your put in fb jail ..but your not... even sweatin cause of your back up account",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a common format used to express a relatable feeling of anxiety or relief regarding social media account status. It does not target any identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "When you are placed in Facebook jail, but you are not... even sweating because of your backup account.",
+    "ai_image_description": "A medium shot of Steve Harvey smiling and wearing a dark green suit, sitting at a table with water bottles in the foreground."
   },
   {
     "trial_id": "A2_085",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/73105.png",
     "meme_text": "excitement across the capital",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and caption depict a scene of celebration and positive energy. There is no evidence of hostility, slurs, or demeaning prejudice toward any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "excitement across the capital",
+    "ai_image_description": "A large group of women in white clothing are standing in a tiered seating area, clapping and cheering enthusiastically."
   },
   {
     "trial_id": "A2_086",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/15839.png",
     "meme_text": "\"if that fuckin bastard wins, we're all going to hang g from nooses! you better fix this shit!\" -hillary clinton email to donna brazile october 17, 2016",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses hyperbolic and aggressive language to attribute a fake or exaggerated quote to a political figure regarding election outcomes. While the language is violent and profane, it targets a political opponent rather than a protected identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "profanity",
+      "references to violence"
+    ],
+    "ai_trigger_notice": "This content contains strong profanity and textual references to hanging.",
+    "ai_euphemized_caption": "\"if that [expletive] [insult] wins, we're all going to hang from nooses! you better fix this [expletive]!\" -hillary clinton email to donna brazile october 17, 2016",
+    "ai_image_description": "A close-up photo of Hillary Clinton speaking with an intense, shouting expression, set against a background of blurred American flags."
   },
   {
     "trial_id": "A2_087",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/10493.png",
     "meme_text": "stevie wonder is \"wonder\"ful",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a simple play on words using the artist's name to express a positive sentiment. There is no evidence of hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Stevie Wonder is described as being 'wonder'ful.",
+    "ai_image_description": "A photograph of musician Stevie Wonder performing on stage, wearing sunglasses and smiling while playing a keyboard."
   },
   {
     "trial_id": "A2_088",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2164.png",
     "meme_text": "I'M AMERICA'S RECKONING\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses pop culture imagery to make a political statement or characterization. While it portrays the figure as a formidable or disruptive force, it does not target a protected identity group with hate speech or dehumanization."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No distressing content identified.",
+    "ai_euphemized_caption": "The text states that the individual is America's reckoning.",
+    "ai_image_description": "A photo of Donald Trump giving a thumbs up, with a digital overlay of the character Bane's mask covering the lower half of his face."
   },
   {
     "trial_id": "A2_089",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/03418.png",
     "meme_text": "i got a flat on my way to the store",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The combination of the image and text does not target any identity group. The caption appears to be a non-sequitur or a simple statement of fact that does not convey hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No distressing content identified.",
+    "ai_euphemized_caption": "The text states that the individual experienced a flat tire while traveling to the store.",
+    "ai_image_description": "Two men are leaning against a textured wall; one man in a white shirt appears to be crying or in distress, while the other man in a tan shirt has his hand on the first man's shoulder and also has a pained or emotional expression."
   },
   {
     "trial_id": "A2_090",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_925.png",
     "meme_text": "ME REALIZING WE CAN\nSTILL PARTYIN QUARANTINE\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a relatable joke about finding ways to have fun during pandemic lockdowns. It does not target any identity group or express hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The narrator realizing they can still celebrate during quarantine.",
+    "ai_image_description": "A woman in a bright red outfit stands with her arms outstretched and mouth open in an excited expression, holding a microphone."
   },
   {
     "trial_id": "A2_091",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4381.png",
     "meme_text": "Jason Mustian\n@jasonmustian\nOh sweet, I was wondering how every\ncorporation l've ever given my email to\nwas handling COVID-19.\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The post is a sarcastic commentary on corporate communication practices during the COVID-19 pandemic. It does not target any identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Jason Mustian remarks that he was curious about how the various companies he has shared his email address with were managing the COVID-19 situation.",
+    "ai_image_description": "A screenshot of a social media post from a user named Jason Mustian, featuring his profile picture and a text-based post."
   },
   {
     "trial_id": "A2_092",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/38460.png",
     "meme_text": "i told them to get chick fil a . but it was sunday",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a joke about the logistical impossibility of ordering from a restaurant known for being closed on Sundays. It does not target any identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "The speaker mentions telling people to get a specific fast food restaurant, but notes it was a Sunday.",
+    "ai_image_description": "A photograph of Donald Trump sitting at a desk in an office setting with American flags in the background, gesturing with his hand while speaking."
   },
   {
     "trial_id": "A2_093",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3977.png",
     "meme_text": "Introverts\nng dredhind\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses personality types as a humorous comparison regarding social behavior during lockdown. It does not target a protected group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No distressing content identified.",
+    "ai_euphemized_caption": "Introverts / Extroverts during lockdown losing their minds",
+    "ai_image_description": "A man in a white lab coat is sitting in a large red tub filled with water, splashing vigorously and laughing."
   },
   {
     "trial_id": "A2_094",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/97481.png",
     "meme_text": "not a creature was stirring, not even a mouse... cause i ate him",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common trope of a predator (a cat) jokingly claiming to have eaten a small animal (a mouse). It does not target any protected identity groups."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "animal harm"
+    ],
+    "ai_trigger_notice": "This content contains a textual reference to an animal being eaten.",
+    "ai_euphemized_caption": "not a creature was stirring, not even a mouse... because I consumed him",
+    "ai_image_description": "A close-up, front-facing shot of a grey, fluffy cat with an intense, grumpy expression and yellow eyes."
   },
   {
     "trial_id": "A2_095",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/50876.png",
     "meme_text": "pace secondary [heritage trails] women don't let the female looks fool you! realistically, these are retarded male homosexuals wearing women suits!",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses offensive slurs and explicitly targets individuals based on their perceived gender identity and sexual orientation, characterizing them as deceptive and using derogatory labels."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "slurs",
+      "discriminatory language"
+    ],
+    "ai_trigger_notice": "The text contains ableist slurs and derogatory language regarding sexual orientation.",
+    "ai_euphemized_caption": "pace secondary [heritage trails] women don't let the female looks fool you! realistically, these are [slur] male homosexuals wearing women suits!",
+    "ai_image_description": "A photograph of two smiling women embracing each other outdoors near a body of water."
   },
   {
     "trial_id": "A2_096",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/81934.png",
     "meme_text": "brows can't be rushed just like a mustache can't be rushed, you'll end up with too little or the wrong shape",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a visual comparison between beauty grooming and a historical figure's iconic mustache. While it uses a symbol of hate, the intent appears to be a trivial joke about grooming rather than promoting Nazi ideology or attacking a protected group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "historical figures associated with hate speech"
+    ],
+    "ai_trigger_notice": "This image contains a portrait of a historical figure associated with the Nazi party.",
+    "ai_euphemized_caption": "Eyebrows cannot be rushed, much like a mustache cannot be rushed; you will end up with too little or the incorrect shape.",
+    "ai_image_description": "A vertical split image. The top half shows a close-up portrait of a woman with groomed eyebrows and red lipstick. The bottom half shows a black and white historical portrait of Adolf Hitler."
   },
   {
     "trial_id": "A2_097",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_5647.png",
     "meme_text": "Trump: \"Covid-19 is a hoax\"\nCovid-19:\nayFerm of\nhoplete alter\nany l'erm\nw it is the\n. y\nd yan\nC uch p\non in Will you shut up man. w\nmant\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a political satire directed at Donald Trump's rhetoric regarding the COVID-19 pandemic. It does not target a protected identity group with prejudice or hostility, but rather critiques a specific political viewpoint."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Trump states that Covid-19 is a hoax, to which Covid-19 responds, 'Will you shut up man.'",
+    "ai_image_description": "A meme featuring a person in a suit with a microscopic image of a coronavirus particle superimposed over their head, set against a blue background with text. The person appears to be gesturing or speaking."
   },
   {
     "trial_id": "A2_098",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/38069.png",
     "meme_text": "morgan freeman morgan not-so-freeman",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a wordplay joke based on the actor's name, 'Morgan Freeman,' using the phrase 'not-so-freeman.' It does not target his identity or express hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "morgan freeman morgan not-so-freeman",
+    "ai_image_description": "A photograph of actor Morgan Freeman wearing a black tuxedo and a black baseball cap, holding an award trophy with a surprised facial expression."
   },
   {
     "trial_id": "A2_099",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/65730.png",
     "meme_text": "last year tyrone got a new job, started building his credit, and spending more time with his kids then something amazing started to happen!",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme employs a microaggressive trope where the success and stability of a Black individual are framed as surprising or miraculous, implying that such behavior is contrary to negative stereotypes of the group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No distressing content identified.",
+    "ai_euphemized_caption": "Last year Tyrone got a new job, started building his credit, and spending more time with his kids, then something amazing started to happen!",
+    "ai_image_description": "A portrait of a young man with vitiligo, a skin condition that causes loss of pigment, wearing a dark green jacket."
   },
   {
     "trial_id": "A2_100",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/71839.png",
     "meme_text": "let me be perfectly clear... i will never stop lying to you suckers!!!",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common political trope of accusing a leader of dishonesty. While insulting and derogatory toward the audience, it does not target a protected identity group with prejudice or hate."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "profanity"
+    ],
+    "ai_trigger_notice": "The text contains a mild insult directed at the audience.",
+    "ai_euphemized_caption": "let me be perfectly clear... i will never stop lying to you fools!!!",
+    "ai_image_description": "A close-up photograph of Barack Obama speaking into a microphone with one hand raised in a gesture."
   },
   {
     "trial_id": "A2_101",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/67859.png",
     "meme_text": "lets hope that one day our landfills don't look like this anymore",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and text focus on environmental issues and waste management. There is no targeting of any identity group or expression of prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The text expresses a hope that one day landfills will no longer appear in this manner.",
+    "ai_image_description": "A large bulldozer sits atop a massive pile of garbage and various types of waste in a landfill under an overcast sky."
   },
   {
     "trial_id": "A2_102",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_176.png",
     "meme_text": "Chinese woman dodges airport screening in France,\ntravellers told to heed checks for Wuhan virus\nWhat an idiot. What a Idiotic idiot.\n",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a specific virus name associated with a location to stigmatize a person based on their nationality, combined with aggressive insults."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "discriminatory language"
+    ],
+    "ai_trigger_notice": "This content contains references to a specific virus and uses derogatory language to describe an individual.",
+    "ai_euphemized_caption": "A Chinese woman avoids airport screening in France, and travelers are advised to follow checks for the Wuhan virus. The text below calls the person an idiot multiple times.",
+    "ai_image_description": "A man in a green shirt is in the foreground looking at the camera with an expressive face, while a person runs across a grassy field in the background. Text is overlaid on the image."
   },
   {
     "trial_id": "A2_103",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/08613.png",
     "meme_text": "on my way to run over w*men and minorities",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The caption expresses a direct threat of physical violence against women and minority groups, which constitutes demeaning prejudice and hostility toward these identities."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "threats of violence"
+    ],
+    "ai_trigger_notice": "This content contains text describing an intent to commit physical violence against specific demographic groups.",
+    "ai_euphemized_caption": "on my way to run over [protected groups]",
+    "ai_image_description": "A golden retriever is sitting in the driver's seat of a car, with its paw resting on the steering wheel."
   },
   {
     "trial_id": "A2_104",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/70426.png",
     "meme_text": "how long can he run? till the chain tightens",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The caption uses a metaphor of a tightening chain to describe a Black man, which invokes historical imagery of slavery and physical subjugation to dehumanize the subject."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "references to physical restraint"
+    ],
+    "ai_trigger_notice": "This content contains a textual reference to physical restraint/chains.",
+    "ai_euphemized_caption": "How long can he run? Until the chain tightens.",
+    "ai_image_description": "A close-up portrait of a smiling Black man with braided hair wearing a silver chain and a patterned jacket."
   },
   {
     "trial_id": "A2_105",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1037.png",
     "meme_text": "Vt ta\nYour pererta geva be home in 10ntes, what da you\nWife:- I'm going to London,\nwhat gift do you want?\nHusband: One british girl.\n*Wife return from London\nHusband:- Where is my gift?\nXavier\nCome back in 11 minutes & ask\nthem what's going on\nWife:- Wait for 9 months...!\nLike Peply - Message\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a common joke format involving a 'twist' ending about pregnancy. It does not target a protected identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "A dialogue where a wife asks her husband what gift he wants from London; he asks for a British woman. Upon her return, he asks for the gift, and she tells him to wait nine months.",
+    "ai_image_description": "A split image containing a social media post with a photo of a cluttered room and a text-based joke dialogue on the right side."
   },
   {
     "trial_id": "A2_106",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/84907.png",
     "meme_text": "i keep asking what lgbtq stands for. so many letters to remember",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common 'dog progression' template to express a lighthearted or confused sentiment regarding the length of an acronym. It does not use slurs, express animosity, or call for harm against the group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The text states that the speaker repeatedly asks for the meaning of the LGBTQ acronym because there are too many letters to memorize.",
+    "ai_image_description": "A three-panel vertical meme featuring different stages of a husky dog's expression: a calm puppy, a smiling adult husky, and a husky yawning or barking widely."
   },
   {
     "trial_id": "A2_107",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/W0Nh6hc.png",
     "meme_text": "THE PERFECT GOP CANDIDATE IN 2016 ? All of these men believe they can lead America through strength , exhibit conservative beliefs , stand up to the world 's bullies , and bring America together ( within their national/moral view ) . But Sadly , none of them have any experience . The potential candidate who has experience with strong leadership & best reflects Republican values and thinking is : Uote Putin for America ! In your heart you know he is right . We 'll work out the constitutional stuff later . ",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a piece of political satire directed at the Republican Party's platform and candidate selection process in 2016. It uses irony to suggest that the party's desire for 'strength' aligns more with an authoritarian foreign leader than its own candidates, rather than attacking a protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain graphic violence, slurs, or explicit profanity.",
+    "ai_euphemized_caption": "The text asks who the perfect GOP candidate for 2016 is, noting that while the men pictured believe they can lead with strength and conservative values, they lack experience. It then suggests that the candidate who truly reflects Republican values and leadership is to vote for Putin, adding that the viewer knows he is right and constitutional issues can be addressed later.",
+    "ai_image_description": "A collage of twelve headshots of various male American politicians arranged in two rows, followed by a single headshot of Vladimir Putin at the bottom."
   },
   {
     "trial_id": "A2_108",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/78243.png",
     "meme_text": "you call me a goat fucker like it's a bad thing",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The caption employs a specific, dehumanizing sexual slur frequently used to disparage Middle Eastern men. When paired with the visual of a Middle Eastern protest, it functions as a hateful trope targeting an ethnic/regional identity."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "profanity"
+    ],
+    "ai_trigger_notice": "The text contains a sexualized insult involving an animal.",
+    "ai_euphemized_caption": "You call me a person who engages in sexual acts with goats as if it were a negative thing.",
+    "ai_image_description": "A close-up shot of a man shouting intensely with his mouth wide open, surrounded by a crowd of men with raised fists and green flags in the background."
   },
   {
     "trial_id": "A2_109",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/34250.png",
     "meme_text": "beer goggles helping fat chicks get laid for thousands of years",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses demeaning language to mock women based on their body size, implying their sexual success is only due to intoxication."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "body shaming"
+    ],
+    "ai_trigger_notice": "This content contains derogatory language regarding body weight.",
+    "ai_euphemized_caption": "Alcohol-induced vision changes helping overweight women find sexual partners for thousands of years.",
+    "ai_image_description": "A smiling woman with red hair wearing an orange halter top and large gold earrings."
   },
   {
     "trial_id": "A2_110",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/59817.png",
     "meme_text": "putting bows on your pet",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses dehumanizing imagery by equating a human child to a pet through the text and visual comparison, which targets the child's identity by stripping them of human dignity."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "putting bows on your pet",
+    "ai_image_description": "A two-panel vertical image. The top panel shows a brown tabby cat wearing a pink bow. The bottom panel shows a young girl with dark hair wearing a floral headband, covering her mouth with her hands as if laughing or reacting."
   },
   {
     "trial_id": "A2_111",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/18362.png",
     "meme_text": "if they don't like it here they can leave!",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The combination of Confederate flags—symbols historically used to represent racial hierarchy and oppression—with a caption demanding that certain people 'leave' functions as a demeaning and exclusionary message targeting marginalized groups."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "symbols of hate"
+    ],
+    "ai_trigger_notice": "This content contains multiple Confederate battle flags.",
+    "ai_euphemized_caption": "If they do not like it here, they can leave!",
+    "ai_image_description": "A group of people are standing on a sidewalk outdoors, many of them holding and waving Confederate battle flags."
   },
   {
     "trial_id": "A2_112",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/56123.png",
     "meme_text": "\"if you kill your enemies, they win.\" justin trudeau share if this is the dumbest comment ever by anyone",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a political critique directed at Justin Trudeau, mocking a specific quote. It does not target a protected identity group with prejudice or hostility."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "violence"
+    ],
+    "ai_trigger_notice": "This content contains a textual reference to killing.",
+    "ai_euphemized_caption": "\"if you end your adversaries, they succeed.\" justin trudeau share if this is the most foolish comment ever by anyone",
+    "ai_image_description": "A close-up portrait of Justin Trudeau looking slightly to the side with a neutral expression."
   },
   {
     "trial_id": "A2_113",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/59684.png",
     "meme_text": "how to keep the thefts out",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a literal depiction of using a security system to prevent theft. There is no indication that 'thefts' refers to a protected identity group; it appears to be a simple, albeit grammatically awkward, statement about home security."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "how to keep the thefts out",
+    "ai_image_description": "A woman in a striped shirt is standing in a kitchen and pressing buttons on a white security alarm keypad mounted on a wall."
   },
   {
     "trial_id": "A2_114",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/31782.png",
     "meme_text": "gets kicked out of every country they been to blames you",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses dehumanizing imagery by equating a person or group of people to a cockroach, a common trope in hate speech to imply they are pests or subhuman. The text reinforces this by characterizing them as unwanted transients who shift blame."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "insects"
+    ],
+    "ai_trigger_notice": "This content contains a close-up image of an insect.",
+    "ai_euphemized_caption": "Gets expelled from every nation they have visited, then holds you responsible.",
+    "ai_image_description": "A macro photograph of a brown cockroach against a plain white background."
   },
   {
     "trial_id": "A2_115",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/21749.png",
     "meme_text": "this one time at camp someone had too much gas",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a non-sequitur joke that pairs a historical or formal-looking image of children with a caption about a common, humorous bodily function. It does not target any protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "A story about an incident involving flatulence at a camp.",
+    "ai_image_description": "A group of young girls and teenagers are crowded around a table where a girl in a white dress is sitting, looking towards the camera. The setting appears to be an indoor room with books on a shelf."
   },
   {
     "trial_id": "A2_116",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/16783.png",
     "meme_text": "a lynching in indiana in the early 30s",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and caption appear to be documenting or referencing a historical event of racial terror rather than promoting or celebrating it. The caption acts as a label for the historical atrocity shown."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "graphic violence",
+      "depictions of death"
+    ],
+    "ai_trigger_notice": "This image contains historical depictions of lethal violence and hanging.",
+    "ai_euphemized_caption": "A historical depiction of a lynching in Indiana during the early 1930s.",
+    "ai_image_description": "A black and white historical photograph showing a crowd of people gathered at night beneath a large tree, where two figures are seen hanging from ropes attached to the branches."
   },
   {
     "trial_id": "A2_117",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/58974.png",
     "meme_text": "violence is never the answer",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme combines a pacifist slogan with a stylized portrait. There is no evidence of hostility, slurs, or demeaning prejudice toward any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain graphic violence, slurs, or explicit profanity.",
+    "ai_euphemized_caption": "violence is never the answer",
+    "ai_image_description": "A person with light hair and dark eye makeup wearing a floral patterned strapless top, looking downward with one hand on their head against a red background."
   },
   {
     "trial_id": "A2_118",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/58130.png",
     "meme_text": "behind this smile is an evil man known as hitler",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a condemnation of a historical figure, labeling him as evil. It does not promote his ideology or target a protected group, but rather identifies him as a villain."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "historical figures associated with mass violence"
+    ],
+    "ai_trigger_notice": "This content contains a portrait of a historical dictator associated with extreme violence and genocide.",
+    "ai_euphemized_caption": "Behind this smile is an evil man known as Hitler.",
+    "ai_image_description": "A black and white profile photograph of Adolf Hitler wearing a military peaked cap."
   },
   {
     "trial_id": "A2_119",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/15439.png",
     "meme_text": "goat yoga is my favorite sport",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and caption are benign, referring to a real-world wellness activity involving animals. There is no targeting of any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "goat yoga is my favorite sport",
+    "ai_image_description": "A close-up shot of a goat's head, with a person's hand touching one of its horns."
   },
   {
     "trial_id": "A2_120",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_418.png",
     "meme_text": "Coronavirus: spreads\nMe realizing my shirt is made in China:\nGET THIS SIT OFF ME!!\n",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses the context of the COVID-19 pandemic to imply that products from China are inherently contaminated or dangerous, promoting xenophobic anxiety and prejudice against Chinese origin."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Coronavirus: spreads. Me realizing my shirt is made in China: GET THIS S*** OFF ME!!",
+    "ai_image_description": "A man with headphones on is shown with a wide-open mouth, appearing to shout or scream in distress while grabbing his shirt."
   },
   {
     "trial_id": "A2_121",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/16502.png",
     "meme_text": "admins be like this my group",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a crying baby to mock the perceived over-protectiveness or emotional outbursts of online group administrators. It is a common form of internet satire regarding power dynamics in digital communities."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Administrators act like, 'this is my group'.",
+    "ai_image_description": "A close-up photo of a young child crying with an open mouth and squinted eyes against a plain background."
   },
   {
     "trial_id": "A2_122",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/75193.png",
     "meme_text": "muhammed... get the roof",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme pairs a name strongly associated with Islam with a mugshot and a cryptic command that implies physical violence, which functions as a dog whistle or stereotype targeting Muslims."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Muhammed... get the roof",
+    "ai_image_description": "A mugshot of a man with dark hair and a goatee wearing an orange jumpsuit against a cinderblock wall."
   },
   {
     "trial_id": "A2_123",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/68270.png",
     "meme_text": "all part of satan's plan. the anti christ will come from this",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses hyperbolic religious imagery to jokingly suggest that the tiger cub is something ominous or evil. It does not target a protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "It is all part of a devilish scheme. The adversary will emerge from this.",
+    "ai_image_description": "A black and white photograph of a smiling man and woman; the man is holding a small tiger cub."
   },
   {
     "trial_id": "A2_124",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/79845.png",
     "meme_text": "number of pictures from when michelle obama was pregnant with sasha and malia zero",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme makes a factual or observational claim regarding the lack of public photographic documentation of Michelle Obama's pregnancies. It does not use slurs, promote violence, or express hostility toward her identity."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The amount of photos available from the time Michelle Obama was expecting Sasha and Malia is zero.",
+    "ai_image_description": "A portrait of Michelle Obama looking toward the camera with a neutral to slightly skeptical expression, wearing a patterned blue and green sleeveless top."
   },
   {
     "trial_id": "A2_125",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/19650.png",
     "meme_text": "when it's the 1600s and you just got here from africa master looks after us now",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a metaphor of a person tending to a captive animal to mock the historical trauma of the Transatlantic slave trade and the dehumanization of African people."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "references to slavery"
+    ],
+    "ai_trigger_notice": "This content contains textual references to historical slavery and racial power dynamics.",
+    "ai_euphemized_caption": "When it is the 1600s and you have just arrived from Africa, the master takes care of us now.",
+    "ai_image_description": "A black and white photograph of a person leaning in to touch or feed a large tiger that is wearing a collar and chain."
   },
   {
     "trial_id": "A2_126",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1575.png",
     "meme_text": "Troy Johnson\n@ troyjohnson\nDay 1 of Quarantine: \"I'm going to\nmeditate and do body-weight\ntraining.\"\nDay 4: *just pours the ice cream\ninto the pasta*\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The content is a self-deprecating joke about how quarantine affects one's discipline and diet. It does not target any protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Troy Johnson notes that on the first day of quarantine, they planned to meditate and exercise, but by the fourth day, they are simply mixing ice cream with pasta.",
+    "ai_image_description": "A screenshot of a social media post by Troy Johnson containing text about quarantine habits."
   },
   {
     "trial_id": "A2_127",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/79516.png",
     "meme_text": "i'm not saying you are a slut but you are easier than poland",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme combines a sexual insult with a historical reference to the partitions of Poland, implying the country is 'easy' to take over, which demeans the national identity through a sexualized metaphor."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "profanity",
+      "sexually suggestive language"
+    ],
+    "ai_trigger_notice": "This content contains a sexual insult and a comparison involving a country.",
+    "ai_euphemized_caption": "I'm not saying you are a promiscuous person, but you are easier than Poland.",
+    "ai_image_description": "A wide shot of a historic European city square at dusk, featuring large Gothic and Renaissance style buildings with illuminated windows under a twilight sky."
   },
   {
     "trial_id": "A2_128",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/04316.png",
     "meme_text": "algebra and geometry are fine, but graphing is where you draw a line",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a harmless play on words (a pun) using mathematical terminology. It does not target any identity group or express hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Algebra and geometry are okay, but graphing is where one draws a line.",
+    "ai_image_description": "A white cat wearing round, black-rimmed glasses is looking toward the camera while sitting near an open book."
   },
   {
     "trial_id": "A2_129",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/28369.png",
     "meme_text": "brother.... a day without peace is a day wasted",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme contains a sentiment promoting peace and does not target any identity group with hostility or prejudice. The combination of the image and text is benign."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "brother.... a day without peace is a day wasted",
+    "ai_image_description": "A close-up shot of a man with a grey beard wearing a white turban, speaking into a microphone with an intense facial expression. The background shows patterned architectural details."
   },
   {
     "trial_id": "A2_130",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/14268.png",
     "meme_text": "you've heard of elf on a shelf, now get ready for",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a harmless play on words regarding the 'Elf on the Shelf' holiday tradition, using a visual pun of a child literally being an elf on a shelf."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "You have heard of elf on a shelf, now get ready for",
+    "ai_image_description": "A young child wearing an elf hat and striped clothing is lying face down on top of a wooden bookshelf. Below the child, a string of colorful Christmas stockings hangs across the shelf edge."
   },
   {
     "trial_id": "A2_131",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/07239.png",
     "meme_text": "a head diaper is required when you have shit for brains",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a generic insult directed at someone's intelligence. It does not target a specific race, religion, gender, or other protected identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "profanity"
+    ],
+    "ai_trigger_notice": "The content contains coarse language used as an insult.",
+    "ai_euphemized_caption": "a head diaper is required when you have [expletive] for brains",
+    "ai_image_description": "A young man with glasses and a blue shirt and tie is covered in a white, viscous substance. He has a distressed facial expression."
   },
   {
     "trial_id": "A2_132",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/14327.png",
     "meme_text": "hunting it's not a hobby, it's a way of life",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and text represent a common sentiment among hunting enthusiasts and do not target any protected identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain graphic violence, slurs, or distressing imagery.",
+    "ai_euphemized_caption": "hunting: it's not a hobby, it's a way of life.",
+    "ai_image_description": "A man in camouflage clothing stands in a field of tall grass, holding a crossbow and carrying a bird on his back."
   },
   {
     "trial_id": "A2_133",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3334.png",
     "meme_text": "MR. PRESIDENT, THEY'RE SAYING\nCALLING IT THE WUHAN VIRUS IS RACIST\nHOLD MY DIET COKE\nTHE \"CHINESE VIRUS\nTrumpArea.com\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is satirical in nature, portraying a political figure as being intentionally provocative or 'anti-woke' in response to accusations of racism. It mocks the tension between political correctness and nationalist rhetoric rather than directly attacking a protected group itself."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "discriminatory language"
+    ],
+    "ai_trigger_notice": "This content contains text that uses a nationality to describe a virus, which some may find offensive.",
+    "ai_euphemized_caption": "An aide tells the President that using a specific geographic name for the virus is considered racist; the President responds by preparing to use a nationality-based descriptor for the virus.",
+    "ai_image_description": "A three-panel meme featuring Donald Trump. The first panel shows him looking at Mike Pence; the second shows him drinking from a cup; the third shows him pointing upward with an intense expression."
   },
   {
     "trial_id": "A2_134",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/94017.png",
     "meme_text": "i bet they make squeaky toy sounds when they fuck",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses crude, dehumanizing language to make a joke about the subjects' physical nature, but it does not target a protected identity group or express systemic prejudice."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "profanity"
+    ],
+    "ai_trigger_notice": "The content contains sexual profanity in the caption.",
+    "ai_euphemized_caption": "I bet they make squeaky toy sounds when they engage in sexual intercourse.",
+    "ai_image_description": "A black and white vintage photograph of a man and a woman in formal 19th-century attire standing together."
   },
   {
     "trial_id": "A2_135",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1655.png",
     "meme_text": "Michael Jackson e @michoelja. 3h\nBe smart and stay safel\nD Worthy\n@TheeYoungDrek\nReplying to @michaeljscknan\nWhere you tweeting from??\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme appears to be a humorous observation regarding the impossibility of Michael Jackson tweeting while wearing a mask or perhaps a joke about his whereabouts, but it does not target an identity group with hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain graphic violence, slurs, or explicit profanity.",
+    "ai_euphemized_caption": "A user asks Michael Jackson where he is tweeting from in response to a safety message.",
+    "ai_image_description": "A screenshot of a social media interaction. The top part shows a post by Michael Jackson wearing a black face mask and a hat. The bottom part shows a reply from a user named D Worthy asking 'Where you tweeting from??' accompanied by a photo of two men in a crowded setting."
   },
   {
     "trial_id": "A2_136",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/13067.png",
     "meme_text": "when you found out your wife is cheating on you",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a juxtaposition of animal behavior and human emotion to joke about infidelity. It does not target an identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain graphic violence, slurs, or explicit imagery.",
+    "ai_euphemized_caption": "The text describes the feeling of discovering a spouse's infidelity.",
+    "ai_image_description": "A two-panel meme. The top panel shows two goats in a mating position outdoors. The bottom panel shows a man in traditional Middle Eastern clothing looking distressed and holding his head."
   },
   {
     "trial_id": "A2_137",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/24651.png",
     "meme_text": "dad: we need to tell you something.. your mother and i are siblings alabama kids:",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a common internet trope to mock residents of Alabama by implying they engage in incest, which serves to demean the identity group through a harmful stereotype."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "incest themes"
+    ],
+    "ai_trigger_notice": "This content contains a textual joke regarding incestuous relationships.",
+    "ai_euphemized_caption": "A father tells his children that he and their mother are brother and sister, followed by a label for children from Alabama.",
+    "ai_image_description": "A close-up shot of a child's hands holding a piece of toast, with another person's hands visible in the foreground and background."
   },
   {
     "trial_id": "A2_138",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/48039.png",
     "meme_text": "hello everyone, this is m and welcome to jackass: umbra edition!",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme appears to be a playful or ironic introduction to a video or series, referencing the stunt-based comedy show 'Jackass'. There is no evidence of hostility or prejudice against any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "hello everyone, this is m and welcome to jackass: umbra edition!",
+    "ai_image_description": "A close-up shot of a person wearing large, dark circular sunglasses, partially illuminated by a bright pinkish-red light on one side of their face, with a dark background on the other."
   },
   {
     "trial_id": "A2_139",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2975.png",
     "meme_text": "Okilled\n3000\nNew Yorkers\nduring 911\nHold my\nbeer. Ikilled\n30,000\nNew Yorkers\nAMERICAN\nCRISIS\nand\nwrote\na book!\nLEADERSHIP\nLESSONS\nFROM THE\nCOVID-19\nPANDEMIC\nANDREW\nCUOMO\nON SALE OCTOBER 13, 2020\nimgflip.com\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses dark satire to criticize former Governor Andrew Cuomo's leadership during the COVID-19 pandemic by comparing his perceived failures to the actions of a terrorist. It targets a political figure's competence rather than an identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "violence"
+    ],
+    "ai_trigger_notice": "This content contains references to mass casualty events and deaths resulting from terrorism and a pandemic.",
+    "ai_euphemized_caption": "The first person claims responsibility for thousands of deaths during 9/11. The second person responds by claiming a much higher death toll among New Yorkers, and the final panel shows a book about leadership lessons from the pandemic.",
+    "ai_image_description": "A three-panel meme. The top panel shows a man in a turban and camouflage clothing. The middle panel shows a man in a suit laughing. The bottom panel shows a book cover titled 'American Crisis' by Andrew Cuomo."
   },
   {
     "trial_id": "A2_140",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/57423.png",
     "meme_text": "let's play the game of flags",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The combination of a prominent white supremacist symbol with a caption suggesting a 'game' implies a trivialization of racial trauma and promotes the use of hate symbols for provocation."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "symbols of hate"
+    ],
+    "ai_trigger_notice": "This content contains a historical symbol often associated with racial conflict and oppression.",
+    "ai_euphemized_caption": "Let's play the game of flags.",
+    "ai_image_description": "A close-up image of the Confederate Battle Flag, featuring a red field with a blue saltire containing white stars."
   },
   {
     "trial_id": "A2_141",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_476.png",
     "meme_text": "#ImStaying\nright where I am. in traffic.\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a common expression of frustration regarding traffic congestion. There is no indication of hostility or prejudice toward any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "#ImStaying right where I am... in traffic...",
+    "ai_image_description": "A high-angle shot of a highway heavily congested with many cars and trucks. In the foreground, a small flag with green, red, and blue colors is visible."
   },
   {
     "trial_id": "A2_142",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_576.png",
     "meme_text": "Me trying to catch up on some sleep\nin the morning zoom meeting.\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a relatable joke about the difficulty of staying awake during early morning virtual meetings. It does not target any identity group or express hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The narrator describes their attempt to get more sleep during a morning video conference.",
+    "ai_image_description": "A close-up photo of a person wearing glasses, looking directly at the camera with their hand resting on their chin."
   },
   {
     "trial_id": "A2_143",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_419.png",
     "meme_text": "1华人只共和\nTHE W\nSE\ninistr Fore\nWA\nTRUMP ANGERS CHINA\nWITH 'CHINESE VIRUS TWEET\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and text function as a news report documenting a specific political controversy and the resulting diplomatic tension. It describes an event rather than expressing the creator's own hateful sentiment."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "discriminatory language"
+    ],
+    "ai_trigger_notice": "This content contains a news headline referencing a controversial term used to describe a virus in relation to a specific nationality.",
+    "ai_euphemized_caption": "Trump angers China with a tweet regarding a virus associated with China.",
+    "ai_image_description": "A split-screen image showing Donald Trump speaking at a podium on the left and a Chinese official speaking at a press conference on the right. A news headline is overlaid at the bottom."
   },
   {
     "trial_id": "A2_144",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_3753.png",
     "meme_text": "i've looked like this for a week now\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a humorous comparison between a person's disheveled state and the appearance of a primate. It does not target any protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The caption states that the individual has appeared this way for a week.",
+    "ai_image_description": "A small primate, appearing to be an orangutan, is wrapped in pink and white fabric or scraps, looking directly at the camera."
   },
   {
     "trial_id": "A2_145",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/40217.png",
     "meme_text": "2 years on the job... 4 million jobs gained 1 month on the job... 25,000 jobs lost",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a political critique regarding economic performance and corporate impact. It uses juxtaposition to contrast the job numbers associated with different political figures and a corporation, which constitutes political commentary rather than hate speech."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "After two years in office, four million jobs were added; after one month in office, twenty-five thousand jobs were lost at Amazon.",
+    "ai_image_description": "A three-panel vertical meme. The top panel shows Donald Trump smiling and giving thumbs up with text about gaining 4 million jobs over 2 years. The middle panel shows Alexandria Ocasio-Cortez looking skeptical with text about being on the job for 1 month. The bottom panel shows the Amazon logo with text about 25,000 jobs lost."
   },
   {
     "trial_id": "A2_146",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/82743.png",
     "meme_text": "whatever this is... it's an auburn fan",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a lighthearted joke about the intense or eccentric behavior of sports fans, specifically those of Auburn University. It does not target a protected identity group with hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No distressing content identified.",
+    "ai_euphemized_caption": "whatever this is... it's an auburn fan",
+    "ai_image_description": "A person wearing orange clothing, a blue and orange hat with an 'AU' logo, and sunglasses, holding orange and blue pom-poms and smiling at an outdoor event."
   },
   {
     "trial_id": "A2_147",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/72903.png",
     "meme_text": "bombers under attack",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a well-known image of Gordon Ramsay's intense facial expression to humorously describe a situation of high tension or aggression. There is no evidence of targeting a protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "bombers under attack",
+    "ai_image_description": "A close-up shot of chef Gordon Ramsay looking intensely and shouting at another person during an interview or presentation."
   },
   {
     "trial_id": "A2_148",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/13976.png",
     "meme_text": "this is why no one likes black people",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The caption makes a broad, derogatory generalization about Black people, implying they are universally disliked, which constitutes demeaning prejudice against a protected identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "discriminatory language"
+    ],
+    "ai_trigger_notice": "The content contains a text overlay that makes a negative generalization regarding Black people.",
+    "ai_euphemized_caption": "this is why no one likes black people",
+    "ai_image_description": "A medium shot of a smiling man in a striped shirt holding up one hand with his palm facing forward."
   },
   {
     "trial_id": "A2_149",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2329.png",
     "meme_text": "IF TRUMP HAD\nSLAPPED HIS FACE ON MASK\nWOULD THE\nCORONAVIRUS BE OVER BY NOW\nngico\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common internet format to make a satirical or nonsensical comment regarding a political figure's response to the pandemic. It does not target a protected identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "If Trump had put his face on a mask, would the coronavirus be over by now?",
+    "ai_image_description": "A green-tinted, stylized illustration of a dinosaur or reptile head in profile against a green background."
   },
   {
     "trial_id": "A2_150",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/38179.png",
     "meme_text": "i fucking hate dog shagging islamist cunts",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The caption uses aggressive profanity and derogatory tropes to express intense hatred toward a specific religious group, which constitutes hate speech."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "severe profanity",
+      "religious insults"
+    ],
+    "ai_trigger_notice": "This content contains severe profanity and derogatory language directed at a religious group.",
+    "ai_euphemized_caption": "The text expresses intense hatred toward certain religious individuals using highly profane and derogatory language.",
+    "ai_image_description": "A man with a white beard and glasses, wearing a light-colored shirt, stands behind a podium decorated with flowers and a lotus symbol, raising both fists in a gesture of intensity."
   },
   {
     "trial_id": "A2_151",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4857.png",
     "meme_text": "SCHOOL LAST WEEK\nSCHOOL NEXT WEEK\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a common format used to express a change in mood or atmosphere, likely implying that school was exciting/heroic previously and will be dark/robotic or repetitive in the future. It does not target any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content contains no distressing visual or textual cues.",
+    "ai_euphemized_caption": "The text compares 'School last week' with 'School next week'.",
+    "ai_image_description": "A two-panel meme using Star Wars imagery. The top panel shows several Jedi characters holding glowing lightsabers in a bright setting. The bottom panel shows several Clone Troopers in dark helmets in a dimly lit setting."
   },
   {
     "trial_id": "A2_152",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2031.png",
     "meme_text": "Rebecca Loye\ntetecca Lina\nMy favorite one so far!\necoronavirusmemes\nIf the schools are\nclosed for too long, the\nparents are gonna find\na vaccine before the\nscientists...\n40 AM Ma 19. 2 Twitte to itone\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The content is a joke regarding the perceived desperation or resourcefulness of parents during pandemic-related school closures. It does not target any protected identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content identified.",
+    "ai_euphemized_caption": "If schools remain closed for an extended period, parents will discover a vaccine before scientists do...",
+    "ai_image_description": "A screenshot of a social media post containing text on a dark background. The post is shared by a user named Rebecca Loye and includes a hashtag related to the coronavirus."
   },
   {
     "trial_id": "A2_153",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2664.png",
     "meme_text": "When you work from home but you're still\nlate for work\nTruly pathetic\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a piece of self-deprecating humor regarding work habits and does not target any protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No distressing content identified.",
+    "ai_euphemized_caption": "When you work from home but you're still late for work. Truly pathetic.",
+    "ai_image_description": "A close-up photo of a white kitten with large, watery, tearful eyes looking directly at the camera."
   },
   {
     "trial_id": "A2_154",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4163.png",
     "meme_text": "Coronavirus Cases:\n5,004,129\nvit by.country\noc\nFive mil in six months, never done before,\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The content discusses the scale of the COVID-19 pandemic using statistical figures and a reaction image. It does not target any identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content identified.",
+    "ai_euphemized_caption": "Coronavirus Cases: 5,004,129. Five million in six months, never done before.",
+    "ai_image_description": "A split-screen image. The top half shows text stating 'Coronavirus Cases: 5,004,129' with a link to 'view by country'. The bottom half shows a young man in a white t-shirt with his hands raised in an expressive gesture."
   },
   {
     "trial_id": "A2_155",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_207.png",
     "meme_text": "Donald J. Trumpp arody\n@DonaldJTrummp\nChina wants their name on\neverything but this virus\n3:25 PM · 3/19/20 · Twitter for iPhone\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The content is a political satire piece using a parody account to comment on China's global influence and its relationship to the origins of a virus. It does not use slurs or call for violence against a protected group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "A parody account claiming to be Donald J. Trump states that China desires credit for all things except for the current virus.",
+    "ai_image_description": "A screenshot of a parody Twitter post featuring a profile picture of Donald Trump. The text of the post reads: 'China wants their name on everything but this virus'."
   },
   {
     "trial_id": "A2_156",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2846.png",
     "meme_text": "government:\nwork from home\nchemistry teachers:\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a joke about the impracticality of chemistry teachers working from home due to the need for specialized laboratory equipment and safety gear. It does not target any identity group with hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain any distressing visual or textual cues.",
+    "ai_euphemized_caption": "The government suggests working from home, but chemistry teachers are shown in heavy protective gear.",
+    "ai_image_description": "Two men wearing bright orange protective hazmat suits are working in a laboratory setting with large industrial tanks and equipment."
   },
   {
     "trial_id": "A2_157",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/80165.png",
     "meme_text": "look! johnny knoxville! it's ba'am!",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme appears to be a nonsensical or humorous caption referencing a celebrity, lacking any indicators of hostility or prejudice against a protected group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "Look! Johnny Knoxville! It's ba'am!",
+    "ai_image_description": "A man with dark hair and tattoos in a light-colored t-shirt is smiling and gesturing toward a blonde woman holding a microphone on a stage."
   },
   {
     "trial_id": "A2_158",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/25904.png",
     "meme_text": "hide and seek european champion 1942-1944",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses dark irony to equate the survival tactics of victims of the Holocaust with a game of 'hide and seek,' trivializing genocide and the suffering of targeted identity groups."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "historical violence"
+    ],
+    "ai_trigger_notice": "This content contains a historical reference to the years 1942-1944 in Europe, which may be distressing due to its association with World War II atrocities.",
+    "ai_euphemized_caption": "hide and seek european champion 1942-1944",
+    "ai_image_description": "A close-up photo of a small owl peeking out from a crevice in a textured tree trunk."
   },
   {
     "trial_id": "A2_159",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/59061.png",
     "meme_text": "these are not the terrorists terrorists want to brutally murderer you for being human. i do not. ω you're looking for",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a person in a vulnerable state to contrast them with the concept of a terrorist, explicitly stating that the person shown is not a threat and does not wish harm."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "violence"
+    ],
+    "ai_trigger_notice": "The content contains text discussing violent acts and terrorism.",
+    "ai_euphemized_caption": "The text states that these individuals are not the terrorists, and that while terrorists intend to commit violent acts against people, the subject of the image does not.",
+    "ai_image_description": "A close-up, high-contrast photograph of an older man with a long grey beard and disheveled hair, lying down amidst blankets and clothing."
   },
   {
     "trial_id": "A2_160",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/05612.png",
     "meme_text": "of all time the most underrated cook",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and caption are benign, presenting a playful or cute sentiment about a child pretending to be a chef. There is no targeting of any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The most underrated cook of all time.",
+    "ai_image_description": "A young child wearing a chef's hat and apron is smiling broadly while holding up a frying pan in a kitchen setting."
   },
   {
     "trial_id": "A2_161",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/10589.png",
     "meme_text": "i love coke more than pepsi",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common brand comparison (Coke vs. Pepsi) which contains no indicators of hostility or prejudice toward any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The text states a preference for one soft drink over another.",
+    "ai_image_description": "A medium close-up portrait of a man with dark hair wearing a white collared shirt and a black jacket, looking slightly off-camera with a faint smile."
   },
   {
     "trial_id": "A2_162",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4946.png",
     "meme_text": "Me: 2020 can't surprise\nme now\n2020: Vin Diesel with hair\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a joke about the unpredictable and bizarre nature of the year 2020, using a hypothetical absurd scenario involving a celebrity to illustrate the theme of being constantly surprised."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "Me: 2020 can't surprise me now. 2020: Vin Diesel with hair.",
+    "ai_image_description": "A man in a suit looks toward the camera with a stunned or bewildered expression. The background shows a dimly lit indoor setting with other people visible in the distance."
   },
   {
     "trial_id": "A2_163",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/C2Rjlth.png",
     "meme_text": "R/ENOUGH JILL STEIN SPAM comments If this gets 690 upvotes Bernie Sanders will be deported to Sweden ( self enoughsandersspam ) Aa submitted 20 hours ago by 30 comments share save hide give gold report sorted by : best you are viewing a single comment 's thread . view the rest of the comments -1 9 points 16 hours ago Fuck it , put him in Gitmo permalink embed save report give gold reply ",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The content is political satire/shitposting directed at a public political figure. While it uses aggressive language regarding detention, it does not target a protected identity group with hate speech."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "profanity"
+    ],
+    "ai_trigger_notice": "The content contains a single instance of strong profanity in the comment section.",
+    "ai_euphemized_caption": "A post suggests that if it receives 690 upvotes, Bernie Sanders will be deported to Sweden. A commenter responds by saying, '[Expletive] it, put him in Gitmo.'",
+    "ai_image_description": "A screenshot of a Reddit thread from a subreddit titled '/R/Enough Jill Stein Spam'. The main post makes a joke about Bernie Sanders being deported to Sweden if it reaches a certain number of upvotes. Below it, a user comment responds with a profanity and suggests placing him in Gitmo."
   },
   {
     "trial_id": "A2_164",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/72318.png",
     "meme_text": "trayvon martin update ever since he turned white, he stopped being a criminal",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses the death of Trayvon Martin to suggest that his perceived criminality was tied to his race, implying that changing his race would change his character. This promotes a racial stereotype and demeans the memory of a victim of racial violence."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "death and skeletal remains"
+    ],
+    "ai_trigger_notice": "This content contains an image of a human skeleton.",
+    "ai_euphemized_caption": "An update regarding Trayvon Martin: since he became white, he has ceased being a criminal.",
+    "ai_image_description": "A close-up photograph of a human skeleton partially buried in gravel and dirt."
   },
   {
     "trial_id": "A2_165",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/49863.png",
     "meme_text": "calling white people racist is racism",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme expresses a specific viewpoint on the definition of racism, but it does not use slurs, incite violence, or dehumanize a protected group. It functions as a social/political commentary rather than an expression of hate."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The text states that labeling white individuals as racist constitutes racism.",
+    "ai_image_description": "A close-up photo of a man in a grey suit and black tie with a distressed, crying facial expression."
   },
   {
     "trial_id": "A2_166",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/85167.png",
     "meme_text": "finding a bomb in a video game",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common gaming scenario to create a humorous juxtaposition between a real-world dangerous object and its digital counterpart. It does not target any protected identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "weapons"
+    ],
+    "ai_trigger_notice": "This image contains a depiction of an improvised explosive device.",
+    "ai_euphemized_caption": "finding an explosive device in a video game",
+    "ai_image_description": "A close-up photograph of a makeshift explosive device constructed from a metallic container, various colored wires, electrical components, and a handheld radio transceiver."
   },
   {
     "trial_id": "A2_167",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/89745.png",
     "meme_text": "when cops see an unarmed black youth: \"i want every gun we have to fire on that man.\"",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a piece of social commentary/satire criticizing perceived police brutality and racial profiling. It targets the actions of law enforcement rather than expressing hatred toward a protected identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "depictions of violence"
+    ],
+    "ai_trigger_notice": "This content contains text describing a scenario of lethal police violence.",
+    "ai_euphemized_caption": "When law enforcement encounters an unarmed Black teenager: \"I want all our weapons to be used against that person.\"",
+    "ai_image_description": "Two police officers in dark uniforms stand against a white background; one officer points toward the side while the other looks on."
   },
   {
     "trial_id": "A2_168",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_2578.png",
     "meme_text": "MASKS MATTER.\nTHEY SAVE LIVES.\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image uses political figures to comment on the debate surrounding mask mandates and public health. While it takes a stance on a polarizing political issue, it does not target an identity group with hostility or demeaning prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "MASKS MATTER. THEY SAVE LIVES.",
+    "ai_image_description": "A split-screen image showing Donald Trump on the left wearing a white face mask and Joe Biden on the right without a mask."
   },
   {
     "trial_id": "A2_169",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_1883.png",
     "meme_text": "M3 Sweat\nmsweant\nA thread with a few real thoughts and observations on\n#WFH 1/n\n„I'm 'working' from home\n195 PM Mar 7, 2020 - Twitter for iPhone\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses irony to joke about the perceived lack of productivity or the different nature of working from home, rather than targeting a protected identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "The content does not contain any distressing visual or textual cues.",
+    "ai_euphemized_caption": "A thread regarding observations on working from home. The GIF caption reads: 'I'm \"working\" from home'.",
+    "ai_image_description": "A screenshot of a Twitter post by user M3 Sweat. The post includes text about working from home and a GIF of a bald man making peace signs with both hands."
   },
   {
     "trial_id": "A2_170",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/75832.png",
     "meme_text": "\"never forget\" - you said.. i am the proof you have forgotten",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses the imagery of the 9/11 memorial lights to personify the tragedy, expressing a melancholic sentiment that the significance of the event is fading from public memory. It does not target an identity group with hostility."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "references to mass casualty events"
+    ],
+    "ai_trigger_notice": "This content contains visual references to the September 11 terrorist attacks.",
+    "ai_euphemized_caption": "\"Never forget\" - you said.. i am the proof you have forgotten",
+    "ai_image_description": "A night view of the New York City skyline featuring One World Trade Center and the Statue of Liberty, with two bright blue vertical light beams shining into the sky."
   },
   {
     "trial_id": "A2_171",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/48136.png",
     "meme_text": "meanwhile at the isis strip club",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses the name of a terrorist organization in a derogatory, sexualized context ('strip club') alongside imagery of Middle Eastern men, which serves to mock and dehumanize people from that cultural/religious background through crude stereotyping."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "religious/political references"
+    ],
+    "ai_trigger_notice": "The content contains a textual reference to a known terrorist group.",
+    "ai_euphemized_caption": "meanwhile at the [terrorist group] strip club",
+    "ai_image_description": "A two-panel meme. The top panel shows a man standing in a large poultry farm filled with rows of white chickens. The bottom panel shows three men wearing traditional Middle Eastern head coverings with exaggerated, shocked facial expressions."
   },
   {
     "trial_id": "A2_172",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/96784.png",
     "meme_text": "keeping your dishwasher clean will make it last longer",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and caption are entirely literal and provide standard advice regarding appliance maintenance. There is no indication of hostility or prejudice toward any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "keeping your dishwasher clean will make it last longer",
+    "ai_image_description": "A person is loading white plates into an open dishwasher in a modern kitchen with dark cabinets."
   },
   {
     "trial_id": "A2_173",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/92637.png",
     "meme_text": "i almost joined the kkk once.. but there weren't enough gay, black women in town to justify me volunteering that much free time",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses a joke format to trivialize white supremacist activity by suggesting the 'lack' of specific marginalized groups is the only reason the speaker didn't join. This mocks the identities of the groups mentioned by framing them as targets for a hate group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "discriminatory slurs",
+      "references to hate groups"
+    ],
+    "ai_trigger_notice": "The content contains references to a known hate group and uses identity-based descriptors in a mocking context.",
+    "ai_euphemized_caption": "The speaker claims they nearly joined a white supremacist group, but decided against it because there were not enough people belonging to multiple marginalized identities in the area to make the effort worthwhile.",
+    "ai_image_description": "A man with a beard and long hair, wearing a red and black plaid sleeveless shirt, stands outdoors at night next to an old, weathered truck and a white building."
   },
   {
     "trial_id": "A2_174",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/46352.png",
     "meme_text": "some people hate trump some people hate hillary but everyone hates duke",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a joke comparing political polarization to the universal dislike of a fictional character, likely referring to Tony Soprano from The Sopranos. It does not target a protected identity group with hostility."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The text states that while some people dislike Trump and some people dislike Hillary, everyone dislikes Duke.",
+    "ai_image_description": "A vertical collage of three images. The top image shows Donald Trump at a podium. The middle image shows Hillary Clinton at a podium. The bottom image shows actor James Gandolfini standing in front of a SiriusXM backdrop."
   },
   {
     "trial_id": "A2_175",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/25017.png",
     "meme_text": "sorry i'm late. having tranny problems",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The caption employs a slur specifically used to dehumanize and mock transgender individuals, framing their identity or struggles through a lens of derision."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "discriminatory slurs"
+    ],
+    "ai_trigger_notice": "This content contains a slur directed at the transgender community.",
+    "ai_euphemized_caption": "sorry i'm late. having [transgender slur] problems",
+    "ai_image_description": "A woman in a dark jacket and jeans leans against the side of a white utility truck, talking on a mobile phone. Two dogs are visible in the back of the truck bed against a rural, hilly landscape."
   },
   {
     "trial_id": "A2_176",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_391.png",
     "meme_text": "When your friend order a mask for\nCorona Virus protection\nBut it was shipped from China\n",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses the context of the COVID-19 pandemic to imply a connection between Chinese products and the virus, playing into xenophobic tropes that associate China with the spread of the disease."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No distressing content identified.",
+    "ai_euphemized_caption": "When your friend orders a mask for Coronavirus protection, but it was shipped from China.",
+    "ai_image_description": "A two-panel meme featuring a group of men in a rural or outdoor setting. In the first panel, a man points toward another man wearing a white face mask. In the second panel, several men look toward the camera with various expressions of concern or scrutiny."
   },
   {
     "trial_id": "A2_177",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/TFRcH6Q.png",
     "meme_text": "Instead of doing my chem homework , I am a democrat who voted for Donald Trump and not feel anything . loose skin from weight loss and I want my girlfriend [ light ] ( self subredditsimulator ) submitted 8 hours ago by confession ss # 45 268 ( 7.79 ) ",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The text appears to be a nonsensical or 'shitposting' style collection of unrelated thoughts, likely simulating a chaotic subreddit. It does not target any identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No distressing content identified.",
+    "ai_euphemized_caption": "Instead of doing chemistry homework, I am a Democrat who voted for Donald Trump and feel nothing. Loose skin from weight loss and I want my girlfriend [light].",
+    "ai_image_description": "A screenshot of a text-based post from a social media platform, likely Reddit, containing a stream-of-consciousness style caption."
   },
   {
     "trial_id": "A2_178",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/62314.png",
     "meme_text": "manditory vaccinations with no exemptions i do nazi the problem....",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a pun ('i do nazi the problem') to equate mandatory vaccination policies with Nazi authoritarianism. While it uses a sensitive historical figure, the intent is to criticize a policy rather than to promote Nazi ideology or attack a protected group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "historical figures associated with genocide"
+    ],
+    "ai_trigger_notice": "This image contains a historical depiction of a Nazi leader.",
+    "ai_euphemized_caption": "Mandatory vaccinations with no exemptions; I see the problem...",
+    "ai_image_description": "A black and white photograph of Adolf Hitler with one arm raised in a gesture, set against a dark background."
   },
   {
     "trial_id": "A2_179",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/CpGttnLXYAATNHh.jpg",
     "meme_text": "Enter to wi n dinner with Donald Trump ",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and text appear to be a promotional or satirical advertisement for a contest involving Donald Trump. There is no language or imagery targeting any identity group with hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "Enter for a chance to win dinner with Donald Trump",
+    "ai_image_description": "A photograph of Donald Trump and Melania Trump sitting at a table, smiling, while people in the background appear to be clapping."
   },
   {
     "trial_id": "A2_180",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/37601.png",
     "meme_text": "my favorite sex position is the challenger i go hard for 73 seconds then prematurley blow",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a self-deprecating or observational joke regarding sexual stamina, using the 73-second flight time of the Challenger shuttle as a punchline. It does not target any protected identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "sexual content"
+    ],
+    "ai_trigger_notice": "This content contains sexual humor and references to sexual performance.",
+    "ai_euphemized_caption": "My favorite sexual position is the Challenger; I exert intense effort for 73 seconds and then finish too early.",
+    "ai_image_description": "A rocket launching into a clear blue sky, leaving a large trail of white smoke behind it."
   },
   {
     "trial_id": "A2_181",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/43271.png",
     "meme_text": "auschwitz gas chamber",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and text appear to be a literal, albeit blunt, identification of the historical site depicted. There is no explicit slur, call for violence, or demeaning commentary directed at a protected group present in the text."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "references to historical atrocities"
+    ],
+    "ai_trigger_notice": "This content contains a textual reference to a location associated with the Holocaust.",
+    "ai_euphemized_caption": "auschwitz gas chamber",
+    "ai_image_description": "A low-angle shot of a weathered, single-story concrete building with a tall brick chimney, set against a backdrop of bare trees under an overcast sky."
   },
   {
     "trial_id": "A2_182",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/13894.png",
     "meme_text": "putting bows on your pet",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and text are benign, depicting a pet with a decorative accessory. There is no targeting of any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "putting bows on your pet",
+    "ai_image_description": "A two-panel meme featuring a grey cat wearing a large red bow around its neck in both images."
   },
   {
     "trial_id": "A2_183",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/SXvE9sL.png",
     "meme_text": "Harold M . for STATE District 6 Endorsed Democrat l Vote November Ath Democratic V A Balanced Approach to State Policy Making I will continue to support education funding to produce an educated workforce with the skills to to Island . I will to it is important for the least of society , as ect the to maintain the social safety network des advocating ( seniors and ised for re-entry programs for prison . orted trong ",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and text consist of a standard political campaign flyer outlining a candidate's policy positions on education, social safety nets, and prison re-entry. There is no language or imagery that targets or demeans any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "Harold M. Metts for State Senate, endorsed Democrat for District 6. Vote November 8th. A balanced approach to state policy making. He states he will support education funding for the workforce and advocate for the vulnerable, including seniors and children, and support re-entry programs for those leaving prison.",
+    "ai_image_description": "A close-up photograph of a political campaign flyer for Harold M. Metts, who is running for State Senate in District 6. The flyer features a portrait of a smiling man in a suit against a dark background, with an American flag visible to the left. The text outlines his platform regarding education funding, social safety nets, and re-entry programs."
   },
   {
     "trial_id": "A2_184",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/49126.png",
     "meme_text": "if you see this you might be in the country",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is politically charged and uses a common trope regarding national identity or immigration, but it does not use slurs or direct calls for violence against a protected group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "If you see this, you might be in the country.",
+    "ai_image_description": "A photograph of Donald Trump placing a medal around the neck of a man in a tan uniform, with another man in uniform standing to the left."
   },
   {
     "trial_id": "A2_185",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_4508.png",
     "meme_text": "show me the best\nhome delivery servioe\ncompany\nSWIGGY\nzomato\ni said best\nperfect V\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme is a lighthearted comparison between two competing food delivery services, Swiggy and Zomato, expressing a personal preference for one over the other using a standard meme template."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The text asks to see the best home delivery service company, lists Swiggy and Zomato, then repeats the demand for the best, finally concluding with 'perfect' accompanied by a heart emoji.",
+    "ai_image_description": "A four-panel meme. The left side shows the logos for Swiggy and Zomato, with a photo of a man in an orange shirt at the bottom. The right side shows three sequential panels of a man's face from a film, looking increasingly intense."
   },
   {
     "trial_id": "A2_186",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/16254.png",
     "meme_text": "define nowfag i want it now!",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The caption utilizes a common internet slur derived from a homophobic term to demand a definition, which functions to demean or mock individuals based on perceived sexual orientation or social standing."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "slurs"
+    ],
+    "ai_trigger_notice": "This content contains a derogatory slur used in an internet slang context.",
+    "ai_euphemized_caption": "define [slur] i want it now!",
+    "ai_image_description": "A woman with blonde hair wearing a red dress stands in front of a backdrop featuring 'Willy Wonka' and 'Jacques Torres' logos."
   },
   {
     "trial_id": "A2_187",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/56891.png",
     "meme_text": "i don't always go to black peoples garage sales, but when i do, it's to get my stuff back",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme employs a harmful racial stereotype that characterizes a specific group as dishonest or prone to theft, using the 'Most Interesting Man in the World' format to deliver a prejudiced punchline."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "discriminatory language"
+    ],
+    "ai_trigger_notice": "This content contains a racial stereotype regarding theft.",
+    "ai_euphemized_caption": "The text states that the speaker does not always visit garage sales held by Black people, but when they do, it is to retrieve their own belongings.",
+    "ai_image_description": "A medium shot of an older man with grey hair and a beard, wearing a black jacket, holding an open book."
   },
   {
     "trial_id": "A2_188",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/52783.png",
     "meme_text": "when your white friends invite you to dinner and tell you to bring whatever you want",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a common social trope regarding cultural differences in hosting and food expectations. It is a lighthearted observation about social etiquette rather than an expression of hostility or prejudice."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "When your white friends invite you to dinner and tell you to bring whatever you want.",
+    "ai_image_description": "A smiling Black man wearing a white apron holds a cooling rack with several freshly baked muffins."
   },
   {
     "trial_id": "A2_189",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/17354.png",
     "meme_text": "mlk giving a powerful speech",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and caption are respectful and celebratory, acknowledging the historical significance of Martin Luther King Jr.'s oratory."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "MLK giving a powerful speech",
+    "ai_image_description": "A black and white photograph of Martin Luther King Jr. looking upward with his mouth open and one fist raised in the air."
   },
   {
     "trial_id": "A2_190",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/07218.png",
     "meme_text": "when you and ya classmate are hiding from the school shooter, but you wanna die so you sneeze to get his attention hehehehehe my bad guys",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses dark humor to reference school shootings and self-harm, but it does not target a specific identity group with prejudice or hostility. It is a form of nihilistic internet humor rather than hate speech."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "violence"
+    ],
+    "ai_trigger_notice": "This content contains text referencing school violence and suicidal ideation.",
+    "ai_euphemized_caption": "When you and a classmate are hiding from a school shooter, but you want to die so you sneeze to get his attention, followed by giggling and saying 'my bad guys'.",
+    "ai_image_description": "A person in a SpongeBob SquarePants mascot costume standing with arms outstretched and a wide grin."
   },
   {
     "trial_id": "A2_191",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/42093.png",
     "meme_text": "'those that attack one muslim, are attacking all muslims\" those that attack one american, are attacking all americans!!",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses an analogy to argue for the protection of Muslims by equating it to the protection of Americans. It does not target Muslims with hostility, but rather advocates for their collective safety through a comparison to nationalistic sentiment."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content identified.",
+    "ai_euphemized_caption": "The top text quotes a statement about how attacking one member of a religious group is an attack on all members of that group, followed by a comparison stating that attacking one American is an attack on all Americans.",
+    "ai_image_description": "A two-panel meme. The top panel shows Barack Obama speaking at a podium. The bottom panel shows a man in a cowboy hat gesturing outdoors with an American flag in the background."
   },
   {
     "trial_id": "A2_192",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/45167.png",
     "meme_text": "when republicans freed the slaves this is how democrats responded",
-    "ai_hateful_prediction": 1,
-    "ai_explanation": "The meme uses imagery of a violent white supremacist organization to characterize the Democratic Party, implying a direct historical or ideological link between the party and racial terrorism."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "symbols of hate"
+    ],
+    "ai_trigger_notice": "This image contains historical imagery of a white supremacist group wearing ritualistic robes and hoods.",
+    "ai_euphemized_caption": "When Republicans freed the slaves, this is how Democrats responded.",
+    "ai_image_description": "A black and white photograph showing a line of people dressed in white robes and pointed hoods, some holding a flag, standing outdoors in a wooded area."
   },
   {
     "trial_id": "A2_193",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/covid_memes_657.png",
     "meme_text": "Corona Virus\n•poverty\n•child slavery\n•pedophiles in\npositions of power\n•wealth inequality\n•mind control\n•sex trafficking\n•5g causing\ncancer\n",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses irony to criticize the disproportionate public concern or media coverage given to the Coronavirus compared to much more severe or systemic global issues. It is a social commentary on misplaced priorities rather than an attack on a protected identity group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "references to sexual exploitation",
+      "references to child abuse"
+    ],
+    "ai_trigger_notice": "The text contains references to severe social issues including child exploitation and sexual violence.",
+    "ai_euphemized_caption": "Corona Virus vs. a list including poverty, child exploitation, predators in power, wealth inequality, mind control, sex trafficking, and 5G health concerns.",
+    "ai_image_description": "A four-panel meme. The top-left panel contains the text 'Corona Virus'. The top-right panel shows a woman with red hair looking shocked with her hands on her head. The bottom-left panel contains a list of various social and conspiracy-related issues. The bottom-right panel shows a blonde woman in a striped shirt smiling and walking."
   },
   {
     "trial_id": "A2_194",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/JvY4wYr.png",
     "meme_text": "I DONT ALLWAYS GO TO WORK ... UK OFCOURSELDO BECAUSE IM NOT A FREELOADING BERNIE SANDERS SUPPORTER ",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses political satire to criticize supporters of Bernie Sanders by labeling them as 'freeloading.' While insulting to a political group, it does not target a protected identity group with hate speech or dehumanization."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "I don't always go to work... just kidding, of course I do, because I am not a person who lives off others like a supporter of Bernie Sanders.",
+    "ai_image_description": "A portrait of a middle-aged man with grey hair and a beard, wearing a black suit jacket and white shirt, sitting in a chair next to a green bottle."
   },
   {
     "trial_id": "A2_195",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/69234.png",
     "meme_text": "do i need to dig up hitler to show you how to use an oven",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a dark, hyperbolic comparison to express extreme frustration regarding cooking skills. While it references a genocidal figure, the intent appears to be a joke about incompetence rather than promoting Nazi ideology or attacking a protected group."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "references to historical figures associated with genocide"
+    ],
+    "ai_trigger_notice": "This content contains a textual reference to a historical figure associated with the Holocaust.",
+    "ai_euphemized_caption": "do i need to dig up [historical dictator] to show you how to use an oven",
+    "ai_image_description": "A close-up shot of two male chefs in white uniforms and hats facing each other intensely in a kitchen setting. The chef on the left has his mouth open as if shouting, while the chef on the right maintains a stern, calm expression."
   },
   {
     "trial_id": "A2_196",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/67384.png",
     "meme_text": "what's hillary's favorite pizza? little seizures",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses a joke about medical episodes to mock a political figure. While insensitive and mocking of a health condition, it does not target a protected group with prejudice or dehumanization."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "medical conditions"
+    ],
+    "ai_trigger_notice": "This content contains a joke regarding a medical condition.",
+    "ai_euphemized_caption": "What is Hillary's favorite pizza? Small convulsions.",
+    "ai_image_description": "A medium shot of Hillary Clinton speaking into a microphone while seated, wearing a black and white patterned jacket."
   },
   {
     "trial_id": "A2_197",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/89061.png",
     "meme_text": "you find it offensive i find it funny.. that's why i'm happier than you",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme expresses a personal attitude regarding sensitivity and humor but does not target, demean, or express hostility toward any specific identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "",
+    "ai_euphemized_caption": "The text states that while one person finds something offensive, the speaker finds it humorous, concluding that this is why they are happier than the other person.",
+    "ai_image_description": "A close-up photograph of actor Leonardo DiCaprio smiling smugly while wearing a tuxedo and bowtie."
   },
   {
     "trial_id": "A2_198",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/35618.png",
     "meme_text": "i woke up like this",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and caption are a common meme format used to express confidence or natural beauty; there is no evidence of hostility or prejudice toward any identity group."
+    "ai_trigger_flag": false,
+    "ai_trigger_categories": [],
+    "ai_trigger_notice": "No potentially distressing content was identified.",
+    "ai_euphemized_caption": "The text states that the individual woke up in this state.",
+    "ai_image_description": "A woman with long dark hair looks over her shoulder toward the camera, positioned in front of red pillows."
   },
   {
     "trial_id": "A2_199",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/64172.png",
     "meme_text": "bro you didn't go through extensive childhood trauma? that's pretty cringe",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The meme uses hyperbole to joke about the internet trend of equating trauma with personality or depth. It does not target a protected identity group with hostility or prejudice."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "mental health topics"
+    ],
+    "ai_trigger_notice": "This content contains references to childhood trauma.",
+    "ai_euphemized_caption": "The text asks if someone did not experience significant childhood trauma and calls that situation 'pretty cringe'.",
+    "ai_image_description": "A close-up photo of a corgi dog looking slightly upward and to the side with a skeptical or judging expression against a blue background."
   },
   {
     "trial_id": "A2_200",
     "image_url": "https://huggingface.co/datasets/limjiayi/hateful_memes_expanded/resolve/main/img/70912.png",
     "meme_text": "i see american troops coming this way",
-    "ai_hateful_prediction": 0,
-    "ai_explanation": "The image and caption depict a historical military context. While it references an adversary (American troops), it does not use slurs, promote violence against a protected group, or express dehumanizing prejudice; it functions as a situational observation within a wartime context."
+    "ai_trigger_flag": true,
+    "ai_trigger_categories": [
+      "war imagery"
+    ],
+    "ai_trigger_notice": "This image contains historical military imagery depicting soldiers in a combat environment.",
+    "ai_euphemized_caption": "The text states that the speaker observes American military forces approaching.",
+    "ai_image_description": "A black and white historical photograph showing two soldiers in helmets operating a machine gun behind a makeshift barrier in a rugged outdoor setting."
   }
 ]
