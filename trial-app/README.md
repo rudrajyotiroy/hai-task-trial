@@ -1,122 +1,51 @@
-# CSE 594 Class Assignment — Hateful Meme Detection Study
+# CSE 594 Assignment 3 — Hateful Meme Task Trials
 
-This site is a **CSE 594 class assignment**, with assisted and independent participant versions hosted in one Netlify project. The Context Lab logo and branding have been removed.
+Two participant-facing study versions run from the **same Netlify project** and write to the **same Supabase table**. The 200 study memes and archived Gemma 4 predictions/trigger alerts come from Assignment 2; **no live model inference is required**.
 
-## Optional participant uniqname
-
-The first (purpose/consent) page includes an optional **University of Michigan uniqname** field. It is not required to enter the walkthrough or submit any trials. A supplied uniqname is validated as 1–32 characters starting with a letter and containing letters, numbers, dots, underscores, or hyphens.
-
-On study start, the browser stores the uniqname (or `null` if blank) only in the **start event’s `payload.uniqname`**. Every start, trial response, and finish event is joined by `session_id`, so the identity can be associated with all answers from that session without duplicating it on every response. Supabase’s existing `payload jsonb` field requires **no schema migration**. The submitted field is explicitly disclosed as identifiable when filled out; leaving it blank enables participation without providing a name. The app stores the in-progress uniqname in local browser storage until the session is restarted; the study owner should protect and appropriately retain identifiable records.
-
-
-This is a controlled study about how humans interpret hateful memes, including sarcasm and implied meaning, and how AI-assisted review affects judgments. **Hateful / not hateful and triggering / not triggering are separate judgments.**
-
-
-## Trial-page and skip behavior (v3.2)
-
-The task-page headline now reads **“Thanks for your contribution to help improve hate speech detection”**, with a compact font size. The practice walkthrough on screen 2 shows a harmless illustrated meme and step-specific example interface previews. Participants advance with Previous/Next buttons or step indicators; there is **no automatic playback or animation**.
-
-**Skip example means skip the entire trial**, in both variants. The participant can skip without providing any answers, even if partially selected before skipping. No AI disagreement review is displayed for skipped items. A single \`response\` event is still saved in Supabase for every skipped item, containing:
-
-- \`skipped: true\`
-- \`skip_scope: "entire_example"\`
-- \`classification: null\`, \`initial_classification: null\`, \`final_classification: null\`, \`confidence: null\`
-- \`triggering_vote: null\`
-- \`preferred_not_shown: null\`, \`preferred_not_shown_reason: null\`
-- \`ai_reasoning_presented: false\`, \`ai_reasoning_verdict: null\`
-
-Item identifier, condition, position, elapsed time, and visibility/reveal metadata still accompany the skip event. On *submitted* (non-skipped) items, the assisted review saves both \`initial_classification\` and \`final_classification\`, allowing before/after comparisons.
-
-
-## Participant links
-
-Both study variants run in the **same Netlify project and deployment**, with one Supabase table and common serverless API:
-
+## Participant URLs
 - **AI-assisted:** \`https://YOUR-SITE.netlify.app/assisted/\`
-- **Independent, without AI assistance:** \`https://YOUR-SITE.netlify.app/independent/\`
+- **Without AI:** \`https://YOUR-SITE.netlify.app/independent/\`
 
-The site root \`/\` defaults to assisted, so distribute explicit links rather than the root. URL determines the assigned variant; to randomize allocation, distribute the links with an independent assignment procedure. Each URL uses separate local browser session state, avoiding accidental cross-variant resumes.
+The root path defaults to assisted, so share the explicit links. Neither site automatically balances condition assignment; if counterbalancing is required, distribute the two links according to the study instructions.
 
-### AI-assisted variant
+## Protocol v4 (new prospective data)
 
-- AI examines the *precomputed* trigger flag for each meme; flagged images are **blurred by default**, and a generated softened caption and trigger notice appear. Participants may voluntarily reveal the original image or text.
-- Participant decides whether content is hateful (yes/no), whether the viewed meme felt triggering (yes/no), confidence (1–5), and can provide an optional rationale.
-- **Only when initial participant hateful judgment differs from precomputed AI hateful prediction**, display the AI prediction and its archived reasoning on a second screen. Ask: **AI seems correct — change my answer** / **AI seems wrong — keep my answer**.
-- Record the **initial hateful classification** before AI reasoning and the **final classification** after the review (plus \`ai_reasoning_verdict\` and \`participant_changed_answer\`), so research analysis can distinguish unaided vs post-explanation judgments.
-- Skipping hateful judgment does not trigger AI review. The participant still votes triggering/not triggering on the trial.
+All new study sessions:
+1. See the research purpose and an explicit condition-specific consent/advisory page. They may optionally enter a University of Michigan uniqname; leaving it blank is allowed. If entered, it is stored in the Supabase start event and links responses by \`session_id\`.
+2. Review a five-slide **manually navigated** demonstration with a harmless meme, plus a gentle **attention check** asking what the Skip button does. An incorrect answer gives feedback and can be retried. The start event logs pass status and attempts.
+3. Choose **1–12 randomly sampled memes** (default **12**), targeting under ten minutes including instructions. When the same optional uniqname is given on both versions, the app uses deterministic seeded random selection so both show the **same memes** (when trial counts match), enabling stronger within-person/within-item comparisons. If no uniqname, a fresh random sample is assigned.
+4. On each item choose a **five-point hatefulness rating**: 1 definitely not hateful; 2 probably not; 3 unsure; 4 probably hateful; 5 definitely hateful. For binary benchmark comparison, 1–2 map to 0, 4–5 map to 1, and 3 is **undetermined**, not a wrong answer. Separately, report whether the item was triggering, whether the respondent would rather not have seen it, and if Yes whether imagery, text or both prompted that preference. Give confidence (1–5) and an optional rationale.
+5. **Skip example** skips the whole item immediately without requiring any answers. It saves a response event with \`skipped:true\`, \`skip_scope:'entire_example'\`, and null labels/trigger/preference fields.
+6. After the planned N items, see a completion screen; start, response, finish events are sent to Supabase with local retry when saving fails.
 
-### Independent variant — original content, **no protective filtering**
+**AI-assisted version:** when archived AI trigger flag is true, image is initially blurred and caption softened. The user can reveal original material separately. If the participant's *initial definite binary hateful/not-hateful judgment* disagrees with the archived AI binary judgment, a second-look screen shows the AI explanation and asks whether to keep or revise the answer. Save **both** \`initial_classification\` and \`final_classification\`, plus \`initial_hateful_likert\`, \`final_hateful_likert\`, \`ai_reasoning_verdict\`, and \`participant_changed_answer\`. No disagreement screen is shown for 3/unsure or skipped examples.
 
-- Shows the **original unblurred image and original caption**, even when the dataset's AI trigger flag is true.
-- Does **not** display any AI hateful prediction, explanation, trigger category, or shield.
-- Participant decides **hateful / not hateful** and **triggering / not triggering** separately, selects confidence, and can add an optional comment.
-- On **every item**, ask **"Would you have preferred not being shown this meme?"** (yes/no).
-- If yes, require a reason: **Imagery**, **Text**, or **Both**.
-- **No AI disagreement review** is shown in this variant. Skipping hateful classification still allows recording the other responses.
+**Without-AI version:** original image and caption are always displayed unfiltered, no trigger warning/AI classification/reasoning is revealed, and there is no AI disagreement step. It collects the same human experience and preference questions.
 
-### Both versions
+**Important:** Historical sessions in the results dataset were created with previous binary-only, variable question protocols and **must not be reinterpreted as v4 data**.
 
-1. Purpose and consent screen explaining why human feedback helps catch sarcasm, subtext and context, and why hateful and triggering are independent categories.
-2. Five-step manually navigated practice walkthrough using a harmless illustration, with Previous/Next buttons and clickable step indicators, without autoplay.
-3. Choose **1–30 task trials** (default **12**).
-4. Trial classifications, confidence, sensitivity and any requested preference/review fields are stored in the same Supabase database. Progress survives page refreshes via browser-local state.
+## Deployment and storage
+- Netlify build base directory: \`trial-app\`. Build command: \`npm run build\`, publish directory \`dist\`, functions directory \`netlify/functions\`. The file \`netlify.toml\` defines both routes and an API redirect.
+- Set Functions-scope Netlify environment variables:
+  - \`SUPABASE_URL=https://PROJECT-REF.supabase.co\`
+  - \`SUPABASE_SECRET_KEY=sb_secret_...\` (or legacy \`SUPABASE_SERVICE_ROLE_KEY\`)
+  - \`ADMIN_EXPORT_TOKEN\` (a researcher-owned randomly generated token)
+  - \`ALLOWED_ORIGINS=https://YOUR-SITE.netlify.app\`
+- Execute \`trial-app/supabase/schema.sql\` in your Supabase project's SQL Editor before using the study. The table's existing \`payload jsonb\` supports every added field: **no migration required**.
+- \`GET https://YOUR-SITE.netlify.app/api/trials?health=1\` checks database availability without disclosing keys. The frontend has Check storage and Retry upload controls.
+- Export data with \`curl -H 'Authorization: Bearer YOUR_ADMIN_EXPORT_TOKEN' 'https://YOUR-SITE.netlify.app/api/trials?limit=1000&offset=0' -o results.json\`; increment offset for additional pages.
 
-**Content-risk disclosure is condition-specific.** The independent version warns explicitly that all examples are unfiltered and may contain hateful language, violent or disturbing imagery, abuse, or other sensitive content. The assisted version warns that AI shielding is imperfect and some content can still be sensitive. Participants can skip hateful classification or discontinue the study at any time.
-
-## Database and event format
-
-The current \`public.task_trial_events\` table stores study records with \`event_type\` start/response/finish, \`condition\` assisted/independent, and \`payload jsonb\`. **No schema migration is required**; all new fields go into \`payload\`.
-
-Shared \`response.payload\` fields:
-
-- \`initial_classification\` (\`0\` not hateful, \`1\` hateful, null if skipped)
-- \`final_classification\` (same as initial unless the AI-assisted disagreement review changes it)
-- \`classification\` (alias for initial response retained for backwards compatibility)
-- \`triggering_vote\` (\`1\` triggering, \`0\` not triggering)
-- \`confidence\`, \`reason\`, \`skipped\`, \`elapsed_ms\`, \`website_variant\`
-- \`image_initially_blurred\`, \`caption_euphemized\`, \`image_revealed\`, \`caption_revealed\`
-
-Assisted-only fields:
-
-- \`ai_trigger_detected\` (boolean), \`ai_hateful_prediction\` (0/1), \`ai_disagreement\` (boolean)
-- \`ai_reasoning_presented\` (boolean), \`ai_reasoning_verdict\` (\`ai_correct_changed\` / \`ai_wrong_kept\` / null)
-- \`participant_changed_answer\` (boolean)
-
-Independent-only fields:
-
-- \`preferred_not_shown\` (1 yes, 0 no)
-- \`preferred_not_shown_reason\` (\`imagery\`, \`text\`, \`both\`, or null when answer is no)
-- \`ai_hateful_prediction\` and \`ai_trigger_detected\` are null in exported participant responses. Independent participants do not see these model outputs.
-
-Every completed review has **both initial and final hatefulness labels in the same persisted response event**, with review outcome. If no review occurred, initial and final classifications are identical. As with any study using optional abandonment, unfinished individual trials are not submitted as response events.
-
-The \`start\` payload includes \`planned_items\`, \`consented\`, \`study_version\`, \`content_shield\` and \`website_variant\`. Both variants use identical Supabase credentials and function endpoints.
-
-## Deploy on Netlify
-
-1. Merge this PR into \`main\`. When your Netlify project has GitHub continuous deployment enabled, Netlify rebuilds automatically.
-2. Netlify build settings: repository \`rudrajyotiroy/hai-task-trial\`, **base directory \`trial-app\`**, build command \`npm run build\`, publish directory \`dist\`. The app's \`netlify.toml\` defines the common function rewrite plus both participant routes.
-3. In **Project configuration → Environment variables**, add server-side:
-   - \`SUPABASE_URL\`: \`https://YOUR-PROJECT.supabase.co\`
-   - \`SUPABASE_SECRET_KEY\`: Supabase \`sb_secret_...\` key, or legacy \`SUPABASE_SERVICE_ROLE_KEY\`
-   - \`ADMIN_EXPORT_TOKEN\`: your generated random secret for researcher exports
-   - \`ALLOWED_ORIGINS\`: the Netlify site's **origin**, e.g. \`https://YOUR-SITE.netlify.app\` (same origin for both routes).
-4. Check Supabase table exists: run \`trial-app/supabase/schema.sql\` in the project SQL Editor if not created already.
-5. Check \`https://YOUR-SITE.netlify.app/api/trials?health=1\` — expected \`{"ok":true,"storage":"ready",...}\`. If not, inspect status hints, environment-variable scopes, Supabase status and Netlify Functions logs.
-6. Visit both participant URLs, complete a small trial session, and check that Supabase \`task_trial_events.condition\` and \`payload.website_variant\` agree. For the independent route, verify no blur and that \`preferred_not_shown_reason\` is stored when Yes; for assisted, choose an item with AI disagreement and verify both initial and final labels. Confirm footer says responses saved, not queued.
-
-## Research and content limitations
-
-The AI trigger labels, softened captions and hateful classifications are archived model outputs in the 200-item study dataset, **not live AI requests**. They can be wrong or fail to protect participants. Blurring is client-side UI presentation and does not remove third-party image URL network requests; the independent route intentionally exposes the original content. Consult your research ethics/IRB requirements before recruiting participants, particularly for the unfiltered arm. The study uses random local item order but **does not automatically balance assignment across the two explicit URLs**.
-
-The backend accepts anonymous participant submissions and implements locally queued retries. For large public deployments, consider rate limiting, more robust anti-abuse controls and regular backups. Free Supabase projects may pause with inactivity.
-
-## Export study results
+## Assignment 3 analysis (historical export)
+See [results/report.md](results/report.md) and the pseudonymized [merged trial data](results/merged_deidentified_trials.csv), plus [paired participant summary](results/paired_participant_comparison.csv). To reproduce major descriptive metrics and exact paired tests:
 
 \`\`\`bash
-curl -H "Authorization: Bearer YOUR_ADMIN_EXPORT_TOKEN" \
- "https://YOUR-SITE.netlify.app/api/trials?limit=1000&offset=0" \
- -o results.json
+pip install pandas numpy scipy
+python results/reproduce.py
 \`\`\`
 
-Increment \`offset\` for subsequent pages of up to 1000 events. Never publish the export token or Supabase secret key.
+The full polished course report is generated separately as editable DOCX and submission PDF. The analyzed export includes 211 events, five confidently matched uniqnames, and only three independent sessions with a finish event; **further valid completions may be needed** to satisfy the assignment's minimum of five per condition.
+
+## Ethics and data handling
+The independent interface **deliberately shows potentially distressing original content**, even if the archived model would flag it. AI filtering in the assisted interface is imperfect. Participants may skip items or exit. Uniqnames are optional but identifying; keep raw exports private. **Do not commit raw event CSVs, participant names, UUIDs, timestamps, or free-text rationales** to public GitHub. Results posted here are pseudonymized rather than guaranteed anonymous.
+
+The original 200-meme source dataset is balanced on hateful label; triggering has **no universal reference ground truth**. Reports of distress are personal, not ground-truth labels for everyone.
