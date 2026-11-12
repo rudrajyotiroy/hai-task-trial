@@ -46,3 +46,16 @@ The CSVs contain **no uniqnames, personal names, real UUIDs, raw free text, or e
 Only five named people can be linked across conditions. All other sessions are kept independent; do not deduce identity from time, pattern, or device characteristics. Trial samples were historically randomized separately per condition; only five **same-person, same-item** rated pairs exist. Current study UI v4 will intentionally give named participants the same randomly selected items when counts match, but these prospective responses are not in this historical export.
 
 At least 5 *valid completed participants* are requested **per condition** by Assignment 3. This dataset has 8 assisted and 3 independent attempts with finish events; follow up with more data collection if needed.
+
+
+## Future v5 results and attention checks
+
+When exporting new data after the v5 interface deployment:
+
+- \`response\` events with \`payload.is_attention_check === true\` or \`trial_id\` equal to \`ATTN_HATE_30\` / \`ATTN_NOT_HATE_80\` are **non-study attention check attempts**. Count them for study compliance, but filter them out before joining with the 200-meme Assignment 2 reference and before computing task accuracy, skipped-item rate, trigger-vote rate or item response times.
+- Participants may retry a failed check. Each attempt is logged separately. A correct attempt enables continuation.
+- The \`finish\` event includes \`payload.post_survey_completed\` and \`payload.post_survey\` (Likert responses q1–q9 plus optional text q10). Analyze survey responses at the **session/person level**; they are not trial rows. The free-text q10 may contain identifying information and must **not** be committed to this public repo.
+- The trial \`payload.confidence_default_used\` indicates when the preselected 3/5 confidence value was retained. Include it in sensitivity analysis because a default may affect subjective ratings.
+- \`protocol_version='5.0.0'\` identifies the updated interface; earlier historical responses were binary-only or under earlier UX, and should not be silently pooled without a protocol covariate.
+- A single volunteer may complete both versions. Use only explicitly volunteered uniqnames to match original identifiable exports before removing identifiers; preserve participant and meme repeated-measure structure in inferential analyses. Future matched participants who choose the same sample size are assigned the same seeded random memes in both variants, subject to identical dataset ordering/version.
+
