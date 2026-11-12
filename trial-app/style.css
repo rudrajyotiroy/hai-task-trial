@@ -52,3 +52,6 @@
 @media(max-width:800px){.walkthrough{grid-template-columns:1fr}.demo-visual{min-height:270px}.purpose-flow{flex-direction:column}.purpose-arrow{transform:rotate(90deg)}.setup-card{flex-direction:column;align-items:flex-start}.trigger-choices{grid-template-columns:1fr}.purpose-page,.guide-page{padding:0}.review-options{flex-direction:column}.comparison{grid-template-columns:1fr}}
 @media(max-width:520px){.quadrant{grid-template-columns:1fr}.guide-actions{flex-direction:column;align-items:stretch}.demo-explain{padding:25px}.review-options button{width:100%}}
 @media(prefers-reduced-motion:reduce){.demo-bubble,.demo-highlight{animation:none}}
+
+/* Independent-only preference reason is shown after a Yes answer. */
+.hidden{display:none!important}

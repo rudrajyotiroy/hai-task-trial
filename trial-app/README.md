@@ -1,89 +1,96 @@
-# Context Lab — HAI Content Shield Study
+# Context Lab — two participant websites, one Netlify project
 
-This deployable research app uses the 200 precomputed AI trigger assessments from Assignment 2. It separates **AI content shielding** from the participant's judgment of whether a meme is hateful.
+This is a controlled study about how humans interpret hateful memes, including sarcasm and implied meaning, and how AI-assisted review affects judgments. **Hateful / not hateful and triggering / not triggering are separate judgments.**
 
-## What changed
+## Participant links
 
-- Both routes use the same AI trigger-based safety filter; the independent route omits AI feedback on hateful classifications.
-- The AI-assisted route shows extra triggering and AI disagreement questions; the independent route asks about participant preference not to see each sample.
-- When AI detected a trigger, the AI-assisted group sees a **blurred image, softened caption, and brief trigger notice**. Each can be revealed separately by participant choice.
-- Shield decisions come from \`ai_trigger_flag\`, \`ai_trigger_categories\`, \`ai_trigger_notice\` and \`ai_euphemized_caption\` in the archived 200-row Cloudflare evaluation. **They are precomputed and are not a live model call.**
-- The participant's classification, confidence, timing, whether AI shielding was applied, and voluntary reveal actions are logged.
-- \`GET /api/trials?health=1\` returns a safe database status without revealing secrets.
-- Submission errors retain a local queue and show the error code. Use **Check storage** and **Retry upload** in the footer.
+Both study variants run in the **same Netlify project and deployment**, with one Supabase table and common serverless API:
 
+- **AI-assisted:** \`https://YOUR-SITE.netlify.app/assisted/\`
+- **Independent, without AI assistance:** \`https://YOUR-SITE.netlify.app/independent/\`
 
-## Two websites from one Netlify project (v3.1)
+The site root \`/\` defaults to assisted, so distribute explicit links rather than the root. URL determines the assigned variant; to randomize allocation, distribute the links with an independent assignment procedure. Each URL uses separate local browser session state, avoiding accidental cross-variant resumes.
 
-A single Netlify build serves **two participant URLs** on the SAME domain (no second Netlify project, second database, or additional credentials):
+### AI-assisted variant
 
-- **AI-assisted**: \`https://YOUR-SITE.netlify.app/assisted/\`
-- **Without AI assistance**: \`https://YOUR-SITE.netlify.app/independent/\`
+- AI examines the *precomputed* trigger flag for each meme; flagged images are **blurred by default**, and a generated softened caption and trigger notice appear. Participants may voluntarily reveal the original image or text.
+- Participant decides whether content is hateful (yes/no), whether the viewed meme felt triggering (yes/no), confidence (1–5), and can provide an optional rationale.
+- **Only when initial participant hateful judgment differs from precomputed AI hateful prediction**, display the AI prediction and its archived reasoning on a second screen. Ask: **AI seems correct — change my answer** / **AI seems wrong — keep my answer**.
+- Record the **initial hateful classification** before AI reasoning and the **final classification** after the review (plus \`ai_reasoning_verdict\` and \`participant_changed_answer\`), so research analysis can distinguish unaided vs post-explanation judgments.
+- Skipping hateful judgment does not trigger AI review. The participant still votes triggering/not triggering on the trial.
 
-Both routes load the same Vite bundle and use the same **precomputed AI trigger-based safety filter**: flagged images are initially blurred and their captions softened, with the option to reveal them. This is a safety measure, not experimental AI assistance. Trigger filtering is not guaranteed to catch everything.
+### Independent variant — original content, **no protective filtering**
 
-The **condition is determined exclusively by the URL**; do not use the root \`/\` URL to assign participants because that defaults to the AI-assisted interface. Distribute the two explicit links in your study protocol. Session state is stored under a separate browser-local key per route, so a participant opening both variants cannot mix in-progress sessions.
+- Shows the **original unblurred image and original caption**, even when the dataset's AI trigger flag is true.
+- Does **not** display any AI hateful prediction, explanation, trigger category, or shield.
+- Participant decides **hateful / not hateful** and **triggering / not triggering** separately, selects confidence, and can add an optional comment.
+- On **every item**, ask **"Would you have preferred not being shown this meme?"** (yes/no).
+- If yes, require a reason: **Imagery**, **Text**, or **Both**.
+- **No AI disagreement review** is shown in this variant. Skipping hateful classification still allows recording the other responses.
 
-### Participant flow (shared)
+### Both versions
 
-1. Brief purpose page explains human feedback for hate detection, sarcasm and nuanced context, and why hateful and sensitive are *independent categories*. Collects voluntary informed consent.
-2. Animated, **safe illustrative** walkthrough; participants may use dots/Previous/Next/Replay, with automatic rotation (unless reduced motion is preferred). Trial count selectable from **1 to 30**, default **12**.
-3. For each trial, the participant judges *hateful / not hateful*, adjusts a 1–5 confidence rating, optionally enters a rationale, and may skip the hateful-label judgment.
+1. Purpose and consent screen explaining why human feedback helps catch sarcasm, subtext and context, and why hateful and triggering are independent categories.
+2. Five-step animated practice walkthrough using a harmless illustration, with previous/next/replay and accessible reduced-motion behavior.
+3. Choose **1–30 task trials** (default **12**).
+4. Trial classifications, confidence, sensitivity and any requested preference/review fields are stored in the same Supabase database. Progress survives page refreshes via browser-local state.
 
-### AI-assisted route only
+**Content-risk disclosure is condition-specific.** The independent version warns explicitly that all examples are unfiltered and may contain hateful language, violent or disturbing imagery, abuse, or other sensitive content. The assisted version warns that AI shielding is imperfect and some content can still be sensitive. Participants can skip hateful classification or discontinue the study at any time.
 
-- After judging hatefulness, vote **triggering / not triggering** for each sample, irrespective of the AI trigger flag or whether the participant revealed original material. This is a required response even when hateful classification is skipped.
-- If the *initial hateful judgment* differs from the precomputed AI hateful prediction, show the AI explanation **only after** the participant has answered. Ask **AI seems correct — change my answer**, or **AI seems wrong — keep my answer**. A skipped hateful judgment has no AI review.
-- Database JSONB response fields: \`triggering_vote\` (0/1), \`ai_hateful_prediction\`, \`ai_disagreement\`, \`ai_reasoning_presented\`, \`ai_reasoning_verdict\` (\`ai_correct_changed\` or \`ai_wrong_kept\`), \`initial_classification\`, \`final_classification\`.
+## Database and event format
 
-### Independent route only (no AI assistance beyond filtering)
+The current \`public.task_trial_events\` table stores study records with \`event_type\` start/response/finish, \`condition\` assisted/independent, and \`payload jsonb\`. **No schema migration is required**; all new fields go into \`payload\`.
 
-- **Do not ask** the triggering/not-triggering question or show the AI disagreement/reasoning review.
-- Instead ask **"Would you have preferred not to be shown this sample?"** (Yes/No), including if the participant skipped hateful classification.
-- Database JSONB response fields: \`preferred_not_shown\` (1 Yes / 0 No), \`triggering_vote: null\`, \`ai_reasoning_presented: false\`, \`ai_reasoning_verdict: null\`, plus the participant's initial/final hateful judgments and confidence.
+Shared \`response.payload\` fields:
 
-### Database and deployment
+- \`initial_classification\` (\`0\` not hateful, \`1\` hateful, null if skipped)
+- \`final_classification\` (same as initial unless the AI-assisted disagreement review changes it)
+- \`classification\` (alias for initial response retained for backwards compatibility)
+- \`triggering_vote\` (\`1\` triggering, \`0\` not triggering)
+- \`confidence\`, \`reason\`, \`skipped\`, \`elapsed_ms\`, \`website_variant\`
+- \`image_initially_blurred\`, \`caption_euphemized\`, \`image_revealed\`, \`caption_revealed\`
 
-Both versions write to **the same Supabase \`public.task_trial_events\` table**. The \`condition\` SQL column is \`assisted\` or \`independent\` according to the URL; \`payload.website_variant\` repeats the route identifier on responses, and \`start\` also logs \`website_variant\`, \`planned_items\`, and \`content_shield:true\`. The existing \`payload jsonb\` accommodates all fields **without any new SQL migration**.
+Assisted-only fields:
 
-A single merge to \`main\` triggers one automatic Netlify deployment when GitHub continuous deployment is enabled. Configure Netlify base directory \`trial-app\` and retain the same environment variables. \`trial-app/netlify.toml\` routes both participant paths to \`index.html\` and \`/api/trials\` to the Netlify function. If either route is 404, inspect deployed redirect rules and verify the site built from main.
+- \`ai_trigger_detected\` (boolean), \`ai_hateful_prediction\` (0/1), \`ai_disagreement\` (boolean)
+- \`ai_reasoning_presented\` (boolean), \`ai_reasoning_verdict\` (\`ai_correct_changed\` / \`ai_wrong_kept\` / null)
+- \`participant_changed_answer\` (boolean)
 
-**Study design note:** These are two different *assistance-interface versions*, not a filtered-vs-unfiltered comparison. Distribute explicit URLs using externally assigned groups if randomized assignment is desired. A cross-group comparison may be influenced by participants choosing their own URL.
+Independent-only fields:
 
+- \`preferred_not_shown\` (1 yes, 0 no)
+- \`preferred_not_shown_reason\` (\`imagery\`, \`text\`, \`both\`, or null when answer is no)
+- \`ai_hateful_prediction\` and \`ai_trigger_detected\` are null in exported participant responses. Independent participants do not see these model outputs.
+
+Every completed review has **both initial and final hatefulness labels in the same persisted response event**, with review outcome. If no review occurred, initial and final classifications are identical. As with any study using optional abandonment, unfinished individual trials are not submitted as response events.
+
+The \`start\` payload includes \`planned_items\`, \`consented\`, \`study_version\`, \`content_shield\` and \`website_variant\`. Both variants use identical Supabase credentials and function endpoints.
 
 ## Deploy on Netlify
 
-1. Merge the PR. In Netlify, deploy from main with **base directory** \`trial-app\`, **build command** \`npm run build\`, **publish directory** \`dist\`. Netlify functions default to \`netlify/functions\` relative to the base.
-2. Create your free Supabase project and execute \`trial-app/supabase/schema.sql\` in Supabase SQL Editor. Verify the \`public.task_trial_events\` table exists.
-3. In Netlify **Project configuration > Environment variables**, add:
-   - \`SUPABASE_URL\`: the exact project URL, for example \`https://your-ref.supabase.co\`.
-   - \`SUPABASE_SECRET_KEY\`: a Supabase server-side \`sb_secret_...\` key (or use \`SUPABASE_SERVICE_ROLE_KEY\` for the legacy service-role JWT).
-   - \`ADMIN_EXPORT_TOKEN\`: your own strong random token (only for researcher export).
-   - \`ALLOWED_ORIGINS\`: the full deployed origin, such as \`https://your-site.netlify.app\` without the ending slash. For deploy previews or custom domains, include each origin separated by commas.
-4. Set environment variable scopes to **Functions** (or all scopes), then trigger a fresh deployment.
-5. Visit \`https://your-site.netlify.app/api/trials?health=1\`. It should show \`{"ok":true,"storage":"ready"...}\` without requiring your export token. If this fails:
-   - \`BACKEND_NOT_CONFIGURED\` or missing variables: check Netlify environment names, scopes, and redeploy.
-   - \`SUPABASE_401\` / \`SUPABASE_403\`: check server-side key and project URL; never share the secret key.
-   - \`SUPABASE_404\`: execute the included SQL schema in the correct Supabase project.
-   - \`NETWORK_ERROR\`: check Supabase project activity and Netlify Functions logs.
-   - If you see HTML instead of JSON, verify \`netlify.toml\` redirect and functions deployment.
-6. Complete a trial and confirm rows exist in **Supabase > Table Editor > task_trial_events**. The UI footer should say **All responses saved**, not pending. Test at least a start, a response, and a finish event.
+1. Merge this PR into \`main\`. When your Netlify project has GitHub continuous deployment enabled, Netlify rebuilds automatically.
+2. Netlify build settings: repository \`rudrajyotiroy/hai-task-trial\`, **base directory \`trial-app\`**, build command \`npm run build\`, publish directory \`dist\`. The app's \`netlify.toml\` defines the common function rewrite plus both participant routes.
+3. In **Project configuration → Environment variables**, add server-side:
+   - \`SUPABASE_URL\`: \`https://YOUR-PROJECT.supabase.co\`
+   - \`SUPABASE_SECRET_KEY\`: Supabase \`sb_secret_...\` key, or legacy \`SUPABASE_SERVICE_ROLE_KEY\`
+   - \`ADMIN_EXPORT_TOKEN\`: your generated random secret for researcher exports
+   - \`ALLOWED_ORIGINS\`: the Netlify site's **origin**, e.g. \`https://YOUR-SITE.netlify.app\` (same origin for both routes).
+4. Check Supabase table exists: run \`trial-app/supabase/schema.sql\` in the project SQL Editor if not created already.
+5. Check \`https://YOUR-SITE.netlify.app/api/trials?health=1\` — expected \`{"ok":true,"storage":"ready",...}\`. If not, inspect status hints, environment-variable scopes, Supabase status and Netlify Functions logs.
+6. Visit both participant URLs, complete a small trial session, and check that Supabase \`task_trial_events.condition\` and \`payload.website_variant\` agree. For the independent route, verify no blur and that \`preferred_not_shown_reason\` is stored when Yes; for assisted, choose an item with AI disagreement and verify both initial and final labels. Confirm footer says responses saved, not queued.
 
-## Data export
+## Research and content limitations
 
-Send an authenticated request:
+The AI trigger labels, softened captions and hateful classifications are archived model outputs in the 200-item study dataset, **not live AI requests**. They can be wrong or fail to protect participants. Blurring is client-side UI presentation and does not remove third-party image URL network requests; the independent route intentionally exposes the original content. Consult your research ethics/IRB requirements before recruiting participants, particularly for the unfiltered arm. The study uses random local item order but **does not automatically balance assignment across the two explicit URLs**.
+
+The backend accepts anonymous participant submissions and implements locally queued retries. For large public deployments, consider rate limiting, more robust anti-abuse controls and regular backups. Free Supabase projects may pause with inactivity.
+
+## Export study results
+
 \`\`\`bash
 curl -H "Authorization: Bearer YOUR_ADMIN_EXPORT_TOKEN" \
- "https://your-site.netlify.app/api/trials?limit=1000&offset=0" -o results.json
+ "https://YOUR-SITE.netlify.app/api/trials?limit=1000&offset=0" \
+ -o results.json
 \`\`\`
-Increase offset to export additional batches. Never put the token in browser source or share it with participants.
 
-## Privacy and study caveats
-
-Content warnings are approximate. Existing AI trigger labels sometimes over- or under-detect harmful material. The words in the softened captions were generated earlier by the evaluation pipeline and may not always be fully euphemized. This is a **UI blur**, not secure redaction of the original remote image, and a participant can reveal it. Original meme image URLs are third-party-hosted and may expose visitor network metadata to the image host. Consult institutional research requirements for consent and disclosure. The study currently uses browser-local randomization, not a centrally balanced allocation.
-
-The backend accepts anonymous writes and uses an event schema with unique event IDs to allow upload retries; for large public studies, add rate limiting and anti-abuse controls. Back up results regularly; free Supabase projects can pause with inactivity.
-
-## Vercel
-
-Select \`trial-app\` as Root Directory, add the same four environment variables, and deploy. The API entry point is \`api/trials.js\`. Verify the health route first.
+Increment \`offset\` for subsequent pages of up to 1000 events. Never publish the export token or Supabase secret key.
