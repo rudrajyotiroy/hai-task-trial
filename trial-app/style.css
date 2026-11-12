@@ -82,3 +82,13 @@
 .guide-walkthrough .demo-explain>p{min-height:110px}
 .guide-walkthrough .demo-controls{margin-top:17px}
 @media(max-width:800px){.study-head h1{font-size:clamp(21px,4.5vw,27px)}.guide-mock-screen{min-height:350px}.guide-walkthrough .demo-explain>p{min-height:0}}
+
+/* CSE 594 assignment branding and optional participant uniqname */
+.course-header{font-size:20px;font-weight:800;letter-spacing:-.6px;display:flex;align-items:baseline;gap:10px;color:#234e3a;white-space:nowrap}
+.course-subtitle{font-size:12px;font-weight:600;letter-spacing:0;color:#718d7a}
+.uniqname-card{background:#fff;border:1px solid #d9e6dd;border-radius:13px;padding:19px 20px;margin:23px 0}
+.uniqname-label{display:block;font-weight:700;color:#2e533e;margin-bottom:11px}
+.optional-label{margin-left:9px;display:inline-block;font-size:11px;color:#697d6f;font-weight:500;background:#edf4ef;border-radius:20px;padding:3px 9px}
+.uniqname-card input{width:100%;padding:13px 14px;border:1px solid #bcd4c4;border-radius:9px;outline-offset:3px;max-width:390px}
+.uniqname-card p{margin:10px 0 0}
+@media(max-width:600px){.course-header{font-size:16px;flex-wrap:wrap;gap:3px}.course-subtitle{font-size:11px}header .tag{display:none}}
