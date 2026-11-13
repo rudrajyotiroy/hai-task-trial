@@ -3,18 +3,34 @@ import trials from './data/trials.json';
 
 const root=document.getElementById('app');
 const CONDITION=location.pathname.startsWith('/independent')?'independent':'assisted';
-const KEY='hai-task-trial-v3-'+CONDITION, STUDY='hai-meme-evaluation-v1', DEFAULT_COUNT=12, MAX_COUNT=12;
+const KEY='hai-task-trial-v6-'+CONDITION, STUDY='hai-meme-evaluation-v1', DEFAULT_COUNT=12, MAX_COUNT=12;
 const id=()=>crypto.randomUUID();
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const randomized=list=>{const values=[...list];for(let i=values.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[values[i],values[j]]=[values[j],values[i]];}return values;};
-const sharedItemsForUniqname=(name)=>{let seed=2166136261;for(const char of ('cse594-v4:'+name.trim().toLowerCase())){seed=Math.imul(seed^char.charCodeAt(0),16777619)>>>0;}const next=()=>{seed+=0x6D2B79F5;let x=seed;x=Math.imul(x^(x>>>15),x|1);x^=x+Math.imul(x^(x>>>7),x|61);return ((x^(x>>>14))>>>0)/4294967296;};const set=[...trials];for(let i=set.length-1;i>0;i--){let j=Math.floor(next()*(i+1));[set[i],set[j]]=[set[j],set[i]];}return set.map(x=>x.trial_id);};
-const fresh=()=>({id:id(),condition:CONDITION,order:randomized(trials).slice(0,MAX_COUNT).map(t=>t.trial_id),planned:DEFAULT_COUNT,index:0,stage:'welcome',consented:false,uniqname:'',answers:{},events:[],started:null,opened:null,sessionVersion:4,attentionAnswer:null,attentionAttempts:0});
+const sharedItemsForUniqname=(name)=>{let seed=2166136261;for(const char of ('cse594-v6:'+name.trim().toLowerCase())){seed=Math.imul(seed^char.charCodeAt(0),16777619)>>>0;}const next=()=>{seed+=0x6D2B79F5;let x=seed;x=Math.imul(x^(x>>>15),x|1);x^=x+Math.imul(x^(x>>>7),x|61);return ((x^(x>>>14))>>>0)/4294967296;};const set=[...trials];for(let i=set.length-1;i>0;i--){let j=Math.floor(next()*(i+1));[set[i],set[j]]=[set[j],set[i]];}return set.map(x=>x.trial_id);};
+// Each uniqname gets a randomized item order, but the two conditions use
+// non-overlapping slices. This avoids repeat exposure when the same participant
+// takes both versions while retaining random samples across participants.
+const itemsForUniqnameAndCondition=(name,condition,count)=>{
+ const order=sharedItemsForUniqname(name);
+ const offset=condition==='assisted'?0:MAX_COUNT;
+ return order.slice(offset,offset+count);
+};
+const fresh=()=>({id:id(),condition:CONDITION,order:randomized(trials).slice(0,MAX_COUNT).map(t=>t.trial_id),planned:DEFAULT_COUNT,index:0,stage:'welcome',consented:false,uniqname:'',answers:{},events:[],started:null,opened:null,sessionVersion:6,practiceIndex:0,practicePassed:[false,false,false],practiceSelected:null,practiceRevealed:false,attentionDone:{hate:false,not_hate:false},attentionAttempts:{hate:0,not_hate:0},attentionCheck:null,surveyStep:0,surveyAnswers:{},surveyCompleted:false});
 let state;try{state=JSON.parse(localStorage.getItem(KEY));}catch{}
 if(!state||!Array.isArray(state.order)||!Array.isArray(state.events))state=fresh();
 state.answers??={};
 state.uniqname??='';
-state.attentionAnswer??=null;
-state.attentionAttempts??=0;
+state.practiceIndex??=0;
+state.practicePassed??=[false,false,false];
+state.practiceSelected??=null;
+state.practiceRevealed??=false;
+state.attentionDone??={hate:false,not_hate:false};
+state.attentionAttempts??={hate:0,not_hate:0};
+state.attentionCheck??=null;
+state.surveyStep??=0;
+state.surveyAnswers??={};
+state.surveyCompleted??=false;
 state.planned??=state.order.length;
 let walkthroughStep=0;
 const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
@@ -34,7 +50,7 @@ async function flush(){
   state.events=state.events.filter(item=>!ids.has(item.event_id));
   lastError='';save();setStatus(queued()?queued()+' responses pending':'All responses saved');
  }catch(error){lastError=error.message||'Could not reach results storage';setStatus(queued()+' responses pending · '+lastError,true);}
- finally{syncing=false;if(queued()>batch.length&&lastError==='')flush();}
+ finally{syncing=false;if(queued()>0&&lastError==='')flush();}
 }
 function emit(event_type,payload,trial_id=null){
  state.events.push({event_id:id(),study_id:STUDY,session_id:state.id,event_type,trial_id,condition:state.condition,occurred_at:new Date().toISOString(),payload});
@@ -51,204 +67,292 @@ async function health(){
 }
 function button(label,action,cls='primary'){return '<button type="button" class="'+cls+'" data-action="'+action+'">'+label+'</button>';}
 function shell(view,html){
- root.innerHTML='<div class="wrap"><header><span class="course-header">CSE 594 <span class="course-subtitle">Class Assignment</span></span><span class="tag">HUMAN–AI INTERACTION STUDY</span><span>'+escapeHTML(view)+'</span></header><main>'+html+'</main><footer><span>CSE 594 · Class Assignment</span><div class="storage"><span id="sync" aria-live="polite">'+(queued()?queued()+' responses pending':'Check storage status')+'</span>'+button('Check storage','health','link-button')+' '+(queued()?button('Retry upload','retry','link-button'):'')+'</div><span>Version 4.0</span></footer></div>';
+ root.innerHTML='<div class="wrap"><header><span class="course-header">CSE 594 <span class="course-subtitle">Class Assignment</span></span><span class="tag">HUMAN–AI INTERACTION STUDY</span><span>'+escapeHTML(view)+'</span></header><main>'+html+'</main><footer><span>CSE 594 · Class Assignment</span><div class="storage"><span id="sync" aria-live="polite">'+(queued()?queued()+' responses pending':'Check storage status')+'</span>'+button('Check storage','health','link-button')+' '+(queued()?button('Retry upload','retry','link-button'):'')+'</div><span>Version 6.0</span></footer></div>';
  root.querySelectorAll('[data-action]').forEach(element=>element.addEventListener('click',event=>{event.preventDefault();actions[element.dataset.action]?.();}));
  if(lastError)setStatus(queued()+' pending · '+lastError,true);
 }
 function welcome(){
  const assisted=CONDITION==='assisted';
- const intro=assisted
-  ? 'This version uses AI to shield some sensitive content and may show an AI explanation after you make your own hatefulness judgment.'
-  : 'This version shows original meme images and text without blurring, caption softening, or AI-generated evaluation feedback.';
- const risk=assisted
-  ? 'AI filtering is imperfect. Some examples may still contain triggering imagery, hateful language, violence or other disturbing material, even if no warning appears.'
-  : 'Unfiltered-content warning: This version deliberately shows original, unblurred memes. Examples may contain slurs, violent imagery, abuse, discrimination, sexual material or other potentially distressing content. You may skip an item or stop at any time.';
- shell('About the study · '+(assisted?'AI-assisted':'Independent'),`<section class="hero purpose-page"><p class="eyebrow">HUMANS + AI · MEME UNDERSTANDING</p><h1>Help AI understand <em>what memes really mean.</em></h1><p class="lead">Memes can communicate sarcasm, stereotypes and subtle hate that AI may miss. Your independent judgments will help researchers evaluate how AI handles those nuances.</p><div class="purpose-flow"><div class="purpose-card"><div class="purpose-icon">◉</div><strong>Human interpretation</strong><p>Judge whether a meme is hateful, and share whether the content felt triggering to you.</p></div><div class="purpose-arrow" aria-hidden="true">→</div><div class="purpose-card"><div class="purpose-icon">✧</div><strong>Better evaluations</strong><p>Human feedback highlights nuanced examples that AI needs to interpret more accurately.</p></div></div><div class="independence"><p class="eyebrow">TWO INDEPENDENT DIMENSIONS</p><h2>Hateful ≠ triggering</h2><p>A meme can be hateful without personally upsetting you, distressing without targeting a group, both, or neither. The two judgments are separate.</p><div class="quadrant"><div><b>Hateful + triggering</b><small>Both apply</small></div><div><b>Hateful + not triggering</b><small>Hate does not always feel personally distressing</small></div><div><b>Not hateful + triggering</b><small>Distressing is not necessarily hateful</small></div><div><b>Neither</b><small>Neither category applies</small></div></div></div><div class="guard-summary"><span class="purpose-icon">`+(assisted?'◈':'◉')+`</span><div><strong>`+(assisted?'AI-assisted evaluation + safety shield':'Independent evaluation · original content')+`</strong><p>`+escapeHTML(intro)+`</p></div></div><div class="notice"><strong>`+(assisted?'Content warning — AI protection is imperfect':'Content warning — no filtering in this version')+`</strong><p>`+escapeHTML(risk)+`</p></div><div class="uniqname-card"><label for="uniqname" class="uniqname-label">University of Michigan uniqname <span class="optional-label">Optional</span></label><input id="uniqname" name="uniqname" type="text" maxlength="32" autocomplete="off" spellcheck="false" placeholder="e.g., youruniqname" value="`+escapeHTML(state.uniqname||'')+`"><p class="muted">You can leave this blank. If supplied, your uniqname will be saved with your session responses and can identify you. Your responses are linked through a session ID. Using the same uniqname in both study versions assigns the same meme sample in each.</p><p id="uniqname-error" class="error" role="alert"></p></div><label class="consent"><input id="consent" type="checkbox"> I am at least 18, understand the study purpose and the content risks of this version, and voluntarily agree to participate.</label><p>`+button('Continue to practice walkthrough →','guide')+`</p></section>`);
+ const warning=assisted
+  ? 'AI may blur or soften potentially distressing material, but it can miss sensitive content. You can skip any example or leave at any time.'
+  : 'This version displays unfiltered original memes, which may contain hateful language, violent imagery, or other distressing material. You can skip any example or leave at any time.';
+ shell('Introduction · '+(assisted?'AI assisted':'Without AI'),
+ '<section class="hero welcome-simple"><p class="eyebrow">CSE 594 CLASS ASSIGNMENT · VOLUNTARY STUDY</p><h1>Help improve <em>hateful meme detection.</em></h1>'+
+ '<p class="lead">Memes rely on sarcasm and context that AI can miss. We compare human judgments with and without AI assistance to learn what helps—and what can harm—human evaluators.</p>'+
+ '<div class="intro-key"><strong>Two separate questions:</strong> Is this meme hateful? Did it feel triggering or distressing? A meme can be one, both, or neither.</div>'+
+ '<div class="intro-key">'+(assisted?'<strong>AI-assisted version:</strong> AI may shield sensitive material and offer reasoning after you disagree.':'<strong>Without-AI version:</strong> Original memes are shown without filtering or AI feedback.')+'</div>'+
+ '<div class="notice"><strong>Content advisory</strong><p>'+escapeHTML(warning)+'</p></div>'+
+ '<div class="uniqname-card"><label for="uniqname" class="uniqname-label">University of Michigan uniqname <span class="optional-label">Optional</span></label><input id="uniqname" name="uniqname" type="text" maxlength="32" autocomplete="off" spellcheck="false" placeholder="e.g., youruniqname" value="'+escapeHTML(state.uniqname||'')+'"><p class="muted">You may leave this blank. If provided, your uniqname makes the session identifiable and can match your two study conditions.</p><p id="uniqname-error" class="error" role="alert"></p></div>'+
+ '<label class="consent"><input id="consent" type="checkbox"> I am at least 18 and voluntarily consent after reading this content advisory.</label>'+
+ '<p>'+button('Continue to three practice examples →','guide')+'</p></section>');
 }
+const PRACTICE=[
+ {name:'A plainly hateful stereotype',caption:'Girls do not belong in science labs.',safeCaption:'A person states that girls should be excluded from scientific work.',label:1,explanation:'Correct: the text excludes people from an opportunity because of gender. It is identity-based hostility, without requiring a slur.',symbol:'👩‍🔬',kind:'hateful'},
+ {name:'An everyday harmless joke',caption:'When the meeting could have been an email… but you brought snacks anyway.',safeCaption:'A joke about a long meeting.',label:0,explanation:'Correct: the joke is about meetings. It does not attack an identity group.',symbol:'✉️',kind:'benign'},
+ {name:'Strong imagery/language, but not hate',caption:'WHAT THE HELL?! Fake horror-movie blood is everywhere!',safeCaption:'A surprised actor reacts to a messy pretend-horror effect.',label:0,explanation:'Correct: pretend blood and mild profanity can be sensitive, but they do not make a meme hateful toward an identity group.',symbol:'🎭',kind:'sensitive'}
+];
 function guide(){
- const assisted=CONDITION==='assisted';
- const steps=[
-  {
-   title:'Look at the meme',
-   description:assisted?'First, review the image and caption. If AI flags sensitive content, it may blur the image and soften words. You can reveal the original only if you choose.':'First, look at the original image and caption. This version does not filter content; you can skip an item at any point.',
-   visual:'meme'
-  },
-  {
-   title:'Decide whether it is hateful',
-   description:'Use the five-point hatefulness scale. One or two = not hateful; three = unsure; four or five = hateful. Sarcasm and context matter.',
-   visual:'hate'
-  },
-  {
-   title:'Report your experience',
-   description:'Independently indicate whether the meme was triggering and whether you would prefer not to see it; if so, specify imagery, text or both.',
-   visual:'sensitive'
-  },
-  {
-   title:'Give confidence, or skip the example',
-   description:'Choose confidence from 1 to 5 and optionally explain your choice. Selecting Skip example submits the trial as skipped, with no hatefulness, triggering, or other judgments recorded.',
-   visual:'confidence'
-  },
-  {
-   title:assisted?'Review AI reasoning only if you disagree':'Submit and continue',
-   description:assisted?'If your clear initial hateful/not-hateful judgment differs from the AI’s, read its reasoning and decide whether to change the response. Both judgments are saved.':'Submit your evaluation, then move to the next meme. No AI opinion or disagreement review is shown in this version.',
-   visual:assisted?'disagreement':'done'
-  }
- ];
- const n=Math.min(steps.length-1,Math.max(0,walkthroughStep)),step=steps[n];
- const mockMeme='<div class="guide-mock-meme"><span class="mock-meme-icon" aria-hidden="true">✉</span><strong>When the 60-minute meeting could have been an email…</strong><small>Harmless illustrative meme · not part of this study</small></div>';
- let mockControls='';
- if(step.visual==='meme')mockControls='<div class="guide-mock-tip">'+(assisted?'In assisted sessions, potentially sensitive real images may appear blurred.':'In independent sessions, real images and text will be shown unfiltered.')+'</div>';
- if(step.visual==='hate')mockControls='<div class="guide-mock-panel"><b>How hateful is the example (1–5)?</b><div class="guide-mock-choice">1 · Definitely not hateful</div><div class="guide-mock-choice selected">2 · Probably not hateful</div><div class="guide-mock-choice">3 · Unsure / ambiguous</div><div class="guide-mock-choice">4 · Probably hateful</div><div class="guide-mock-choice">5 · Definitely hateful</div></div>';
- if(step.visual==='sensitive')mockControls='<div class="guide-mock-panel"><b>Was this example triggering?</b><div class="guide-mock-choice selected">● No, not triggering</div><b class="guide-mock-subtitle">Would you rather not have seen it?</b><div class="guide-mock-choice selected">● No</div><small>If yes: imagery / text / both</small></div>';
- if(step.visual==='confidence')mockControls='<div class="guide-mock-panel"><b>How confident are you?</b><div class="guide-mock-scale"><span>1</span><span>2</span><strong>3</strong><span>4</span><span>5</span></div><div class="guide-mock-buttons"><span>Skip example</span><strong>Save & continue</strong></div></div>';
- if(step.visual==='disagreement')mockControls='<div class="guide-mock-panel"><b>Your judgment: Not hateful</b><div class="guide-mock-choice">AI judgment: Hateful</div><small>Read the AI’s explanation, then decide:</small><div class="guide-mock-choice">Change my answer</div><div class="guide-mock-choice selected">Keep my answer</div></div>';
- if(step.visual==='done')mockControls='<div class="guide-mock-panel"><b>Response submitted</b><p>Move on to the next sample. Your initial judgment is saved.</p></div>';
- const dots=steps.map((_,i)=>'<button type="button" data-guide-step="'+i+'" class="demo-dot '+(i===n?'active':'')+'" aria-label="Show walkthrough step '+(i+1)+'" aria-current="'+(i===n?'step':'false')+'"></button>').join('');
- shell('Practice + setup',`<section class="guide-page"><p class="eyebrow">PRACTICE BEFORE YOU START</p><h1>One example, <em>five easy steps.</em></h1><p class="lead">This interactive preview shows what you'll do in a trial. Click Next or Previous to go through the steps at your own pace. The example below is safe and illustrative.</p><div class="walkthrough guide-walkthrough"><div class="guide-mock-screen"><div class="guide-mock-header"><span>EXAMPLE TRIAL</span><span>PREVIEW ONLY</span></div>`+mockMeme+mockControls+`</div><div class="demo-explain" aria-live="polite"><span class="demo-count">STEP `+(n+1)+` OF `+steps.length+`</span><h2>`+escapeHTML(step.title)+`</h2><p>`+escapeHTML(step.description)+`</p><div class="demo-dots">`+dots+`</div><div class="demo-controls">`+button('← Previous','demo-prev','secondary')+button(n===steps.length-1?'Back to step 1 ↺':'Next step →','demo-next','secondary')+`</div><p class="muted">Select a dot or use the buttons to change steps. Nothing advances automatically.</p></div></div><div class="setup-card"><div><p class="eyebrow">CHOOSE YOUR SESSION LENGTH</p><h2>How many memes would you like to evaluate today?</h2><p class="muted">Choose 1–12 trials (12 by default; designed for under ten minutes including instructions). You can skip an entire example or stop at any time.</p></div><div class="number-config"><button type="button" data-count-change="-1" aria-label="One fewer trial">−</button><input type="number" id="trial-count" min="1" max="12" step="1" value="`+state.planned+`" aria-label="Number of task trials"><button type="button" data-count-change="1" aria-label="One more trial">+</button></div></div><div class="attention-check"><h3>Quick attention check</h3><p>What does the <strong>Skip example</strong> button do?</p><label class="attention-option"><input type="radio" name="attention" value="whole" `+(state.attentionAnswer==='whole'?'checked':'')+`> It skips the entire meme and records no judgments for it</label><label class="attention-option"><input type="radio" name="attention" value="hate-only" `+(state.attentionAnswer==='hate-only'?'checked':'')+`> It skips only the hateful-content rating</label><p class="muted">This checks understanding. You may correct your response and retry.</p></div><div class="notice"><strong>`+(assisted?'AI filtering is not a guarantee':'Original content is shown without filtering')+`</strong><p>`+escapeHTML(assisted?'AI may miss triggering images or language. Keep protected content hidden, skip any item, or stop at any point.':'Real examples may include sensitive imagery and language. Nothing is blurred or euphemized in the independent version. You can skip the whole example or stop participating.')+`</p></div><div class="guide-actions">`+button('← Back','back-to-purpose','secondary')+button('Start my trials →','begin')+`</div><p id="guide-error" class="error" role="alert"></p></section>`);
+ const i=Math.min(2,Math.max(0,state.practiceIndex)),sample=PRACTICE[i],isAssisted=CONDITION==='assisted';
+ const shield=i===2&&isAssisted&&!state.practiceRevealed;
+ const allDone=state.practicePassed.every(Boolean);
+ const feedback=state.practiceSelected===null?'':(state.practiceSelected===sample.label?'correct':'incorrect');
+ const explanation=feedback==='correct'?sample.explanation:'Not quite. Ask whether the meme targets an identity group, then try again.';
+ const caption=shield?sample.safeCaption:sample.caption;
+ const art='<div class="practice-art '+sample.kind+(shield?' practice-blurred':'')+'" role="img" aria-label="Illustrative practice example, not a real study meme"><div class="practice-symbol">'+sample.symbol+'</div><div class="practice-art-caption">'+escapeHTML(sample.caption)+'</div></div>';
+ const demo='<div class="practice-frame"><div class="practice-frame-head"><span>EXAMPLE '+(i+1)+' OF 3</span><span>TRAINING ONLY</span></div>'+art+(shield?'<div class="practice-shield"><strong>AI content shield</strong><p>Graphic themes and strong language were softened.</p>'+button('Reveal example','practice-reveal','secondary')+'</div>':'')+(shield?'<div class="practice-soft-caption"><small>SOFTENED CAPTION</small><p>'+escapeHTML(caption)+'</p></div>':'')+'</div>';
+ const choices='<div class="practice-answers"><button type="button" data-practice="1" class="choice '+(state.practiceSelected===1?'chosen':'')+'"><b>Hateful</b></button><button type="button" data-practice="0" class="choice '+(state.practiceSelected===0?'chosen':'')+'"><b>Not hateful</b></button></div>';
+ const nav='<div class="practice-navigation">'+(i>0?button('← Previous','practice-prev','secondary'):'<span></span>')+(state.practicePassed[i]&&i<2?button('Next example →','practice-next','primary'):i===2&&allDone?'<strong class="practice-done">All three completed ✓</strong>':'<small>Choose the correct answer to continue</small>')+'</div>';
+ const dots=PRACTICE.map((_,index)=>'<span class="practice-progress-dot '+(state.practicePassed[index]?'passed ':'')+(index===i?'current':'')+'" aria-label="Example '+(index+1)+(state.practicePassed[index]?' completed':'')+'"></span>').join('');
+ const setup='<div class="practice-setup"><div class="practice-setup-label"><strong>Study length</strong><small>1–12 memes · two short checks · post-survey</small></div><div class="number-config"><button type="button" data-count-change="-1" aria-label="One fewer trial">−</button><input type="number" id="trial-count" min="1" max="12" step="1" value="'+state.planned+'" aria-label="Number of task trials"><button type="button" data-count-change="1" aria-label="One more trial">+</button></div></div>';
+ shell('Practice · '+(i+1)+' of 3',
+ '<section class="guide-page compact-guide practice-fit"><div class="practice-title-row"><div><p class="eyebrow">THREE REQUIRED PRACTICE EXAMPLES</p><h1>Hateful <em>or not?</em></h1></div><div class="practice-progress" aria-label="Practice progress">'+dots+'<small>'+(state.practicePassed.filter(Boolean).length)+'/3 completed</small></div></div>'+
+ '<p class="practice-summary">Choose an answer for each example. You will get immediate feedback; sensitive does not always mean hateful.</p>'+
+ '<div class="practice-main practice-one-screen">'+demo+'<div class="practice-explain"><span class="demo-count">QUESTION '+(i+1)+' / 3</span><h2>'+escapeHTML(sample.name)+'</h2><p>Does this example attack a protected identity group?</p>'+choices+'<div class="practice-feedback-slot">'+(feedback?'<div class="practice-feedback '+feedback+'" role="status"><b>'+(feedback==='correct'?'✓ Correct':'Try again')+'</b><p>'+escapeHTML(explanation)+'</p></div>':'<p class="practice-hint">Both answers are always selectable. Take your time.</p>')+'</div>'+nav+'</div></div>'+
+ '<div class="practice-bottom">'+setup+'<div class="practice-bottom-actions">'+button('← Introduction','back-to-purpose','secondary')+(allDone?button('Start study →','begin','primary'):'<span class="muted">Complete all three examples to start.</span>')+'</div></div><p id="guide-error" class="error" role="alert"></p></section>');
  const countInput=document.querySelector('#trial-count');
- const saveCount=()=>{const count=Number(countInput.value);if(Number.isInteger(count)&&count>=1&&count<=MAX_COUNT){state.planned=count;save();document.querySelector('#guide-error').textContent='';}};
+ const saveCount=()=>{const val=Number(countInput.value);if(Number.isInteger(val)&&val>=1&&val<=MAX_COUNT){state.planned=val;save();document.querySelector('#guide-error').textContent='';}};
  countInput.addEventListener('change',saveCount);
- countInput.addEventListener('input',()=>{const n=Number(countInput.value);if(Number.isInteger(n)&&n>=1&&n<=MAX_COUNT){state.planned=n;save();}});
  document.querySelectorAll('[data-count-change]').forEach(el=>el.addEventListener('click',()=>{countInput.value=String(Math.min(MAX_COUNT,Math.max(1,(Number(countInput.value)||DEFAULT_COUNT)+Number(el.dataset.countChange))));saveCount();}));
- document.querySelectorAll('[data-guide-step]').forEach(el=>el.addEventListener('click',()=>{walkthroughStep=Number(el.dataset.guideStep);guide();}));
- document.querySelectorAll('input[name="attention"]').forEach(el=>el.addEventListener('change',()=>{state.attentionAnswer=el.value;save();}));
+ document.querySelectorAll('[data-practice]').forEach(el=>el.addEventListener('click',()=>{state.practiceSelected=Number(el.dataset.practice);if(state.practiceSelected===sample.label)state.practicePassed[i]=true;save();guide();}));
 }
 function task(){
  const item=current();
- if(!item){state.stage='done';save();finish();return;}
+ if(!item){state.stage='survey';state.surveyStep=0;save();survey();return;}
  const answer=state.answers[item.trial_id]||{};
+ const reviewing=state.stage==='review';
  const shielded=CONDITION==='assisted'&&item.ai_trigger_flag===true;
- const revealedImage=answer.revealedImage===true;
- const revealedText=answer.revealedText===true;
+ const revealedImage=answer.revealedImage===true, revealedText=answer.revealedText===true;
  const displayCaption=shielded&&!revealedText?(item.ai_euphemized_caption||'[Caption withheld: potentially distressing language]'):item.meme_text;
- const notice=shielded?'<div class="trigger"><div class="eyebrow">✧ '+(CONDITION==='assisted'?'AI CONTENT SHIELD ACTIVE':'CONTENT SAFETY FILTER')+'</div><p><strong>'+escapeHTML(CONDITION==='assisted'?(item.ai_trigger_notice||'Potentially distressing content detected.'):'This sample may contain sensitive material.')+'</strong></p>'+(CONDITION==='assisted'&&item.ai_trigger_categories?.length?'<div class="chips">'+item.ai_trigger_categories.map(cat=>'<span>'+escapeHTML(cat)+'</span>').join('')+'</div>':'')+'<p class="muted">The original image is obscured, and the caption may be softened. This protection can miss some sensitive material.</p></div>':'';
- const image='<div class="meme '+(shielded&&!revealedImage?'blurred':'')+'"><img src="'+escapeHTML(item.image_url)+'" alt="Meme under evaluation" referrerpolicy="no-referrer"><p class="muted">If this image fails to load, you may skip the item.</p>'+(shielded&&!revealedImage?'<div class="shield-overlay"><strong>Image blurred</strong><span>Possible distressing content</span>'+button('Reveal original image','reveal-image','reveal')+'</div>':'')+'</div>';
+ const notice=shielded?'<div class="trigger"><div class="eyebrow">AI SAFETY SHIELD</div><p><strong>'+escapeHTML(item.ai_trigger_notice||'Potentially distressing content detected.')+'</strong></p>'+(item.ai_trigger_categories?.length?'<div class="chips">'+item.ai_trigger_categories.map(cat=>'<span>'+escapeHTML(cat)+'</span>').join('')+'</div>':'')+'<p class="muted">A safety flag is separate from a hateful-meme classification. You can leave this content shielded.</p></div>':'';
+ const image='<div class="meme '+(shielded&&!revealedImage?'blurred':'')+'"><img src="'+escapeHTML(item.image_url)+'" alt="Meme under evaluation" referrerpolicy="no-referrer" loading="eager"><p class="muted">If the image does not load, you may skip the example.</p>'+(shielded&&!revealedImage?'<div class="shield-overlay"><strong>Image blurred</strong><span>Possible sensitive material</span>'+button('Reveal original image','reveal-image','reveal')+'</div>':'')+'</div>';
  const caption='<div class="caption"><small>'+(shielded&&!revealedText?'SOFTENED CAPTION':'ORIGINAL CAPTION')+'</small><p>'+escapeHTML(displayCaption)+'</p>'+(shielded&&!revealedText?button('Show original caption','reveal-text','link-button'):'')+'</div>';
- const triggerQuestion='<div class="trigger-question"><h2>Was this example triggering or distressing to you?</h2><p class="muted">Your personal experience, independent of hatefulness and AI flags.</p><div class="choices trigger-choices"><button class="choice '+(answer.triggering===1?'chosen':'')+'" data-triggering="1"><b>Yes, potentially triggering</b></button><button class="choice '+(answer.triggering===0?'chosen':'')+'" data-triggering="0"><b>No, not triggering to me</b></button></div></div>';
- const avoidanceQuestion='<div class="trigger-question"><h2>Would you have preferred not to see this example?</h2><p class="muted">A separate viewing preference. Either answer is valid.</p><div class="choices trigger-choices"><button class="choice '+(answer.avoid_preference===1?'chosen':'')+'" data-avoid="1"><b>Yes, I would rather not have seen it</b></button><button class="choice '+(answer.avoid_preference===0?'chosen':'')+'" data-avoid="0"><b>No, I was comfortable seeing it</b></button></div><div id="avoid-reason" class="avoid-reason '+(answer.avoid_preference===1?'':'hidden')+'"><h3>If yes, what made you prefer not to see it?</h3><div class="choices trigger-choices"><button class="choice '+(answer.avoid_reason==='imagery'?'chosen':'')+'" data-avoid-reason="imagery"><b>Imagery</b></button><button class="choice '+(answer.avoid_reason==='text'?'chosen':'')+'" data-avoid-reason="text"><b>Text</b></button><button class="choice '+(answer.avoid_reason==='both'?'chosen':'')+'" data-avoid-reason="both"><b>Both</b></button></div></div></div>';
- const hatefulChoices=[['Definitely not hateful',1],['Probably not hateful',2],['Unsure / ambiguous',3],['Probably hateful',4],['Definitely hateful',5]].map(([label,value])=>'<button type="button" class="choice '+(answer.hateful_likert===value?'chosen':'')+'" data-hateful-likert="'+value+'"><b>'+label+'</b></button>').join('');
- shell('Question '+(state.index+1)+' / '+state.order.length,
- '<div class="study-head"><p class="eyebrow">EVALUATION IN PROGRESS</p><h1>Thanks for your contribution to help improve hate speech detection</h1><p>Evaluate each sample at your own pace, or skip the entire example whenever you wish.</p><div class="progress"><div style="width:'+(100*state.index/state.order.length)+'%"></div></div></div>'+
- '<div class="grid"><section class="panel"><p class="eyebrow">CONTENT TO REVIEW</p>'+notice+image+caption+'</section><section class="panel"><p class="eyebrow">YOUR EVALUATION</p><h2>How hateful is this meme?</h2><p class="muted">Choose one point on the five-point scale. Your answer is recorded before any AI opinion is shown.</p><div class="choices hateful-choices">'+hatefulChoices+'</div>'+triggerQuestion+avoidanceQuestion+'<h3>How confident are you?</h3><div class="slider-label"><span>Not confident</span><strong id="conf-value">'+(answer.confidence?answer.confidence+' / 5':'Not selected')+'</strong><span>Very confident</span></div><input id="confidence" type="range" min="1" max="5" value="'+(answer.confidence||3)+'"><div class="slider-label"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div><h3>Why did you choose this answer? <small>Optional</small></h3><textarea id="reason" maxlength="1500" rows="4" placeholder="Describe context, cues or uncertainty…">'+escapeHTML(answer.reason||'')+'</textarea><div class="actions"><button class="skip" data-action="skip">Skip example</button>'+button(state.index===state.order.length-1?'Finish evaluation →':'Save & continue →','next')+'</div><p class="error" id="error" role="alert"></p></section></div>');
- document.querySelectorAll('[data-hateful-likert]').forEach(element=>element.addEventListener('click',()=>{answer.hateful_likert=Number(element.dataset.hatefulLikert);answer.label=answer.hateful_likert===3?null:(answer.hateful_likert>3?1:0);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-hateful-likert]').forEach(x=>x.classList.toggle('chosen',x===element));}));
- document.querySelectorAll('[data-triggering]').forEach(element=>element.addEventListener('click',()=>{answer.triggering=Number(element.dataset.triggering);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-triggering]').forEach(x=>x.classList.toggle('chosen',x===element));}));
- document.querySelectorAll('[data-avoid]').forEach(element=>element.addEventListener('click',()=>{answer.avoid_preference=Number(element.dataset.avoid);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-avoid]').forEach(x=>x.classList.toggle('chosen',x===element));const reason=document.querySelector('#avoid-reason');if(reason)reason.classList.toggle('hidden',answer.avoid_preference!==1);}));
- document.querySelectorAll('[data-avoid-reason]').forEach(element=>element.addEventListener('click',()=>{answer.avoid_reason=element.dataset.avoidReason;state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-avoid-reason]').forEach(x=>x.classList.toggle('chosen',x===element));}));
- document.querySelector('#confidence').addEventListener('input',event=>{answer.confidence=Number(event.target.value);state.answers[item.trial_id]=answer;save();document.querySelector('#conf-value').textContent=answer.confidence+' / 5';});
- document.querySelector('#reason').addEventListener('input',event=>{answer.reason=event.target.value;state.answers[item.trial_id]=answer;save();});
+ const lock=reviewing?' disabled':'';
+ const hatefulChoices=[['Definitely not hateful',1],['Probably not hateful',2],['Unsure / ambiguous',3],['Probably hateful',4],['Definitely hateful',5]].map(([label,value])=>'<button type="button"'+lock+' class="choice '+(answer.hateful_likert===value?'chosen':'')+'" data-hateful-likert="'+value+'"><b>'+value+' · '+label+'</b></button>').join('');
+ const triggerQuestion='<div class="trigger-question"><h2>Did this meme feel triggering to you?</h2><div class="choices trigger-choices"><button type="button"'+lock+' class="choice '+(answer.triggering===1?'chosen':'')+'" data-triggering="1"><b>Yes</b></button><button type="button"'+lock+' class="choice '+(answer.triggering===0?'chosen':'')+'" data-triggering="0"><b>No</b></button></div></div>';
+ const avoidanceQuestion='<div class="trigger-question"><h2>Would you rather not have seen this meme?</h2><div class="choices trigger-choices"><button type="button"'+lock+' class="choice '+(answer.avoid_preference===1?'chosen':'')+'" data-avoid="1"><b>Yes</b></button><button type="button"'+lock+' class="choice '+(answer.avoid_preference===0?'chosen':'')+'" data-avoid="0"><b>No</b></button></div><div id="avoid-reason" class="avoid-reason '+(answer.avoid_preference===1?'':'hidden')+'"><h3>What made you prefer not to see it?</h3><div class="choices trigger-choices"><button type="button"'+lock+' class="choice '+(answer.avoid_reason==='imagery'?'chosen':'')+'" data-avoid-reason="imagery"><b>Imagery</b></button><button type="button"'+lock+' class="choice '+(answer.avoid_reason==='text'?'chosen':'')+'" data-avoid-reason="text"><b>Text</b></button><button type="button"'+lock+' class="choice '+(answer.avoid_reason==='both'?'chosen':'')+'" data-avoid-reason="both"><b>Both</b></button></div></div></div>';
+ const selectedConfidence=answer.confidence??3; // Preset is a valid answer; no interaction is needed.
+ const confidenceChoices=[1,2,3,4,5].map(x=>'<button type="button"'+lock+' data-confidence="'+x+'" class="confidence-option '+(selectedConfidence===x?'chosen':'')+'" aria-label="Confidence '+x+' of 5" aria-pressed="'+(selectedConfidence===x?'true':'false')+'">'+x+'</button>').join('');
+ const reason='<h3>Why did you make this choice? <small>Optional</small></h3><textarea id="reason" maxlength="1500" rows="3"'+lock+' placeholder="Sarcasm, context or other clues…">'+escapeHTML(answer.reason||'')+'</textarea>';
+ let reviewPanel='';
+ if(reviewing){
+  const initial=answer.initialLabel===1?'Hateful':'Not hateful';
+  const prediction=item.ai_hateful_prediction===1?'Hateful':'Not hateful';
+  reviewPanel='<div class="inline-ai-review" role="region" aria-label="AI disagreement review"><p class="eyebrow">AI DISAGREEMENT · SECOND LOOK</p><h2>Your first judgment differs from the AI.</h2><div class="review-summary"><span><small>YOU ANSWERED</small><strong>'+initial+'</strong></span><span><small>AI PREDICTED</small><strong>'+prediction+'</strong></span></div><p class="eyebrow">AI MODEL REASONING</p><p class="ai-explanation">'+escapeHTML(item.ai_explanation||'The model did not provide a textual explanation.')+'</p><p class="muted">AI reasoning may be mistaken or include sensitive wording. Your first answer is already preserved.</p><p><strong>After reading this, do you want to change your answer?</strong></p><div class="review-options">'+button('Change to AI answer','agree-ai','primary')+button('Keep my original answer','reject-ai','secondary')+'</div></div>';
+ }
+ const controls=reviewing?'<p class="muted">Your answers are locked for this review. Choose one of the two buttons above to continue.</p>':'<div class="actions"><button type="button" class="skip" data-action="skip">Skip entire example</button>'+button(state.index===state.order.length-1?'Save & go to survey →':'Save & continue →','next')+'</div><p class="muted">Confidence defaults to 3. You can click any number directly, including 3.</p>';
+ shell('Task '+(state.index+1)+' / '+state.order.length,
+ '<div class="study-head"><p class="eyebrow">'+(reviewing?'REVIEW YOUR ANSWER':'MEME EVALUATION')+'</p><h1>Thanks for your contribution to help improve hate speech detection</h1><div class="progress"><div style="width:'+(100*state.index/state.order.length)+'%"></div></div></div>'+
+ '<div class="grid"><section class="panel"><p class="eyebrow">MEME '+(state.index+1)+' OF '+state.order.length+'</p>'+notice+image+caption+'</section><section class="panel"><p class="eyebrow">'+(reviewing?'SECOND LOOK':'YOUR EVALUATION')+'</p>'+reviewPanel+'<h2>How hateful is this meme?</h2><p class="muted">Choose 1–5; a meme can be disturbing without expressing hate.</p><div class="choices hateful-choices">'+hatefulChoices+'</div>'+triggerQuestion+avoidanceQuestion+'<h3>How confident are you?</h3><p class="muted">1 = not confident · 5 = very confident. 3 is selected by default.</p><div class="confidence-options">'+confidenceChoices+'</div>'+reason+controls+'<p class="error" id="error" role="alert"></p></section></div>');
+ if(!reviewing){
+  document.querySelectorAll('[data-hateful-likert]').forEach(element=>element.addEventListener('click',()=>{answer.hateful_likert=Number(element.dataset.hatefulLikert);answer.label=answer.hateful_likert===3?null:(answer.hateful_likert>3?1:0);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-hateful-likert]').forEach(x=>x.classList.toggle('chosen',x===element));}));
+  document.querySelectorAll('[data-triggering]').forEach(element=>element.addEventListener('click',()=>{answer.triggering=Number(element.dataset.triggering);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-triggering]').forEach(x=>x.classList.toggle('chosen',x===element));}));
+  document.querySelectorAll('[data-avoid]').forEach(element=>element.addEventListener('click',()=>{answer.avoid_preference=Number(element.dataset.avoid);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-avoid]').forEach(x=>x.classList.toggle('chosen',x===element));document.querySelector('#avoid-reason').classList.toggle('hidden',answer.avoid_preference!==1);}));
+  document.querySelectorAll('[data-avoid-reason]').forEach(element=>element.addEventListener('click',()=>{answer.avoid_reason=element.dataset.avoidReason;state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-avoid-reason]').forEach(x=>x.classList.toggle('chosen',x===element));}));
+  document.querySelectorAll('[data-confidence]').forEach(element=>element.addEventListener('click',()=>{answer.confidence=Number(element.dataset.confidence);answer.confidenceTouched=true;state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-confidence]').forEach(x=>{x.classList.toggle('chosen',x===element);x.setAttribute('aria-pressed',String(x===element));});}));
+  document.querySelector('#reason').addEventListener('input',event=>{answer.reason=event.target.value;state.answers[item.trial_id]=answer;save();});
+ }
  if(queued()&&!lastError)flush();
 }
 function reveal(kind){
  const item=current();if(!item||CONDITION!=='assisted'||!item.ai_trigger_flag)return;
  const answer=state.answers[item.trial_id]||{};
  answer[kind==='image'?'revealedImage':'revealedText']=true;
- state.answers[item.trial_id]=answer;save();
- // Do not add new event types: record reveal actions in response payload.
- task();
+ state.answers[item.trial_id]=answer;save();task();
 }
 function submit(skipped){
- const item=current(), answer=state.answers[item.trial_id]||{};
- const error=document.querySelector('#error');
- if(!skipped&&![0,1].includes(answer.triggering)){error.textContent='Please vote whether this example felt triggering before continuing.';return;}
- if(!skipped&&![0,1].includes(answer.avoid_preference)){error.textContent='Please answer whether you would have preferred not to see this sample.';return;}
- if(!skipped&&answer.avoid_preference===1&&!['imagery','text','both'].includes(answer.avoid_reason)){error.textContent='Please select imagery, text, or both as the reason you would rather not have seen this meme.';return;}
- if(!skipped&&(![1,2,3,4,5].includes(answer.hateful_likert)||!answer.confidence)){error.textContent='Select a hateful-content scale option and adjust confidence, or skip the entire example.';return;}
+ if(state.stage!=='task')return;
+ const item=current(), answer=state.answers[item.trial_id]||{},error=document.querySelector('#error');
+ if(!skipped){
+  if(![1,2,3,4,5].includes(answer.hateful_likert)){error.textContent='Please choose a hateful-content rating, or skip the whole example.';return;}
+  if(![0,1].includes(answer.triggering)){error.textContent='Please answer the triggering question, or skip the whole example.';return;}
+  if(![0,1].includes(answer.avoid_preference)){error.textContent='Please answer whether you would rather not see this meme, or skip the whole example.';return;}
+  if(answer.avoid_preference===1&&!['imagery','text','both'].includes(answer.avoid_reason)){error.textContent='Choose imagery, text or both, or skip the whole example.';return;}
+ }
  answer.skipped=Boolean(skipped);
- answer.initialLabel=skipped?null:answer.label;
+ answer.initialLabel=skipped?null:(answer.hateful_likert===3?null:(answer.hateful_likert>3?1:0));
  answer.initialLikert=skipped?null:answer.hateful_likert;
- answer.initialConfidence=skipped?null:answer.confidence;
+ answer.initialConfidence=skipped?null:(answer.confidence??3);
  state.answers[item.trial_id]=answer;
  const disagreement=CONDITION==='assisted'&&!skipped&&[0,1].includes(answer.initialLabel)&&[0,1].includes(item.ai_hateful_prediction)&&answer.initialLabel!==item.ai_hateful_prediction;
- if(disagreement){state.stage='review';save();render();return;}
+ if(disagreement){state.stage='review';save();task();return;}
  completeResponse({review_response:null,review_shown:false,final_label:answer.initialLabel});
 }
-function review(){
- const item=current(), answer=state.answers[item.trial_id]||{};
- if(!item||CONDITION!=='assisted'||answer.skipped||![0,1].includes(answer.initialLabel)||answer.initialLabel===item.ai_hateful_prediction){state.stage='task';save();render();return;}
- const participant=answer.initialLabel===1?'Hateful':'Not hateful';
- const ai=item.ai_hateful_prediction===1?'Hateful':'Not hateful';
- shell('AI disagreement · '+(state.index+1)+' / '+state.order.length,
- '<section class="review-page"><p class="eyebrow">SECOND-LOOK REVIEW · AFTER YOUR FIRST RESPONSE</p><h1>You and the AI <em>disagree.</em></h1><p class="lead">Your original judgment has been recorded. Read the AI explanation, then decide whether it changes your mind. The AI can be wrong, particularly about sarcasm and context.</p><div class="comparison"><div class="comparison-card"><small>YOUR INITIAL JUDGMENT</small><strong>'+escapeHTML(participant)+'</strong></div><div class="comparison-card ai-comparison"><small>AI MODEL PREDICTION</small><strong>'+escapeHTML(ai)+'</strong></div></div><div class="ai-reason"><p class="eyebrow">WHY THE MODEL REACHED ITS ANSWER</p><p>'+escapeHTML(item.ai_explanation||'No explanation available for this prediction.')+'</p><p class="muted">This is the model’s interpretation, not a verified fact. It may itself contain references to sensitive material.</p></div><h2>After reading the reasoning, what do you think?</h2><div class="review-options">'+button('AI seems correct — change my answer','agree-ai','primary')+button('AI seems wrong — keep my answer','reject-ai','secondary')+'</div><p class="muted">Your initial response and this second-look decision will both be stored for research. The model’s answer was not shown before you made your first judgment.</p></section>');
-}
+
 function completeResponse({review_response,review_shown,final_label}){
- const item=current(),answer=state.answers[item.trial_id]||{};
+ const item=current(),answer=state.answers[item?.trial_id]||{};
  if(!item)return;
  const initial=answer.skipped?null:answer.initialLabel;
- const disagree=CONDITION==='assisted'&&initial!==null&&[0,1].includes(item.ai_hateful_prediction)&&initial!==item.ai_hateful_prediction;
- if(disagree&&review_response===null)return;
+ const disagreement=CONDITION==='assisted'&&[0,1].includes(initial)&&[0,1].includes(item.ai_hateful_prediction)&&initial!==item.ai_hateful_prediction;
+ if(disagreement&&review_response===null)return;
  emit('response',{
   item_index:state.index,
   classification:initial,
   initial_classification:initial,
   initial_hateful_likert:answer.skipped?null:answer.initialLikert,
+  final_classification:answer.skipped?null:final_label,
   final_hateful_likert:answer.skipped?null:(review_response==='ai_correct_changed'?(final_label===1?4:2):answer.initialLikert),
-  final_classification:final_label,
   confidence:answer.skipped?null:answer.initialConfidence,
-  triggering_vote:answer.skipped===true?null:answer.triggering,
-  preferred_not_shown:!answer.skipped?answer.avoid_preference:null,
+  confidence_default_used:answer.skipped?null:answer.confidenceTouched!==true,
+  triggering_vote:answer.skipped?null:answer.triggering,
+  preferred_not_shown:answer.skipped?null:answer.avoid_preference,
   preferred_not_shown_reason:!answer.skipped&&answer.avoid_preference===1?answer.avoid_reason:null,
-  website_variant:CONDITION,
-  protocol_version:'4.0.0',
+  website_variant:CONDITION,protocol_version:'6.0.0',is_attention_check:false,
   ai_trigger_detected:CONDITION==='assisted'?item.ai_trigger_flag===true:null,
   ai_hateful_prediction:CONDITION==='assisted'?item.ai_hateful_prediction:null,
-  ai_disagreement:disagree,
+  ai_disagreement:disagreement,
   ai_reasoning_presented:review_shown,
   ai_reasoning_verdict:review_response,
   participant_changed_answer:review_response==='ai_correct_changed',
-  reason:answer.skipped?'':(answer.reason||''),
-  skipped:answer.skipped===true,
-  skip_scope:answer.skipped===true?'entire_example':null,
+  reason:answer.skipped?'':answer.reason||'',
+  skipped:answer.skipped===true,skip_scope:answer.skipped===true?'entire_example':null,
   elapsed_ms:Math.max(0,Date.now()-(state.opened||Date.now())),
   image_initially_blurred:CONDITION==='assisted'&&item.ai_trigger_flag===true,
   caption_euphemized:CONDITION==='assisted'&&item.ai_trigger_flag===true,
   image_revealed:answer.revealedImage===true,
   caption_revealed:answer.revealedText===true
  },item.trial_id);
- state.index++;state.opened=Date.now();state.stage=state.index>=state.order.length?'done':'task';save();
- if(state.stage==='done')emit('finish',{completed_items:state.index,planned_items:state.order.length,submitted_answers:state.index,elapsed_ms:Date.now()-(state.started||Date.now()),study_version:'4.0.0',website_variant:CONDITION});
- render();
+ state.index++;
+ advanceAfterTrial();
+}
+function nextAttentionId(){
+ const n=state.order.length;
+ if(!state.attentionDone.hate&&state.index>=Math.max(1,Math.ceil(.30*n)))return 'hate';
+ if(!state.attentionDone.not_hate&&state.index>=Math.max(1,Math.ceil(.80*n)))return 'not_hate';
+ return null;
+}
+function advanceAfterTrial(){
+ const attentionId=nextAttentionId();
+ if(attentionId){state.stage='attention';state.attentionCheck=attentionId;state.attentionFeedback=null;}
+ else if(state.index>=state.order.length){state.stage='survey';state.surveyStep=0;state.attentionCheck=null;}
+ else {state.stage='task';state.attentionCheck=null;state.opened=Date.now();}
+ save();render();
+}
+const CHECKS={
+ hate:{trial_id:'ATTN_HATE_30',expected:1,heading:'Attention check · About 30% complete',caption:'People with disabilities should not be allowed to join our team.',reason:'This exclusion is based on disability, so the correct answer is Hateful.',symbol:'♿'},
+ not_hate:{trial_id:'ATTN_NOT_HATE_80',expected:0,heading:'Attention check · About 80% complete',caption:'When the group chat finally agrees on a pizza topping.',reason:'This is a harmless joke about pizza; it does not target an identity group.',symbol:'🍕'}
+};
+function attention(){
+ const id=state.attentionCheck||nextAttentionId();
+ if(!id){advanceAfterTrial();return;}
+ const check=CHECKS[id],feedback=state.attentionFeedback;
+ shell('Attention check','<section class="attention-page"><p class="eyebrow">BRIEF ATTENTION CHECK · NOT PART OF YOUR RANDOM MEMES</p><h1>'+escapeHTML(check.heading)+'</h1><p class="lead">Classify this straightforward example. It is not part of the study dataset.</p><div class="attention-meme"><span class="attention-icon" aria-hidden="true">'+check.symbol+'</span><strong>'+escapeHTML(check.caption)+'</strong></div><h2>Is this example hateful?</h2><div class="attention-answers">'+button('Hateful','attention-hateful','secondary')+button('Not hateful','attention-not-hateful','secondary')+'</div>'+(feedback?'<div class="practice-feedback incorrect" role="status"><strong>Try again</strong><p>'+escapeHTML(check.reason)+'</p></div>':'')+'<p class="muted">You can correct an incorrect answer; it does not end your study session.</p></section>');
+}
+function answerAttention(choice){
+ if(state.stage!=='attention')return;
+ const id=state.attentionCheck,check=CHECKS[id];if(!check)return;
+ state.attentionAttempts[id]=(state.attentionAttempts[id]||0)+1;
+ const correct=choice===check.expected;
+ emit('response',{
+  is_attention_check:true,attention_check_id:id,attention_target:check.expected,
+  attention_selected:choice,attention_passed:correct,
+  attention_attempt:state.attentionAttempts[id],
+  after_completed_items:state.index,
+  completed_fraction:state.order.length?Number((state.index/state.order.length).toFixed(3)):null,
+  protocol_version:'6.0.0'
+ },check.trial_id);
+ if(correct){state.attentionDone[id]=true;state.attentionFeedback=null;state.attentionCheck=null;advanceAfterTrial();}
+ else {state.attentionFeedback=true;save();attention();}
+}
+const SURVEY_QUESTIONS=[
+ {id:'q1',label:'The instructions were clear and easy to follow.'},
+ {id:'q2',label:'The buttons, navigation, and layout were easy to use.'},
+ {id:'q3',label:'It was difficult to decide whether individual memes were hateful.'},
+ {id:'q4',label:'Sarcasm, context, or hidden meaning made some memes difficult to interpret.'},
+ {id:'q5',label:'I found some of the study content personally upsetting or triggering.'},
+ {id:'q6',label:'Strong or offensive language made me uncomfortable.'},
+ {id:'q7',label:'Graphic or disturbing imagery made me uncomfortable.'},
+ {id:'q8',label:'I would trust an AI system to help classify whether memes are hateful.'},
+ {id:'q9',label:'I would want AI to blur sensitive imagery or soften words while I annotate hateful memes.'},
+ {id:'q10',label:'What would you change about this interface or the use of AI? Any other suggestions?',type:'text'}
+];
+const SURVEY_LABELS=['Strongly disagree','Disagree','Neutral','Agree','Strongly agree'];
+function survey(){
+ const step=state.surveyStep||0,questions=step===0?SURVEY_QUESTIONS.slice(0,5):SURVEY_QUESTIONS.slice(5);
+ const content=questions.map(q=>{
+  if(q.type==='text')return '<div class="survey-question"><p class="eyebrow">10 OF 10 · OPTIONAL</p><h3>'+escapeHTML(q.label)+'</h3><textarea id="survey-q10" rows="4" maxlength="2000" placeholder="Your suggestions (optional)…">'+escapeHTML(state.surveyAnswers.q10||'')+'</textarea></div>';
+  return '<fieldset class="survey-question"><legend><span class="survey-number">'+Number(q.id.slice(1))+'</span> '+escapeHTML(q.label)+'</legend><div class="survey-scale">'+SURVEY_LABELS.map((x,i)=>'<button type="button" data-survey-question="'+q.id+'" data-survey-value="'+(i+1)+'" class="survey-option '+(state.surveyAnswers[q.id]===i+1?'chosen':'')+'" aria-pressed="'+(state.surveyAnswers[q.id]===i+1?'true':'false')+'"><b>'+(i+1)+'</b><small>'+escapeHTML(x)+'</small></button>').join('')+'</div></fieldset>';
+ }).join('');
+ const controls='<div class="survey-nav">'+(step===1?button('← Previous questions','survey-prev','secondary'):'<span></span>')+button(step===0?'Next five questions →':'Submit survey & finish →','survey-next','primary')+'</div>';
+ shell('Post-study survey · '+(step+1)+'/2','<section class="post-survey"><p class="eyebrow">POST-STUDY QUESTIONNAIRE · 10 QUESTIONS</p><h1>Tell us about your <em>experience.</em></h1><p class="lead">Rate each statement from 1 (strongly disagree) to 5 (strongly agree). Your feedback helps us evaluate usability, content sensitivity, and opinions about AI.</p><div class="survey-progress"><span class="'+(step===0?'current':'')+'">1–5 · Interface and task</span><span class="'+(step===1?'current':'')+'">6–10 · Content and AI</span></div>'+content+controls+'<p id="survey-error" class="error" role="alert"></p><p class="muted">You can '+(step===0?'continue to the second half, or ':'')+'skip this questionnaire if you prefer. Your trial responses have already been submitted.</p>'+button('Skip post-survey','survey-skip','link-button')+'</section>');
+ document.querySelectorAll('[data-survey-question]').forEach(el=>el.addEventListener('click',()=>{
+  const key=el.dataset.surveyQuestion,value=Number(el.dataset.surveyValue);
+  state.surveyAnswers[key]=value;save();
+  document.querySelectorAll('[data-survey-question="'+key+'"]').forEach(other=>{other.classList.toggle('chosen',other===el);other.setAttribute('aria-pressed',String(other===el));});
+  document.querySelector('#survey-error').textContent='';
+ }));
+ const box=document.querySelector('#survey-q10');if(box)box.addEventListener('input',()=>{state.surveyAnswers.q10=box.value;save();});
+}
+function surveyNext(){
+ if(state.stage!=='survey')return;
+ const step=state.surveyStep||0;
+ const keys=step===0?['q1','q2','q3','q4','q5']:['q6','q7','q8','q9'];
+ const incomplete=keys.filter(k=>![1,2,3,4,5].includes(state.surveyAnswers[k]));
+ if(incomplete.length){document.querySelector('#survey-error').textContent='Please answer all '+keys.length+' rating questions on this page, or skip the post-survey.';return;}
+ if(step===0){state.surveyStep=1;save();survey();return;}
+ completeSurvey(false);
+}
+function completeSurvey(skipped){
+ if(state.stage!=='survey')return;
+ state.surveyCompleted=!skipped;
+ state.stage='done';
+ const completed=!skipped;
+ emit('finish',{
+  completed_items:state.index,planned_items:state.order.length,submitted_answers:state.index,
+  elapsed_ms:Math.max(0,Date.now()-(state.started||Date.now())),
+  website_variant:CONDITION,study_version:'6.0.0',
+  attention_checks:{hate:state.attentionDone.hate,not_hate:state.attentionDone.not_hate,
+    attempts:state.attentionAttempts},
+  post_survey_version:'1.0.0',post_survey_completed:completed,
+  post_survey:completed?Object.fromEntries(SURVEY_QUESTIONS.map(q=>[q.id,q.id==='q10'?(state.surveyAnswers[q.id]||''):state.surveyAnswers[q.id]])):null
+ });
+ save();finish();
 }
 function finish(){
- shell('Study finished','<div class="finish"><div class="check">✓</div><p class="eyebrow">STUDY COMPLETED</p><h1>Thank you for your <em>perspective.</em></h1><p>Your feedback supports research into safer ways to engage with potentially distressing visual content.</p><div class="receipt"><div><small>SESSION REFERENCE</small><b>'+escapeHTML(state.id.slice(0,8).toUpperCase())+'</b></div><div><small>ITEMS REVIEWED</small><b>'+state.index+' / '+state.order.length+'</b></div><div><small>STUDY CONDITION</small><b>'+(CONDITION==='assisted'?'AI-assisted + filtered':'No AI assistance · original content')+'</b></div></div><p class="muted" id="done-note">'+(queued()?'Some results still need uploading. Please check storage status below.':'Responses have been submitted to the configured server when connected.')+'</p>'+button('Begin a new session','restart')+'</div>');
+ shell('Study complete','<div class="finish"><div class="check">✓</div><p class="eyebrow">CSE 594 CLASS ASSIGNMENT</p><h1>Thank you for your <em>contribution.</em></h1><p>Your feedback helps us understand hateful-meme detection, sensitivity, and human–AI interaction.</p><div class="receipt"><div><small>SESSION REFERENCE</small><b>'+escapeHTML(state.id.slice(0,8).toUpperCase())+'</b></div><div><small>MEMES COMPLETED / SKIPPED</small><b>'+state.index+' / '+state.order.length+'</b></div><div><small>STUDY CONDITION</small><b>'+(CONDITION==='assisted'?'With AI assistance':'Without AI assistance')+'</b></div></div><p class="muted">'+(state.surveyCompleted?'Post-study survey submitted.':'Post-study survey skipped.')+'</p><p class="muted">'+(queued()?'Some responses are still pending upload; please use Retry upload in the footer.':'Check storage below to verify all responses were saved.')+'</p>'+button('Start a new session','restart')+'</div>');
 }
 const actions={
  home:render,health,retry:()=>{lastError='';flush();},
  guide:()=>{
   if(!document.querySelector('#consent')?.checked){document.querySelector('#consent')?.focus();return;}
-  const field=document.querySelector('#uniqname');
-  const typed=field?.value.trim()||'';
+  const field=document.querySelector('#uniqname'),typed=field?.value.trim()||'';
   if(typed&&!/^[a-zA-Z][a-zA-Z0-9._-]{0,31}$/.test(typed)){
-   document.querySelector('#uniqname-error').textContent='Please enter a valid uniqname (letters, digits, dots, underscores, hyphens; start with a letter) or leave it blank.';
+   document.querySelector('#uniqname-error').textContent='Enter a valid uniqname or leave it blank.';
    field?.focus();return;
   }
-  state.uniqname=typed;
-  state.consented=true;state.stage='guide';walkthroughStep=0;save();render();
+  state.uniqname=typed;state.consented=true;state.stage='guide';state.practiceIndex=0;save();render();
  },
  'back-to-purpose':()=>{state.stage='welcome';save();render();},
- 'demo-next':()=>{walkthroughStep=(walkthroughStep+1)%5;guide();},
- 'demo-prev':()=>{walkthroughStep=(walkthroughStep+4)%5;guide();},
- 'demo-replay':()=>{walkthroughStep=0;guide();},
+ 'practice-reveal':()=>{state.practiceRevealed=true;save();guide();},
+ 'practice-prev':()=>{if(state.practiceIndex>0){state.practiceIndex--;state.practiceSelected=null;save();guide();}},
+ 'practice-next':()=>{if(state.practicePassed[state.practiceIndex]&&state.practiceIndex<2){state.practiceIndex++;state.practiceSelected=null;save();guide();}},
  begin:()=>{
-  const field=document.querySelector('#trial-count');
-  const value=Number(field?.value);
+  const field=document.querySelector('#trial-count'),value=Number(field?.value);
   if(!state.consented){state.stage='welcome';save();render();return;}
-  if(!Number.isInteger(value)||value<1||value>MAX_COUNT){document.querySelector('#guide-error').textContent='Enter a whole number of trials between 1 and 12.';return;}
-  if(state.attentionAnswer!=='whole'){state.attentionAttempts++;save();document.querySelector('#guide-error').textContent=state.attentionAnswer==='hate-only'?'Not quite: Skip example skips the entire sample. Select that option to continue.':'Please answer the attention-check question before starting.';return;}
-  state.attentionAttempts++;
-  state.planned=value;state.order=(state.uniqname?sharedItemsForUniqname(state.uniqname):state.order).slice(0,value);
+  if(!state.practicePassed.every(Boolean)){document.querySelector('#guide-error').textContent='Complete all three practice examples first.';return;}
+  if(!Number.isInteger(value)||value<1||value>MAX_COUNT){document.querySelector('#guide-error').textContent='Choose a whole number of memes from 1 to 12.';return;}
+  state.planned=value;state.order=state.uniqname?itemsForUniqnameAndCondition(state.uniqname,CONDITION,value):state.order.slice(0,value);
   state.stage='task';state.started=Date.now();state.opened=Date.now();save();
-  emit('start',{planned_items:value,consented:true,uniqname:state.uniqname||null,attention_check_passed:true,attention_check_attempts:state.attentionAttempts,matched_item_assignment:!!state.uniqname,study_version:'4.0.0',content_shield:CONDITION==='assisted',website_variant:CONDITION});
+  emit('start',{planned_items:value,consented:true,uniqname:state.uniqname||null,
+   practice_correct_count:3,attention_checks_planned:2,post_survey_questions_planned:10,
+   matched_item_assignment:!!state.uniqname,study_version:'6.0.0',
+   content_shield:CONDITION==='assisted',website_variant:CONDITION});
   render();
  },
  next:()=>submit(false),skip:()=>submit(true),
- 'agree-ai':()=>completeResponse({review_response:'ai_correct_changed',review_shown:true,final_label:current()?.ai_hateful_prediction??null}),
- 'reject-ai':()=>completeResponse({review_response:'ai_wrong_kept',review_shown:true,final_label:state.answers[current()?.trial_id]?.initialLabel??null}),
+ 'agree-ai':()=>{if(state.stage==='review')completeResponse({review_response:'ai_correct_changed',review_shown:true,final_label:current()?.ai_hateful_prediction??null});},
+ 'reject-ai':()=>{if(state.stage==='review')completeResponse({review_response:'ai_wrong_kept',review_shown:true,final_label:state.answers[current()?.trial_id]?.initialLabel??null});},
  'reveal-image':()=>reveal('image'),'reveal-text':()=>reveal('text'),
- restart:()=>{if(queued()){alert('Some responses are still pending upload. Please retry uploading before starting another session.');return;}if(!confirm('Begin a new anonymous session?'))return;state=fresh();walkthroughStep=0;save();render();}
+ 'attention-hateful':()=>answerAttention(1),
+ 'attention-not-hateful':()=>answerAttention(0),
+ 'survey-next':surveyNext,
+ 'survey-prev':()=>{if(state.stage==='survey'){state.surveyStep=0;save();survey();}},
+ 'survey-skip':()=>completeSurvey(true),
+ restart:()=>{if(queued()){alert('Responses are still pending upload. Retry before starting a new session.');return;}if(!confirm('Begin a new study session?'))return;state=fresh();save();render();}
 };
 function render(){
- if(state.stage==='task')task();
- else if(state.stage==='review')review();
+ if(state.stage==='task'||state.stage==='review')task();
+ else if(state.stage==='attention')attention();
+ else if(state.stage==='survey')survey();
  else if(state.stage==='guide')guide();
  else if(state.stage==='done')finish();
  else welcome();

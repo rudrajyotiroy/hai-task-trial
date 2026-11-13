@@ -101,3 +101,158 @@
 .hateful-choices{gap:6px!important}
 .hateful-choices .choice{padding:12px 15px;font-size:14px}
 @media(max-width:650px){.attention-check{padding:14px}.hateful-choices .choice{padding:10px 12px}}
+
+
+/* CSE 594 study interface v5 — compact intro, three required practice trials,
+   direct confidence buttons, inline AI review, in-study checks, short survey */
+.welcome-simple{max-width:770px;margin:0 auto;padding:10px 0}
+.welcome-simple h1{font-size:clamp(34px,4vw,44px)}
+.welcome-simple .lead{max-width:740px;font-size:16px}
+.welcome-simple .intro-key{padding:12px 16px;border:1px solid #d3e6d8;background:#f0f8f2;border-radius:11px;margin:10px 0;font-size:14px;line-height:1.6}
+.welcome-simple .notice{margin:18px 0}
+.welcome-simple .uniqname-card{margin:18px 0;padding:15px 17px}
+.welcome-simple .primary{margin-top:6px}
+.compact-guide{max-width:1060px}
+.compact-guide h1{font-size:clamp(31px,4vw,43px)}
+.compact-guide .lead{font-size:16px;max-width:850px}
+.practice-main{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,.93fr);gap:0;border:1px solid #d7e8dd;background:#fff;border-radius:16px;overflow:hidden;margin:22px 0}
+.practice-frame{padding:20px;background:#eff7f1;min-width:0;position:relative}
+.practice-frame-head{display:flex;justify-content:space-between;gap:10px;font-size:10px;letter-spacing:1.3px;color:#558268;font-weight:800;margin-bottom:13px}
+.practice-art{min-height:240px;position:relative;border-radius:14px;padding:22px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;text-align:center;overflow:hidden;isolation:isolate;border:1px solid #d6e5da}
+.practice-art.hateful{background:linear-gradient(150deg,#f3efe4,#e2e8e2);color:#33473a}
+.practice-art.benign{background:linear-gradient(150deg,#d6f2e8,#f1f7db);color:#315a45}
+.practice-art.sensitive{background:radial-gradient(ellipse at 20% 50%,#a9303e 0,#63313e 38%,#222734 75%);color:#fff;border-color:#824c55}
+.practice-art.sensitive:before{content:"";position:absolute;width:150px;height:130px;left:5%;bottom:1%;background:#df3c4f;opacity:.62;border-radius:20% 80% 45% 65%;transform:rotate(23deg);z-index:-1}
+.practice-art.sensitive:after{content:"";position:absolute;width:75px;height:110px;right:4%;top:6%;background:#d82442;opacity:.5;border-radius:60% 20% 75% 40%;transform:rotate(-25deg);z-index:-1}
+.practice-symbol{font-size:58px;line-height:1.1}
+.practice-art-caption{font:400 25px/1.15 'DM Serif Display',Georgia,serif;max-width:380px;text-wrap:balance}
+.practice-blurred{filter:blur(20px) brightness(.65);user-select:none}
+.practice-shield{position:absolute;left:35px;right:35px;top:66px;min-height:190px;z-index:2;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px;background:#f6fbf4e3;backdrop-filter:blur(3px);border:1px solid #bcdcc9;border-radius:12px;text-align:center}
+.practice-shield strong{color:#1d7455;font-size:16px}
+.practice-shield p{color:#416851;font-size:13px}
+.practice-soft-caption{border:1px solid #dce9dd;border-radius:12px;background:#fff;padding:13px 15px;margin-top:12px}
+.practice-soft-caption small{font-size:10px;font-weight:800;letter-spacing:1px;color:#6f9780}
+.practice-soft-caption p{margin:4px 0 0;white-space:pre-wrap;font-size:14px}
+.practice-explain{padding:24px;display:flex;flex-direction:column;justify-content:center}
+.practice-explain h2{margin:8px 0 4px;font-size:25px}
+.practice-explain p{font-size:14px}
+.practice-answers{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:13px 0}
+.practice-answers .choice{margin:0;text-align:center;align-items:center;padding:14px}
+.practice-feedback{padding:13px 16px;border-radius:12px;margin:12px 0;border:1px solid #c7dece;background:#f0f8f3;color:#235a3f}
+.practice-feedback.incorrect{border-color:#efd0b5;background:#fff7ef;color:#8b5030}
+.practice-feedback p{margin:4px 0 0;font-size:13px}
+.practice-navigation{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
+.practice-navigation small{font-size:12px;color:#789080}
+.practice-done{color:#1d8256;font-size:14px}
+.confidence-options{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:12px 0}
+.confidence-option{padding:12px 6px;font-size:18px;font-weight:800;background:#fff;color:#4f6e5d;border:1px solid #cadbd0;border-radius:10px;transition:none}
+.confidence-option.chosen,.survey-option.chosen{background:#e5f4ea;border-color:#23855a;color:#126a44;box-shadow:inset 0 0 0 1px #23855a}
+.confidence-option:disabled{opacity:.8;cursor:default}
+.hateful-choices{gap:7px}
+.hateful-choices .choice{padding:12px 14px}
+.inline-ai-review{border:2px solid #8fc9a9;background:#eff9f2;border-radius:13px;padding:17px 18px;margin-bottom:25px}
+.inline-ai-review h2{font-size:20px;margin:8px 0}
+.inline-ai-review .review-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 20px}
+.inline-ai-review .review-summary span{padding:12px;border:1px solid #cce6d6;background:#fff;border-radius:8px;min-width:0}
+.inline-ai-review small,.inline-ai-review strong{display:block}
+.inline-ai-review small{font-size:10px;color:#698674}
+.inline-ai-review strong{font-size:16px}
+.inline-ai-review .ai-explanation{white-space:pre-wrap;font-size:14px;color:#2a5741}
+.inline-ai-review .review-options{display:flex;flex-wrap:wrap;gap:8px}
+.inline-ai-review button{font-size:13px;padding:12px}
+.attention-page{max-width:750px;margin:30px auto}
+.attention-page h1{font-size:clamp(28px,3.5vw,39px)}
+.attention-meme{border:1px solid #dae5dd;background:#f4f8f5;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:24px;padding:30px;margin:24px 0;text-align:center}
+.attention-meme strong{font:400 25px/1.2 'DM Serif Display',Georgia,serif}
+.attention-icon{font-size:48px}
+.attention-answers{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.attention-answers button{font-size:16px}
+.post-survey{max-width:820px;margin:0 auto}
+.post-survey h1{font-size:clamp(31px,4vw,43px)}
+.post-survey .lead{max-width:760px;font-size:16px}
+.survey-progress{display:flex;gap:8px;margin:20px 0 23px}
+.survey-progress span{flex:1;text-align:center;border:1px solid #d5e5da;border-radius:9px;padding:10px;font-size:12px;font-weight:700;color:#759183}
+.survey-progress .current{background:#e3f3e9;color:#1f754f;border-color:#9bcdb0}
+.survey-question{border:1px solid #d7e5db;border-radius:13px;padding:15px 17px;margin:14px 0;background:#fff;min-width:0}
+fieldset.survey-question{min-inline-size:auto}
+.survey-question legend{font-weight:700;font-size:15px;line-height:1.45;padding:0 5px}
+.survey-number{color:#228258;margin-right:5px}
+.survey-scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:10px}
+.survey-option{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:68px;padding:8px 3px;background:#f9fbf9;border-radius:9px;border:1px solid #d8e6dd;color:#436650}
+.survey-option b{font-size:18px}.survey-option small{font-size:10px;text-align:center;line-height:1.2}
+.survey-nav{display:flex;justify-content:space-between;gap:15px;margin:24px 0}
+.survey-question textarea{margin-top:12px}
+@media(max-width:800px){.practice-main{grid-template-columns:1fr}.practice-art{min-height:205px}.practice-shield{top:60px;min-height:160px}.practice-explain{padding:20px}}
+@media(max-width:520px){.practice-answers{grid-template-columns:1fr}.practice-art-caption{font-size:22px}.practice-navigation{flex-direction:column}.attention-meme{flex-direction:column;gap:7px}.attention-meme strong{font-size:21px}.attention-answers{grid-template-columns:1fr}.survey-scale{gap:3px}.survey-option{min-height:59px;padding:6px 1px}.survey-option small{font-size:8px}.survey-question{padding:12px}.inline-ai-review .review-summary{grid-template-columns:1fr}.survey-nav{flex-direction:column}}
+
+
+/* v6 — compact practice layout: keep the example, answer, feedback and
+   session controls together on standard laptop/desktop viewports. */
+main:has(.practice-fit){padding:12px 0 14px}
+.practice-fit{max-width:1080px;display:flex;flex-direction:column;gap:8px}
+.practice-title-row{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.practice-fit .eyebrow{margin:0 0 3px;font-size:10px}
+.practice-fit h1{font-size:clamp(25px,3vw,33px);line-height:1.08;margin:0}
+.practice-fit .practice-summary{font-size:13px;line-height:1.35;color:#64796b;margin:0}
+.practice-progress{display:flex;gap:6px;align-items:center;white-space:nowrap}
+.practice-progress-dot{display:inline-block;width:10px;height:10px;border-radius:100%;background:#d4e5d9;border:1px solid #b9d2c0}
+.practice-progress-dot.passed{background:#399e6e;border-color:#399e6e}
+.practice-progress-dot.current{outline:2px solid #188153;outline-offset:2px}
+.practice-progress small{font-size:11px;color:#64846e;margin-left:7px}
+.practice-one-screen{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:5px 0 2px;min-height:0}
+.practice-one-screen .practice-frame{padding:12px}
+.practice-one-screen .practice-frame-head{margin-bottom:6px;font-size:9px}
+.practice-one-screen .practice-art{height:clamp(150px,23vh,198px);min-height:0;padding:10px;gap:7px}
+.practice-one-screen .practice-symbol{font-size:clamp(36px,5vh,47px)}
+.practice-one-screen .practice-art-caption{font-size:clamp(18px,2vw,23px);line-height:1.13}
+.practice-one-screen .practice-shield{top:37px;left:25px;right:25px;min-height:0;height:clamp(137px,21vh,178px);padding:12px;gap:3px}
+.practice-one-screen .practice-shield p{font-size:12px;margin:4px 0}
+.practice-one-screen .practice-shield button{font-size:12px;padding:8px 10px}
+.practice-one-screen .practice-soft-caption{padding:7px 11px;margin-top:7px}
+.practice-one-screen .practice-soft-caption p{font-size:12px;line-height:1.3}
+.practice-one-screen .practice-explain{padding:14px 19px;justify-content:space-between}
+.practice-one-screen .practice-explain h2{font-size:clamp(17px,1.9vw,22px);margin:4px 0}
+.practice-one-screen .practice-explain>p{font-size:12px;line-height:1.35;margin:4px 0}
+.practice-one-screen .practice-answers{gap:8px;margin:8px 0}
+.practice-one-screen .practice-answers .choice{padding:10px 7px;font-size:13px}
+.practice-feedback-slot{min-height:53px;display:flex;align-items:center}
+.practice-one-screen .practice-feedback{padding:7px 10px;margin:4px 0}
+.practice-one-screen .practice-feedback p{font-size:12px;line-height:1.3;margin:2px 0 0}
+.practice-hint{font-size:12px;color:#7b9481}
+.practice-one-screen .practice-navigation{margin-top:5px;min-height:37px}
+.practice-one-screen .practice-navigation button{padding:9px 12px;font-size:12px}
+.practice-one-screen .practice-navigation small{font-size:11px}
+.practice-bottom{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.practice-setup{flex:1;display:flex;align-items:center;justify-content:space-between;gap:15px;background:#f8fcf9;border:1px solid #d5e5d8;border-radius:12px;padding:8px 13px}
+.practice-setup-label{display:flex;flex-direction:column;gap:2px}
+.practice-setup-label strong{font-size:13px;color:#285841}
+.practice-setup-label small{font-size:11px;color:#688273}
+.practice-setup .number-config{gap:6px}
+.practice-setup .number-config button{height:35px;width:35px;font-size:19px;border-radius:8px}
+.practice-setup .number-config input{height:35px;width:60px;padding:5px;font-size:18px;border-radius:8px}
+.practice-bottom-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.practice-bottom-actions button{padding:10px 13px;font-size:12px;white-space:nowrap}
+.practice-bottom-actions .muted{font-size:11px;max-width:160px}
+.practice-fit>#guide-error{margin:2px 0;min-height:0;font-size:12px}
+@media(min-width:851px) and (max-height:740px){
+ main:has(.practice-fit){padding-top:8px;padding-bottom:8px}
+ .practice-fit{gap:5px}
+ .practice-one-screen .practice-art{height:140px}
+ .practice-one-screen .practice-shield{height:130px}
+ .practice-one-screen .practice-explain{padding:10px 15px}
+ .practice-one-screen .practice-frame{padding:9px}
+ .practice-one-screen .practice-feedback-slot{min-height:45px}
+}
+@media(max-width:850px){
+ .practice-one-screen{grid-template-columns:1fr}
+ .practice-one-screen .practice-art{height:auto;min-height:175px}
+ .practice-one-screen .practice-shield{top:39px;height:160px}
+ .practice-bottom{flex-direction:column;align-items:stretch}
+ .practice-bottom-actions{justify-content:space-between}
+}
+@media(max-width:440px){
+ .practice-title-row{flex-wrap:wrap}
+ .practice-setup{flex-direction:column;align-items:flex-start}
+ .practice-bottom-actions{flex-wrap:wrap}
+ .practice-one-screen .practice-art-caption{font-size:20px}
+}
