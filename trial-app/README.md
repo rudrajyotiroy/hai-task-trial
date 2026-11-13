@@ -33,8 +33,16 @@ Every real meme includes:
 
 **Independent:** Original, unfiltered image and caption. No AI prediction or rationale displayed.
 
+### Mid-study attention checks — same interface as normal trials (v6.1)
+
+The attention checks now render **through the same task component** as other meme trials. Each uses the ordinary two-column meme + evaluation layout, the normal image/caption frame, **five-point hateful rating**, triggering question, preference question (and imagery/text/both reason when Yes), default-3 clickable confidence buttons, and optional rationale. The only visual/behavioral difference is that an attention question must be answered to continue; the regular full-item Skip action is not offered. Neither check has a separate attention-check banner, standalone page design, or binary-only buttons.
+
+At the 30% and 80% real-task boundaries (after real items 4 and 10 for 12 selected tasks), a synthetic, non-graphic check item appears seamlessly in the same questionnaire layout. Participants classify 1–2 as non-hateful, 4–5 as hateful, and 3/unsure cannot satisfy these explicit checks. Incorrect answers show feedback **inside the normal task's error area** and can be retried without leaving the page. Correct answers move to the next normal item. The visual task counter includes these two checks (12 selected study memes appear as 14 total questions).
+
+The backend still records separate events with `is_attention_check: true` and `ATTN_HATE_30` / `ATTN_NOT_HATE_80` IDs, including attempt, correctness and any questionnaire responses. Real meme counts, skips, accuracy, and exposure denominators **must exclude** these events. All new start/response/finish records use v6.1 protocol identifiers; the local v6 session key remains compatible with in-progress sessions.
+
 ### Mid-study attention checks
-Two easily understood attention checks appear **between items**, after reaching approximately **30%** and **80%** of the selected real-meme count (rounding up to the next completed item). The first displays a mild, clearly exclusionary statement and asks Hateful (correct). The second displays a harmless pizza joke and asks Not hateful (correct). Incorrect answers receive feedback and **can be retried**; they do not automatically terminate the session.
+Two easy attention checks appear **between items** at roughly **30%** and **80%** of the selected real-meme count. They use the same task layout and five-point hateful rating as regular memes. The first correct response is a hateful rating (4/5) for a mild exclusionary statement; the second is a non-hateful rating (1/2) for a harmless pizza joke. Incorrect responses show feedback in the same form and can be retried.
 
 **Important analytics note:** Attention attempts are separate Supabase \`response\` events with trial IDs \`ATTN_HATE_30\` and \`ATTN_NOT_HATE_80\`, and \`payload.is_attention_check: true\`. This reuses the existing event schema and avoids a database migration. **Filter these rows out** when computing real-trial counts, accuracy, response time, or other study outcomes. They are not members of the original Assignment 2 200-item dataset. When N is only 1 or 2, the thresholds may land on the same boundary and the checks run sequentially.
 
