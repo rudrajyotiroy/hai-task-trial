@@ -7,13 +7,13 @@ This app hosts **two participant-facing study versions in one Netlify project**,
 
 Use the explicit paths when distributing the assignment links. The root path defaults to the assisted condition. All AI predictions, trigger notices, softened captions, and explanations are **precomputed outputs from Assignment 2**; no live inference is performed.
 
-## Updated participant flow — version 5.0.0
+## Updated participant flow — version 6.0.0
 
 ### Screen 1: concise consent
-The CSE 594 assignment introduction explains the distinction between hateful content and material a participant personally finds triggering. It states the study condition and the risks of distressing content. A University of Michigan **uniqname is optional**. If entered, it is saved in the \`start.payload.uniqname\` and used for the same randomly seeded meme sample across conditions when the selected item count is equal. Unnamed participants are not linked across sessions.
+The CSE 594 assignment introduction explains the distinction between hateful content and material a participant personally finds triggering. It states the study condition and the risks of distressing content. A University of Michigan **uniqname is optional**. If entered, it is saved in the \`start.payload.uniqname\` and used to generate **two distinct, non-overlapping random samples** for the two conditions. Each condition selects up to 12 memes from a separate portion of the user's randomized 200-meme ordering, so the same uniqname **does not repeat the same memes across the two website versions**. Unnamed participants are not linked across sessions.
 
 ### Screen 2: three **required** practice items
-No timed animation or automatic slide changes. For each practice example, the participant must pick Hateful or Not hateful and receive immediate correctness feedback. Only a correct answer unlocks the next example, but unlimited retries are permitted. No practice answers are added to the research dataset.
+The example screen is compact on desktop and uses no timed animation or automatic slide changes. For each practice example, the participant must pick Hateful or Not hateful and receive immediate correctness feedback. Only a correct answer unlocks the next example, but unlimited retries are permitted. No practice answers are added to the research dataset.
 
 1. **Hateful (correct answer: Hateful):** a mild, plainly sexist statement about girls belonging in science labs. No slurs.
 2. **Non-hateful (correct answer: Not hateful):** an everyday joke about an overly long meeting.
@@ -70,9 +70,25 @@ Netlify function environment:
 
 Run \`supabase/schema.sql\` in the SQL Editor if the table has not been created, and check \`https://YOUR-SITE.netlify.app/api/trials?health=1\`. Both attention events (as \`response\`) and the final nested survey payload are valid in the **existing \`payload jsonb\` field**, so no additional SQL migration is necessary.
 
-The app preserves a locally queued event submission mechanism with Check storage and Retry upload. The v5 interface uses a **new local session-storage key** rather than resuming an older incomplete v3/v4 study. Participants should finish active older sessions before the deployment; previous unsynced events may remain under their previous browser key.
+The app preserves a locally queued event submission mechanism with Check storage and Retry upload. The v6 interface uses a **new local session-storage key** rather than resuming an older incomplete v3/v4 study. Participants should finish active older sessions before the deployment; previous unsynced events may remain under their previous browser key.
 
 ## Research data, ethics and reporting
 The historical 12 November export, pseudonymized merged responses, paired participant summaries, and reproducibility script are under \`results/\`. Historical records are **not retroactively recoded** into v5. A participant's uniqname makes a session identifiable and must be protected; **never upload the raw Supabase CSV to public GitHub**. Strong or hateful content may still appear in either variant; users may skip examples or stop.
 
 To download new results, use an authenticated \`GET /api/trials?limit=1000&offset=0\` (increase offset for more events) or export directly from Supabase. Analysis scripts must join participants only on explicit volunteered identifiers, use the session ID to group responses, and exclude attention-check events before calculating real-task outcomes.
+
+## v6 deployment and UX verification
+
+PR #7 must be **merged** before the live Netlify site receives these changes. The earlier production version still used the original confidence slider because that PR was not merged. v6 uses **five visible confidence buttons**, with the middle **3 selected by default**, and the respondent may submit without touching confidence. The AI disagreement explanation is **inline** beside the original meme, not a separate screen. The practice layout is condensed so its current example, answer buttons, correctness feedback, navigation, selected trial count and Start action are visible together on a typical desktop viewport; on narrow/mobile displays the layout stacks and scrolling may still be needed.
+
+The former implementation intentionally reused the **same sample for the same uniqname** in both conditions. v6 changes this: the app hashes each volunteered uniqname into a random ordering of all 200 items, then assigns the first 12 to the assisted sample and the next 12 to the independent sample. The selected N is applied inside those disjoint pools. The two samples **never overlap for the same name and dataset version**. Anonymous sessions continue random sampling. This improves repeat-exposure independence but **eliminates same-person/same-item pairing**, so analyze paired participants at the person level and account for item-difficulty differences.
+
+Because the browser's saved session key is now `hai-task-trial-v6-<condition>`, already-active v5 sessions are not resumed. **Complete older sessions and flush queued responses before deploying**. Historic response records are not changed; new records use version 6.0.0.
+
+### Pre-merge test checklist
+
+- With the same optional uniqname, finish the three required practice examples in each route; compare the two 12-item lists and verify **zero repeated trial IDs**.
+- Test confidence 3 without clicking; Save & continue should work as long as hateful, triggering and viewing-preference questions are completed.
+- Test the AI-assisted inline disagreement review: original judgment persists alongside the final judgment; the independent version never reveals AI explanations.
+- Verify the 30% Hateful and 80% Not hateful check events, and the ten-question post-study survey in the Supabase `payload` JSONB field. Exclude attention-check events from actual trial counts and accuracy denominators.
+- Pilot the three practice screens on an ordinary desktop browser window and on mobile; all major controls should appear without vertical scrolling on a typical desktop viewport.
