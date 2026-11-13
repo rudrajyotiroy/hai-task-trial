@@ -16,7 +16,7 @@ const itemsForUniqnameAndCondition=(name,condition,count)=>{
  const offset=condition==='assisted'?0:MAX_COUNT;
  return order.slice(offset,offset+count);
 };
-const fresh=()=>({id:id(),condition:CONDITION,order:randomized(trials).slice(0,MAX_COUNT).map(t=>t.trial_id),planned:DEFAULT_COUNT,index:0,stage:'welcome',consented:false,uniqname:'',answers:{},events:[],started:null,opened:null,sessionVersion:6,practiceIndex:0,practicePassed:[false,false,false],practiceSelected:null,practiceRevealed:false,attentionDone:{hate:false,not_hate:false},attentionAttempts:{hate:0,not_hate:0},attentionCheck:null,surveyStep:0,surveyAnswers:{},surveyCompleted:false});
+const fresh=()=>({id:id(),condition:CONDITION,order:randomized(trials).slice(0,MAX_COUNT).map(t=>t.trial_id),planned:DEFAULT_COUNT,index:0,stage:'welcome',consented:false,uniqname:'',answers:{},events:[],started:null,opened:null,sessionVersion:6,practiceIndex:0,practicePassed:[false,false,false],practiceSelected:null,practiceRevealed:false,attentionDone:{hate:false,not_hate:false},attentionAttempts:{hate:0,not_hate:0},attentionCheck:null,attentionAnswers:{},surveyStep:0,surveyAnswers:{},surveyCompleted:false});
 let state;try{state=JSON.parse(localStorage.getItem(KEY));}catch{}
 if(!state||!Array.isArray(state.order)||!Array.isArray(state.events))state=fresh();
 state.answers??={};
@@ -28,6 +28,7 @@ state.practiceRevealed??=false;
 state.attentionDone??={hate:false,not_hate:false};
 state.attentionAttempts??={hate:0,not_hate:0};
 state.attentionCheck??=null;
+state.attentionAnswers??={};
 state.surveyStep??=0;
 state.surveyAnswers??={};
 state.surveyCompleted??=false;
@@ -115,12 +116,23 @@ function guide(){
  document.querySelectorAll('[data-count-change]').forEach(el=>el.addEventListener('click',()=>{countInput.value=String(Math.min(MAX_COUNT,Math.max(1,(Number(countInput.value)||DEFAULT_COUNT)+Number(el.dataset.countChange))));saveCount();}));
  document.querySelectorAll('[data-practice]').forEach(el=>el.addEventListener('click',()=>{state.practiceSelected=Number(el.dataset.practice);if(state.practiceSelected===sample.label)state.practicePassed[i]=true;save();guide();}));
 }
+// Attention samples are rendered using the exact same meme image frame and
+// question controls as real task items; only the logged event is distinguished.
+function attentionImage(check){
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400"><rect width="640" height="400" rx="20" fill="#e5efe8"/><rect x="48" y="44" width="544" height="312" rx="30" fill="#f9faf4" stroke="#bad3c3" stroke-width="5"/><circle cx="320" cy="194" r="110" fill="#d4e9dc"/><text x="320" y="227" text-anchor="middle" font-size="100" font-family="Arial,sans-serif">'+check.symbol+'</text></svg>';
+ return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+}
 function task(){
- const item=current();
+ const isCheck=state.stage==='attention';
+ const check=isCheck?CHECKS[state.attentionCheck]:null;
+ const item=isCheck?(check?{trial_id:check.trial_id,meme_text:check.caption,image_url:attentionImage(check),ai_trigger_flag:false,ai_trigger_categories:[],ai_hateful_prediction:check.expected}:null):current();
  if(!item){state.stage='survey';state.surveyStep=0;save();survey();return;}
- const answer=state.answers[item.trial_id]||{};
+ const answer=isCheck?(state.attentionAnswers[state.attentionCheck]||{}):(state.answers[item.trial_id]||{});
+ const rememberAnswer=()=>{if(isCheck)state.attentionAnswers[state.attentionCheck]=answer;else state.answers[item.trial_id]=answer;save();};
  const reviewing=state.stage==='review';
- const shielded=CONDITION==='assisted'&&item.ai_trigger_flag===true;
+ const shielded=!isCheck&&CONDITION==='assisted'&&item.ai_trigger_flag===true;
+ const completedChecks=Number(!!state.attentionDone.hate)+Number(!!state.attentionDone.not_hate);
+ const displayedQuestion=state.index+completedChecks+1,displayedTotal=state.order.length+2;
  const revealedImage=answer.revealedImage===true, revealedText=answer.revealedText===true;
  const displayCaption=shielded&&!revealedText?(item.ai_euphemized_caption||'[Caption withheld: potentially distressing language]'):item.meme_text;
  const notice=shielded?'<div class="trigger"><div class="eyebrow">AI SAFETY SHIELD</div><p><strong>'+escapeHTML(item.ai_trigger_notice||'Potentially distressing content detected.')+'</strong></p>'+(item.ai_trigger_categories?.length?'<div class="chips">'+item.ai_trigger_categories.map(cat=>'<span>'+escapeHTML(cat)+'</span>').join('')+'</div>':'')+'<p class="muted">A safety flag is separate from a hateful-meme classification. You can leave this content shielded.</p></div>':'';
@@ -139,17 +151,17 @@ function task(){
   const prediction=item.ai_hateful_prediction===1?'Hateful':'Not hateful';
   reviewPanel='<div class="inline-ai-review" role="region" aria-label="AI disagreement review"><p class="eyebrow">AI DISAGREEMENT · SECOND LOOK</p><h2>Your first judgment differs from the AI.</h2><div class="review-summary"><span><small>YOU ANSWERED</small><strong>'+initial+'</strong></span><span><small>AI PREDICTED</small><strong>'+prediction+'</strong></span></div><p class="eyebrow">AI MODEL REASONING</p><p class="ai-explanation">'+escapeHTML(item.ai_explanation||'The model did not provide a textual explanation.')+'</p><p class="muted">AI reasoning may be mistaken or include sensitive wording. Your first answer is already preserved.</p><p><strong>After reading this, do you want to change your answer?</strong></p><div class="review-options">'+button('Change to AI answer','agree-ai','primary')+button('Keep my original answer','reject-ai','secondary')+'</div></div>';
  }
- const controls=reviewing?'<p class="muted">Your answers are locked for this review. Choose one of the two buttons above to continue.</p>':'<div class="actions"><button type="button" class="skip" data-action="skip">Skip entire example</button>'+button(state.index===state.order.length-1?'Save & go to survey →':'Save & continue →','next')+'</div><p class="muted">Confidence defaults to 3. You can click any number directly, including 3.</p>';
- shell('Task '+(state.index+1)+' / '+state.order.length,
- '<div class="study-head"><p class="eyebrow">'+(reviewing?'REVIEW YOUR ANSWER':'MEME EVALUATION')+'</p><h1>Thanks for your contribution to help improve hate speech detection</h1><div class="progress"><div style="width:'+(100*state.index/state.order.length)+'%"></div></div></div>'+
- '<div class="grid"><section class="panel"><p class="eyebrow">MEME '+(state.index+1)+' OF '+state.order.length+'</p>'+notice+image+caption+'</section><section class="panel"><p class="eyebrow">'+(reviewing?'SECOND LOOK':'YOUR EVALUATION')+'</p>'+reviewPanel+'<h2>How hateful is this meme?</h2><p class="muted">Choose 1–5; a meme can be disturbing without expressing hate.</p><div class="choices hateful-choices">'+hatefulChoices+'</div>'+triggerQuestion+avoidanceQuestion+'<h3>How confident are you?</h3><p class="muted">1 = not confident · 5 = very confident. 3 is selected by default.</p><div class="confidence-options">'+confidenceChoices+'</div>'+reason+controls+'<p class="error" id="error" role="alert"></p></section></div>');
+ const controls=reviewing?'<p class="muted">Your answers are locked for this review. Choose one of the two buttons above to continue.</p>':'<div class="actions">'+(isCheck?'<span class="muted">Complete this example to continue.</span>':'<button type="button" class="skip" data-action="skip">Skip entire example</button>')+button(isCheck?'Save & continue →':state.index===state.order.length-1?'Save & go to survey →':'Save & continue →','next')+'</div><p class="muted">Confidence defaults to 3. You can click any number directly, including 3.</p>';
+ shell('Task '+displayedQuestion+' / '+displayedTotal,
+ '<div class="study-head"><p class="eyebrow">'+(reviewing?'REVIEW YOUR ANSWER':'MEME EVALUATION')+'</p><h1>Thanks for your contribution to help improve hate speech detection</h1><div class="progress"><div style="width:'+(100*(displayedQuestion-1)/displayedTotal)+'%"></div></div></div>'+
+ '<div class="grid"><section class="panel"><p class="eyebrow">MEME '+displayedQuestion+' OF '+displayedTotal+'</p>'+notice+image+caption+'</section><section class="panel"><p class="eyebrow">'+(reviewing?'SECOND LOOK':'YOUR EVALUATION')+'</p>'+reviewPanel+'<h2>How hateful is this meme?</h2><p class="muted">Choose 1–5; a meme can be disturbing without expressing hate.</p><div class="choices hateful-choices">'+hatefulChoices+'</div>'+triggerQuestion+avoidanceQuestion+'<h3>How confident are you?</h3><p class="muted">1 = not confident · 5 = very confident. 3 is selected by default.</p><div class="confidence-options">'+confidenceChoices+'</div>'+reason+controls+'<p class="error" id="error" role="alert"></p></section></div>');
  if(!reviewing){
-  document.querySelectorAll('[data-hateful-likert]').forEach(element=>element.addEventListener('click',()=>{answer.hateful_likert=Number(element.dataset.hatefulLikert);answer.label=answer.hateful_likert===3?null:(answer.hateful_likert>3?1:0);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-hateful-likert]').forEach(x=>x.classList.toggle('chosen',x===element));}));
-  document.querySelectorAll('[data-triggering]').forEach(element=>element.addEventListener('click',()=>{answer.triggering=Number(element.dataset.triggering);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-triggering]').forEach(x=>x.classList.toggle('chosen',x===element));}));
-  document.querySelectorAll('[data-avoid]').forEach(element=>element.addEventListener('click',()=>{answer.avoid_preference=Number(element.dataset.avoid);state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-avoid]').forEach(x=>x.classList.toggle('chosen',x===element));document.querySelector('#avoid-reason').classList.toggle('hidden',answer.avoid_preference!==1);}));
-  document.querySelectorAll('[data-avoid-reason]').forEach(element=>element.addEventListener('click',()=>{answer.avoid_reason=element.dataset.avoidReason;state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-avoid-reason]').forEach(x=>x.classList.toggle('chosen',x===element));}));
-  document.querySelectorAll('[data-confidence]').forEach(element=>element.addEventListener('click',()=>{answer.confidence=Number(element.dataset.confidence);answer.confidenceTouched=true;state.answers[item.trial_id]=answer;save();document.querySelectorAll('[data-confidence]').forEach(x=>{x.classList.toggle('chosen',x===element);x.setAttribute('aria-pressed',String(x===element));});}));
-  document.querySelector('#reason').addEventListener('input',event=>{answer.reason=event.target.value;state.answers[item.trial_id]=answer;save();});
+  document.querySelectorAll('[data-hateful-likert]').forEach(element=>element.addEventListener('click',()=>{answer.hateful_likert=Number(element.dataset.hatefulLikert);answer.label=answer.hateful_likert===3?null:(answer.hateful_likert>3?1:0);rememberAnswer();document.querySelectorAll('[data-hateful-likert]').forEach(x=>x.classList.toggle('chosen',x===element));}));
+  document.querySelectorAll('[data-triggering]').forEach(element=>element.addEventListener('click',()=>{answer.triggering=Number(element.dataset.triggering);rememberAnswer();document.querySelectorAll('[data-triggering]').forEach(x=>x.classList.toggle('chosen',x===element));}));
+  document.querySelectorAll('[data-avoid]').forEach(element=>element.addEventListener('click',()=>{answer.avoid_preference=Number(element.dataset.avoid);rememberAnswer();document.querySelectorAll('[data-avoid]').forEach(x=>x.classList.toggle('chosen',x===element));document.querySelector('#avoid-reason').classList.toggle('hidden',answer.avoid_preference!==1);}));
+  document.querySelectorAll('[data-avoid-reason]').forEach(element=>element.addEventListener('click',()=>{answer.avoid_reason=element.dataset.avoidReason;rememberAnswer();document.querySelectorAll('[data-avoid-reason]').forEach(x=>x.classList.toggle('chosen',x===element));}));
+  document.querySelectorAll('[data-confidence]').forEach(element=>element.addEventListener('click',()=>{answer.confidence=Number(element.dataset.confidence);answer.confidenceTouched=true;rememberAnswer();document.querySelectorAll('[data-confidence]').forEach(x=>{x.classList.toggle('chosen',x===element);x.setAttribute('aria-pressed',String(x===element));});}));
+  document.querySelector('#reason').addEventListener('input',event=>{answer.reason=event.target.value;rememberAnswer();});
  }
  if(queued()&&!lastError)flush();
 }
@@ -160,6 +172,7 @@ function reveal(kind){
  state.answers[item.trial_id]=answer;save();task();
 }
 function submit(skipped){
+ if(state.stage==='attention'){if(skipped)return;answerAttention();return;}
  if(state.stage!=='task')return;
  const item=current(), answer=state.answers[item.trial_id]||{},error=document.querySelector('#error');
  if(!skipped){
@@ -196,7 +209,7 @@ function completeResponse({review_response,review_shown,final_label}){
   triggering_vote:answer.skipped?null:answer.triggering,
   preferred_not_shown:answer.skipped?null:answer.avoid_preference,
   preferred_not_shown_reason:!answer.skipped&&answer.avoid_preference===1?answer.avoid_reason:null,
-  website_variant:CONDITION,protocol_version:'6.0.0',is_attention_check:false,
+  website_variant:CONDITION,protocol_version:'6.1.0',is_attention_check:false,
   ai_trigger_detected:CONDITION==='assisted'?item.ai_trigger_flag===true:null,
   ai_hateful_prediction:CONDITION==='assisted'?item.ai_hateful_prediction:null,
   ai_disagreement:disagreement,
@@ -232,27 +245,37 @@ const CHECKS={
  not_hate:{trial_id:'ATTN_NOT_HATE_80',expected:0,heading:'Attention check · About 80% complete',caption:'When the group chat finally agrees on a pizza topping.',reason:'This is a harmless joke about pizza; it does not target an identity group.',symbol:'🍕'}
 };
 function attention(){
- const id=state.attentionCheck||nextAttentionId();
- if(!id){advanceAfterTrial();return;}
- const check=CHECKS[id],feedback=state.attentionFeedback;
- shell('Attention check','<section class="attention-page"><p class="eyebrow">BRIEF ATTENTION CHECK · NOT PART OF YOUR RANDOM MEMES</p><h1>'+escapeHTML(check.heading)+'</h1><p class="lead">Classify this straightforward example. It is not part of the study dataset.</p><div class="attention-meme"><span class="attention-icon" aria-hidden="true">'+check.symbol+'</span><strong>'+escapeHTML(check.caption)+'</strong></div><h2>Is this example hateful?</h2><div class="attention-answers">'+button('Hateful','attention-hateful','secondary')+button('Not hateful','attention-not-hateful','secondary')+'</div>'+(feedback?'<div class="practice-feedback incorrect" role="status"><strong>Try again</strong><p>'+escapeHTML(check.reason)+'</p></div>':'')+'<p class="muted">You can correct an incorrect answer; it does not end your study session.</p></section>');
+ if(!state.attentionCheck)state.attentionCheck=nextAttentionId();
+ if(!state.attentionCheck){advanceAfterTrial();return;}
+ task(); // Deliberately same layout/components as all other meme trials.
 }
-function answerAttention(choice){
+function answerAttention(){
  if(state.stage!=='attention')return;
- const id=state.attentionCheck,check=CHECKS[id];if(!check)return;
+ const id=state.attentionCheck,check=CHECKS[id];
+ if(!check)return;
+ const response=state.attentionAnswers[id]||{};
+ if(![1,2,4,5].includes(response.hateful_likert)){document.querySelector('#error').textContent='Please choose a definite hateful or non-hateful rating to continue.';return;}
+ if(![0,1].includes(response.triggering)){document.querySelector('#error').textContent='Please answer whether the content felt triggering.';return;}
+ if(![0,1].includes(response.avoid_preference)){document.querySelector('#error').textContent='Please answer whether you would prefer not to have seen it.';return;}
+ if(response.avoid_preference===1&&!['imagery','text','both'].includes(response.avoid_reason)){document.querySelector('#error').textContent='Select imagery, text, or both as your reason.';return;}
+ const participantChoice=response.hateful_likert>3?1:0;
+ const correct=participantChoice===check.expected;
  state.attentionAttempts[id]=(state.attentionAttempts[id]||0)+1;
- const correct=choice===check.expected;
  emit('response',{
   is_attention_check:true,attention_check_id:id,attention_target:check.expected,
-  attention_selected:choice,attention_passed:correct,
-  attention_attempt:state.attentionAttempts[id],
+  attention_selected:participantChoice,attention_selected_likert:response.hateful_likert,
+  attention_passed:correct,attention_attempt:state.attentionAttempts[id],
+  triggering_vote:response.triggering,preferred_not_shown:response.avoid_preference,
+  preferred_not_shown_reason:response.avoid_preference===1?response.avoid_reason:null,
+  confidence:response.confidence??3,reason:response.reason||'',
   after_completed_items:state.index,
   completed_fraction:state.order.length?Number((state.index/state.order.length).toFixed(3)):null,
-  protocol_version:'6.0.0'
+  protocol_version:'6.1.0'
  },check.trial_id);
  if(correct){state.attentionDone[id]=true;state.attentionFeedback=null;state.attentionCheck=null;advanceAfterTrial();}
- else {state.attentionFeedback=true;save();attention();}
+ else {document.querySelector('#error').textContent='This example expresses '+(check.expected===1?'hate toward an identity group. Select a hateful rating (4 or 5).':'no identity-based hate. Select a non-hateful rating (1 or 2).')+' Please try again.';save();}
 }
+
 const SURVEY_QUESTIONS=[
  {id:'q1',label:'The instructions were clear and easy to follow.'},
  {id:'q2',label:'The buttons, navigation, and layout were easy to use.'},
@@ -299,7 +322,7 @@ function completeSurvey(skipped){
  emit('finish',{
   completed_items:state.index,planned_items:state.order.length,submitted_answers:state.index,
   elapsed_ms:Math.max(0,Date.now()-(state.started||Date.now())),
-  website_variant:CONDITION,study_version:'6.0.0',
+  website_variant:CONDITION,study_version:'6.1.0',
   attention_checks:{hate:state.attentionDone.hate,not_hate:state.attentionDone.not_hate,
     attempts:state.attentionAttempts},
   post_survey_version:'1.0.0',post_survey_completed:completed,
@@ -334,7 +357,7 @@ const actions={
   state.stage='task';state.started=Date.now();state.opened=Date.now();save();
   emit('start',{planned_items:value,consented:true,uniqname:state.uniqname||null,
    practice_correct_count:3,attention_checks_planned:2,post_survey_questions_planned:10,
-   matched_item_assignment:!!state.uniqname,study_version:'6.0.0',
+   matched_item_assignment:!!state.uniqname,study_version:'6.1.0',
    content_shield:CONDITION==='assisted',website_variant:CONDITION});
   render();
  },
@@ -342,8 +365,6 @@ const actions={
  'agree-ai':()=>{if(state.stage==='review')completeResponse({review_response:'ai_correct_changed',review_shown:true,final_label:current()?.ai_hateful_prediction??null});},
  'reject-ai':()=>{if(state.stage==='review')completeResponse({review_response:'ai_wrong_kept',review_shown:true,final_label:state.answers[current()?.trial_id]?.initialLabel??null});},
  'reveal-image':()=>reveal('image'),'reveal-text':()=>reveal('text'),
- 'attention-hateful':()=>answerAttention(1),
- 'attention-not-hateful':()=>answerAttention(0),
  'survey-next':surveyNext,
  'survey-prev':()=>{if(state.stage==='survey'){state.surveyStep=0;save();survey();}},
  'survey-skip':()=>completeSurvey(true),
