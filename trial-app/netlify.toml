@@ -1,7 +1,16 @@
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["sharp"]
+
 [build]
   command = "npm run build"
   publish = "dist"
   functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/ai"
+  to = "/.netlify/functions/ai"
+  status = 200
 
 [[redirects]]
   from = "/api/trials"
