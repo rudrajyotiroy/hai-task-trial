@@ -32,13 +32,20 @@ state.attentionAnswers??={};
 state.surveyStep??=0;
 state.surveyAnswers??={};
 state.surveyCompleted??=false;
-state.aiScreens??={};
-state.aiMeta??={};
-state.aiReviews??={};
-state.aiErrors??={};
+// Discard any AI output persisted by earlier prototypes; model data is transient.
+state.aiScreens={};
+state.aiMeta={};
+state.aiReviews={};
+state.aiErrors={};
+if(['review','review-loading'].includes(state.stage))state.stage='review-failed';
 state.planned??=state.order.length;
 let walkthroughStep=0;
-const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+// Never persist model screening or review results to localStorage.
+const save=()=>localStorage.setItem(KEY,JSON.stringify({
+ ...state,aiScreens:undefined,aiMeta:undefined,aiReviews:undefined,aiErrors:undefined
+}));
+// Purge model-output fields left by older localStorage sessions.
+save();
 const current=()=>trials.find(t=>t.trial_id===state.order[state.index]);
 let syncing=false, lastError='', onlineHealth='not checked';
 
@@ -154,7 +161,7 @@ async function liveAI(item,phase,initial=null){
    if(!data.screen||typeof data.screen.potentially_distressing!=='boolean')throw Error('INVALID_SAFETY_SCREEN');
    state.aiScreens[trialId]=data.screen;
    state.aiMeta[trialId]={model:data.model,source:data.source,generated_at:data.generated_at,
-      cached:data.cached,screen_wait_ms:Date.now()-started};
+      screen_wait_ms:Date.now()-started};
    // Model wait is not the participant's cognitive decision time.
    if(current()?.trial_id===trialId&&state.stage==='task')state.opened=Date.now();
   }else{
@@ -290,7 +297,7 @@ function completeResponse({review_response,review_shown,final_label}){
   triggering_vote:answer.skipped?null:answer.triggering,
   preferred_not_shown:answer.skipped?null:answer.avoid_preference,
   preferred_not_shown_reason:!answer.skipped&&answer.avoid_preference===1?answer.avoid_reason:null,
-  website_variant:CONDITION,protocol_version:'7.0.0',is_attention_check:false,
+  website_variant:CONDITION,protocol_version:'7.1.0',is_attention_check:false,
   ai_inference_source:CONDITION==='assisted'?meta?.source||null:null,
   ai_inference_model:CONDITION==='assisted'?meta?.model||null:null,
   ai_screen_wait_ms:CONDITION==='assisted'?meta?.screen_wait_ms??null:null,
@@ -310,6 +317,12 @@ function completeResponse({review_response,review_shown,final_label}){
   image_revealed:answer.revealedImage===true,
   caption_revealed:answer.revealedText===true
  },item.trial_id);
+ // Erase transient AI outputs immediately after recording a trial response.
+ delete state.aiScreens[item.trial_id];
+ delete state.aiReviews[item.trial_id];
+ delete state.aiMeta[item.trial_id];
+ delete state.aiErrors[item.trial_id+':screen'];
+ delete state.aiErrors[item.trial_id+':review'];
  state.index++;
  advanceAfterTrial();
 }
@@ -356,7 +369,7 @@ function answerAttention(){
   confidence:response.confidence??3,reason:response.reason||'',
   after_completed_items:state.index,
   completed_fraction:state.order.length?Number((state.index/state.order.length).toFixed(3)):null,
-  protocol_version:'7.0.0'
+  protocol_version:'7.1.0'
  },check.trial_id);
  if(correct){state.attentionDone[id]=true;state.attentionFeedback=null;state.attentionCheck=null;advanceAfterTrial();}
  else {document.querySelector('#error').textContent='This example expresses '+(check.expected===1?'hate toward an identity group. Select a hateful rating (4 or 5).':'no identity-based hate. Select a non-hateful rating (1 or 2).')+' Please try again.';save();}

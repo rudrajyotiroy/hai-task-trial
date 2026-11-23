@@ -1,51 +1,45 @@
-# Live Cloudflare Workers AI deployment (CSE 594 v7)
+# Live Cloudflare Workers AI deployment — stateless, no model-output cache
 
-Status: **The code requires two Cloudflare environment variables and one Supabase migration before it can be safely merged into production.** Do not merge without completing these steps. There is intentionally no fallback to the archived predictions.
+Status: Code is available on the feature branch. Merge and deploy it only after configuring Cloudflare. The deployed study remains unchanged until the branch is merged and Netlify publishes it.
 
-## Required Netlify variables
+## Required Netlify environment
 
-Set these under Netlify Site configuration → Environment variables, with Functions scope and appropriate deploy contexts:
+Configure these in Netlify Functions (do not share secrets in chat or commit them):
 
-| Name | Description |
+| Variable | Why |
 | --- | --- |
-| CLOUDFLARE_ACCOUNT_ID | Cloudflare account identifier (from dashboard) |
-| CLOUDFLARE_API_TOKEN | Secret API token authorized for Workers AI Run; add it directly in Netlify, NEVER in chat or GitHub |
-| SUPABASE_URL | Existing Supabase project endpoint |
-| SUPABASE_SECRET_KEY | Existing backend secret (or legacy SUPABASE_SERVICE_ROLE_KEY) |
-| ALLOWED_ORIGINS | Exact Netlify study origin |
-| ADMIN_EXPORT_TOKEN | Existing event export secret |
+| CLOUDFLARE_ACCOUNT_ID | Cloudflare account used for Workers AI inference |
+| CLOUDFLARE_API_TOKEN | Secret with Workers AI Run permission |
+| SUPABASE_URL | **Existing task-event collection only**, not model-response caching |
+| SUPABASE_SECRET_KEY | Existing event-write key (or SUPABASE_SERVICE_ROLE_KEY) |
+| ALLOWED_ORIGINS | Exact site origins |
+| ADMIN_EXPORT_TOKEN | Existing event export key |
 
-Run supabase/live_ai.sql in the project's Supabase SQL Editor. It adds a private table named task_trial_ai_outputs, keyed by (session_id, trial_id), with complete model result, model identifier, token usage and timestamp. Existing task_trial_events data and schema are unchanged.
+**Do not run the previous `supabase/live_ai.sql` migration.** No new model-output table or database change is needed. The previously proposed `task_trial_ai_outputs` table is **not used** by this code. If it was created already, it can be reviewed and deleted separately after verifying no other systems depend on it; deploying this branch does not delete any stored historical records.
 
-## Endpoint design
+## Every new assisted request calls Cloudflare
 
-Cloudflare model: @cf/google/gemma-4-26b-a4b-it.
+Model: `@cf/google/gemma-4-26b-a4b-it` via the server-side Workers AI Chat Completions endpoint.
 
-The server submits a resized original meme image (base64 JPEG) and its caption to Cloudflare's OpenAI-compatible Chat Completions endpoint, using the same distinct exposure-screening and hateful-classification tasks as Assignment 2. **Ground-truth labels are not sent to the model.**
+1. `POST /api/ai` with `phase:"screen"` for an **assisted** trial. The backend sends original image+caption to Cloudflare, returns **only a sanitized exposure advisory**, then discards the complete result. The browser hides hateful classification until the participant makes an initial judgment.
+2. After an initial human classification is recorded, `POST /api/ai` with `phase:"review"` makes a **second fresh Cloudflare inference** of the original meme, compares the classification against the initial human label, and returns the model's reasoning **only on disagreement**. The backend discards the complete result after responding.
+3. Retrying either endpoint **makes another Cloudflare request**. Repeat or concurrent requests are **not deduplicated** or served from cache. The independent version never invokes this model endpoint.
+4. The frontend keeps the current meme's exposure/review fields **temporarily in runtime memory only** to display them. It does **not persist these model outputs in localStorage** and clears them when advancing to the next meme. Reloading while screening or reviewing causes re-screening or offers a review retry.
 
-1. POST /api/ai, phase screen, with assisted condition, session_id and trial_id: on cache miss, call Cloudflare once, store the COMPLETE response privately in Supabase. Return ONLY the neutral safety screening notice, categories and euphemized caption. Hateful prediction and reasoning are not yet disclosed.
-2. The user makes their first judgment. POST /api/ai, phase review, additionally supplies initial_classification 0 or 1. Read the cached full response, compare labels and show the AI reasoning **only on disagreement**. Initial and final judgments stay separate in the event log. No second Cloudflare inference.
-3. The independent version never calls this endpoint and never shows AI outputs. Attention checks and end survey remain intact.
+**Important trade-off:** Screening and review use two distinct model calls. Their results are **not guaranteed to agree**, even with deterministic-style sampling settings. Exposure advice and review classification therefore do not necessarily originate from the same model generation. This is intentional to satisfy stateless inference and preserve server-side initial-answer blindness.
 
-During screening, the assisted site hides the original meme until the screening completes; on error, it offers retry or Skip entire example. Review errors offer retry or preservation of the original response. There is no archived-inference fallback.
+**Important distinction:** The existing `task_trial_events` event log still records participant responses, model provenance, screening flags and prediction labels for **research analysis**. It is **not a lookup cache** for model output and is never queried by `/api/ai`. No full prompt/completion or full model reasoning is retained.
 
-The original data/trials.json remains for Assignment 2 reproducibility. New frontend code uses only data/trials-public.js, which contains 200 item IDs, image URLs and captions but NO precomputed AI flags, labels or explanations.
+## Security / rate limits
 
-## Deployment and verification
+Cloudflare credentials remain server-side. Trial identifiers must belong to the server-owned 200-meme manifest, and the condition must be `assisted`. Responses include `Cache-Control: no-store`. The Netlify Function uses a rate limit of 30 requests per 60 seconds per IP; this is a request-rate limit, **not a cache**. Screening and review together typically require **two billable inference calls per fully classified assisted meme**; retries add more. Monitor Cloudflare usage.
 
-1. Enter Netlify Cloudflare environment settings without exposing secrets.
-2. Execute supabase/live_ai.sql in the existing Supabase project.
-3. Merge the GitHub PR and confirm the Netlify deployment shows Published.
-4. Confirm GET /api/trials?health=1 reports study storage ready.
-5. Confirm GET /api/ai?health=1 reports model and database configured (no secrets shown).
-6. Test at least one assisted meme with a live model call, one disagreement, one skip, and an independent meme; verify Supabase AI cache and response events.
+## Deploy and verify
 
-From the trial-app directory, run npm install, npm test and npm run build. The app uses the native sharp library for image compression. Functions have a 60-second synchronous execution limit; Cloudflare inference is bounded to 38 seconds and image download to 12 seconds. Long model latency may affect the study's ten-minute participant target.
+1. Set Cloudflare environment variables in Netlify and confirm existing event collection is working.
+2. Run `cd trial-app && npm install && npm test && npm run build` in a networked environment.
+3. Merge the reviewed feature PR and publish with Netlify.
+4. Check `GET /api/ai?health=1` for Cloudflare configuration status and `GET /api/trials?health=1` for the event database.
+5. Test screening, review and retry. Confirm that each assisted `POST /api/ai` invokes Workers AI; repeat an identical request and verify it invokes AI again, while independent requests are rejected without inference.
 
-Netlify Function rate limit: 30 requests per 60 seconds per IP; Supabase per-session cache avoids repeat inference for the same meme and caps sessions at 12 unique live samples. Public endpoint traffic can still incur Cloudflare costs, so monitor account usage and configure cost alerts.
-
-## Historical comparability
-
-Protocol v7 records ai_inference_source, ai_inference_model, ai_screen_wait_ms, ai_review_wait_ms and ai_review_unavailable. Model outputs may change across calls; therefore separate these new live-inference responses from the historic v2-v6 precomputed-inference study when computing statistical comparisons. Existing reports remain unchanged.
-
-The v7 browser storage key intentionally starts fresh sessions. Complete older sessions and flush pending events before deploying. No Cloudflare tokens or Supabase secrets are committed to GitHub.
+The earlier precomputed-inference `data/trials.json` is retained for archival research only and **is not imported by the live frontend**. Historical v2–v6 data and the Notion report are unchanged; this branch records protocol **v7.1.0** for new sessions. Cloudflare secrets are not saved in this repository.

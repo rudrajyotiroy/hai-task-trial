@@ -1,4 +1,4 @@
-> **Live Cloudflare deployment (v7):** see [LIVE_CLOUDFLARE.md](LIVE_CLOUDFLARE.md) for setup and the required private Supabase migration. Archived Assignment 2 predictions are not used in new assisted sessions. The content below documents the historical interface and analysis.
+> **Live Cloudflare deployment (v7):** see [LIVE_CLOUDFLARE.md](LIVE_CLOUDFLARE.md) for setup and the stateless model-request flow (no model-output cache or Supabase migration). Archived Assignment 2 predictions are not used in new assisted sessions. The content below documents the historical interface and analysis.
 
 # CSE 594 Assignment 3 — Hateful Meme Annotation Study
 
