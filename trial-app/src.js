@@ -1,9 +1,9 @@
 import './style.css';
-import trials from './data/trials.json';
+import trials from './data/trials-public.js';
 
 const root=document.getElementById('app');
 const CONDITION=location.pathname.startsWith('/independent')?'independent':'assisted';
-const KEY='hai-task-trial-v6-'+CONDITION, STUDY='hai-meme-evaluation-v1', DEFAULT_COUNT=12, MAX_COUNT=12;
+const KEY='hai-task-trial-v7-'+CONDITION, STUDY='hai-meme-evaluation-v1', DEFAULT_COUNT=12, MAX_COUNT=12;
 const id=()=>crypto.randomUUID();
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const randomized=list=>{const values=[...list];for(let i=values.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[values[i],values[j]]=[values[j],values[i]];}return values;};
@@ -16,7 +16,7 @@ const itemsForUniqnameAndCondition=(name,condition,count)=>{
  const offset=condition==='assisted'?0:MAX_COUNT;
  return order.slice(offset,offset+count);
 };
-const fresh=()=>({id:id(),condition:CONDITION,order:randomized(trials).slice(0,MAX_COUNT).map(t=>t.trial_id),planned:DEFAULT_COUNT,index:0,stage:'welcome',consented:false,uniqname:'',answers:{},events:[],started:null,opened:null,sessionVersion:6,practiceIndex:0,practicePassed:[false,false,false],practiceSelected:null,practiceRevealed:false,attentionDone:{hate:false,not_hate:false},attentionAttempts:{hate:0,not_hate:0},attentionCheck:null,attentionAnswers:{},surveyStep:0,surveyAnswers:{},surveyCompleted:false});
+const fresh=()=>({id:id(),condition:CONDITION,order:randomized(trials).slice(0,MAX_COUNT).map(t=>t.trial_id),planned:DEFAULT_COUNT,index:0,stage:'welcome',consented:false,uniqname:'',answers:{},events:[],started:null,opened:null,sessionVersion:7,aiScreens:{},aiMeta:{},aiReviews:{},aiErrors:{},practiceIndex:0,practicePassed:[false,false,false],practiceSelected:null,practiceRevealed:false,attentionDone:{hate:false,not_hate:false},attentionAttempts:{hate:0,not_hate:0},attentionCheck:null,attentionAnswers:{},surveyStep:0,surveyAnswers:{},surveyCompleted:false});
 let state;try{state=JSON.parse(localStorage.getItem(KEY));}catch{}
 if(!state||!Array.isArray(state.order)||!Array.isArray(state.events))state=fresh();
 state.answers??={};
@@ -32,9 +32,20 @@ state.attentionAnswers??={};
 state.surveyStep??=0;
 state.surveyAnswers??={};
 state.surveyCompleted??=false;
+// Discard any AI output persisted by earlier prototypes; model data is transient.
+state.aiScreens={};
+state.aiMeta={};
+state.aiReviews={};
+state.aiErrors={};
+if(['review','review-loading'].includes(state.stage))state.stage='review-failed';
 state.planned??=state.order.length;
 let walkthroughStep=0;
-const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+// Never persist model screening or review results to localStorage.
+const save=()=>localStorage.setItem(KEY,JSON.stringify({
+ ...state,aiScreens:undefined,aiMeta:undefined,aiReviews:undefined,aiErrors:undefined
+}));
+// Purge model-output fields left by older localStorage sessions.
+save();
 const current=()=>trials.find(t=>t.trial_id===state.order[state.index]);
 let syncing=false, lastError='', onlineHealth='not checked';
 
@@ -68,7 +79,7 @@ async function health(){
 }
 function button(label,action,cls='primary'){return '<button type="button" class="'+cls+'" data-action="'+action+'">'+label+'</button>';}
 function shell(view,html){
- root.innerHTML='<div class="wrap"><header><span class="course-header">CSE 594 <span class="course-subtitle">Class Assignment</span></span><span class="tag">HUMAN–AI INTERACTION STUDY</span><span>'+escapeHTML(view)+'</span></header><main>'+html+'</main><footer><span>CSE 594 · Class Assignment</span><div class="storage"><span id="sync" aria-live="polite">'+(queued()?queued()+' responses pending':'Check storage status')+'</span>'+button('Check storage','health','link-button')+' '+(queued()?button('Retry upload','retry','link-button'):'')+'</div><span>Version 6.0</span></footer></div>';
+ root.innerHTML='<div class="wrap"><header><span class="course-header">CSE 594 <span class="course-subtitle">Class Assignment</span></span><span class="tag">HUMAN–AI INTERACTION STUDY</span><span>'+escapeHTML(view)+'</span></header><main>'+html+'</main><footer><span>CSE 594 · Class Assignment</span><div class="storage"><span id="sync" aria-live="polite">'+(queued()?queued()+' responses pending':'Check storage status')+'</span>'+button('Check storage','health','link-button')+' '+(queued()?button('Retry upload','retry','link-button'):'')+'</div><span>Version 7.0 · Cloudflare live</span></footer></div>';
  root.querySelectorAll('[data-action]').forEach(element=>element.addEventListener('click',event=>{event.preventDefault();actions[element.dataset.action]?.();}));
  if(lastError)setStatus(queued()+' pending · '+lastError,true);
 }
@@ -122,14 +133,80 @@ function attentionImage(check){
  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400"><rect width="640" height="400" rx="20" fill="#e5efe8"/><rect x="48" y="44" width="544" height="312" rx="30" fill="#f9faf4" stroke="#bad3c3" stroke-width="5"/><circle cx="320" cy="194" r="110" fill="#d4e9dc"/><text x="320" y="227" text-anchor="middle" font-size="100" font-family="Arial,sans-serif">'+check.symbol+'</text></svg>';
  return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
 }
+
+const pendingAI=new Set();
+function aiStatus(item,phase,message,failed=false){
+ const heading=phase==='screen'?'Screening meme for sensitive content':'Checking your judgment with live AI';
+ const info=phase==='screen'?'The original image and caption remain hidden until safety screening finishes.':'Your first judgment is saved. Any AI reasoning will appear beside the meme and questions.';
+ const options=failed?(phase==='screen'?button('Retry screening','retry-ai-screen')+' '+button('Skip entire example','skip-ai'):button('Retry AI review','retry-ai-review')+' '+button('Continue without AI','continue-without-ai','secondary'))
+  :'<p class="muted" role="status">Running Cloudflare Gemma 4…</p>';
+ shell('Task '+(state.index+1)+' · Live AI',
+  '<section class="panel ai-loading"><p class="eyebrow">LIVE AI ASSISTANCE</p><h1>'+heading+'</h1><p>'+info+'</p>'+
+  (failed?'<p class="error" role="alert">AI request unavailable: '+escapeHTML(message)+'. You can retry without losing your session.</p>':'')+
+  '<div class="actions">'+options+'</div></section>');
+}
+async function liveAI(item,phase,initial=null){
+ const trialId=item.trial_id,key=trialId+':'+phase;
+ if(pendingAI.has(key))return;
+ pendingAI.add(key);
+ delete state.aiErrors[key];save();
+ const started=Date.now();
+ try{
+  const body={phase,session_id:state.id,trial_id:trialId,condition:'assisted'};
+  if(phase==='review')body.initial_classification=initial;
+  const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),cache:'no-store'});
+  let data;try{data=await r.json();}catch{data={code:'INVALID_SERVER_RESPONSE'};}
+  if(!r.ok||!data.ok)throw Error(data.code||'LIVE_AI_HTTP_'+r.status);
+  if(phase==='screen'){
+   if(!data.screen||typeof data.screen.potentially_distressing!=='boolean')throw Error('INVALID_SAFETY_SCREEN');
+   state.aiScreens[trialId]=data.screen;
+   state.aiMeta[trialId]={model:data.model,source:data.source,generated_at:data.generated_at,
+      screen_wait_ms:Date.now()-started};
+   // Model wait is not the participant's cognitive decision time.
+   if(current()?.trial_id===trialId&&state.stage==='task')state.opened=Date.now();
+  }else{
+   if(typeof data.disagreement!=='boolean'||![0,1].includes(data.ai_hateful_prediction))throw Error('INVALID_REVIEW_RESPONSE');
+   state.aiReviews[trialId]={...data,review_wait_ms:Date.now()-started};
+   if(current()?.trial_id===trialId&&state.stage==='review-loading'){
+    if(data.disagreement)state.stage='review';
+    else{save();completeResponse({review_response:null,review_shown:false,final_label:initial});return;}
+   }
+  }
+  save();
+ }catch(e){
+  state.aiErrors[key]=String(e.message||'LIVE_AI_UNAVAILABLE').slice(0,120);
+  if(phase==='review'&&current()?.trial_id===trialId&&state.stage==='review-loading')state.stage='review-failed';
+  save();
+ }finally{
+  pendingAI.delete(key);
+  if(current()?.trial_id===trialId&&['task','review','review-loading','review-failed'].includes(state.stage))task();
+ }
+}
+
 function task(){
  const isCheck=state.stage==='attention';
  const check=isCheck?CHECKS[state.attentionCheck]:null;
- const item=isCheck?(check?{trial_id:check.trial_id,meme_text:check.caption,image_url:attentionImage(check),ai_trigger_flag:false,ai_trigger_categories:[],ai_hateful_prediction:check.expected}:null):current();
- if(!item){state.stage='survey';state.surveyStep=0;save();survey();return;}
+ const baseItem=isCheck?(check?{trial_id:check.trial_id,meme_text:check.caption,image_url:attentionImage(check),ai_trigger_flag:false,ai_trigger_categories:[],ai_hateful_prediction:check.expected}:null):current();
+ if(!baseItem){state.stage='survey';state.surveyStep=0;save();survey();return;}
+ if(!isCheck&&CONDITION==='assisted'&&!state.aiScreens[baseItem.trial_id]){
+  const failure=state.aiErrors[baseItem.trial_id+':screen'];
+  aiStatus(baseItem,'screen',failure,!!failure);
+  if(!failure)liveAI(baseItem,'screen');
+  return;
+ }
+ const screen=state.aiScreens[baseItem.trial_id]||null;
+ const review=state.aiReviews[baseItem.trial_id]||null;
+ const item=screen?{...baseItem,
+  ai_trigger_flag:screen.potentially_distressing,
+  ai_trigger_notice:screen.neutral_exposure_notice,
+  ai_trigger_categories:screen.categories,
+  ai_euphemized_caption:screen.euphemized_caption,
+  ai_hateful_prediction:review?.ai_hateful_prediction,
+  ai_explanation:review?.ai_explanation
+ }:baseItem;
  const answer=isCheck?(state.attentionAnswers[state.attentionCheck]||{}):(state.answers[item.trial_id]||{});
  const rememberAnswer=()=>{if(isCheck)state.attentionAnswers[state.attentionCheck]=answer;else state.answers[item.trial_id]=answer;save();};
- const reviewing=state.stage==='review';
+ const reviewing=['review','review-loading','review-failed'].includes(state.stage);
  const shielded=!isCheck&&CONDITION==='assisted'&&item.ai_trigger_flag===true;
  const completedChecks=Number(!!state.attentionDone.hate)+Number(!!state.attentionDone.not_hate);
  const displayedQuestion=state.index+completedChecks+1,displayedTotal=state.order.length+2;
@@ -146,7 +223,12 @@ function task(){
  const confidenceChoices=[1,2,3,4,5].map(x=>'<button type="button"'+lock+' data-confidence="'+x+'" class="confidence-option '+(selectedConfidence===x?'chosen':'')+'" aria-label="Confidence '+x+' of 5" aria-pressed="'+(selectedConfidence===x?'true':'false')+'">'+x+'</button>').join('');
  const reason='<h3>Why did you make this choice? <small>Optional</small></h3><textarea id="reason" maxlength="1500" rows="3"'+lock+' placeholder="Sarcasm, context or other clues…">'+escapeHTML(answer.reason||'')+'</textarea>';
  let reviewPanel='';
- if(reviewing){
+ if(state.stage==='review-loading'){
+  reviewPanel='<div class="inline-ai-review" role="status"><p class="eyebrow">LIVE AI SECOND LOOK</p><h2>Checking your initial judgment…</h2><p>Your answers remain visible while Cloudflare evaluates the judgment.</p></div>';
+ }else if(state.stage==='review-failed'){
+  const failure=state.aiErrors[item.trial_id+':review']||'AI_UNAVAILABLE';
+  reviewPanel='<div class="inline-ai-review"><h2>AI reasoning unavailable</h2><p class="error">'+escapeHTML(failure)+'</p><p>Your original judgment is preserved.</p><div class="review-options">'+button('Retry AI review','retry-ai-review')+button('Submit original answer','continue-without-ai','secondary')+'</div></div>';
+ }else if(state.stage==='review'){
   const initial=answer.initialLabel===1?'Hateful':'Not hateful';
   const prediction=item.ai_hateful_prediction===1?'Hateful':'Not hateful';
   reviewPanel='<div class="inline-ai-review" role="region" aria-label="AI disagreement review"><p class="eyebrow">AI DISAGREEMENT · SECOND LOOK</p><h2>Your first judgment differs from the AI.</h2><div class="review-summary"><span><small>YOU ANSWERED</small><strong>'+initial+'</strong></span><span><small>AI PREDICTED</small><strong>'+prediction+'</strong></span></div><p class="eyebrow">AI MODEL REASONING</p><p class="ai-explanation">'+escapeHTML(item.ai_explanation||'The model did not provide a textual explanation.')+'</p><p class="muted">AI reasoning may be mistaken or include sensitive wording. Your first answer is already preserved.</p><p><strong>After reading this, do you want to change your answer?</strong></p><div class="review-options">'+button('Change to AI answer','agree-ai','primary')+button('Keep my original answer','reject-ai','secondary')+'</div></div>';
@@ -166,7 +248,7 @@ function task(){
  if(queued()&&!lastError)flush();
 }
 function reveal(kind){
- const item=current();if(!item||CONDITION!=='assisted'||!item.ai_trigger_flag)return;
+ const item=current();if(!item||CONDITION!=='assisted'||!state.aiScreens[item.trial_id]?.potentially_distressing)return;
  const answer=state.answers[item.trial_id]||{};
  answer[kind==='image'?'revealedImage':'revealedText']=true;
  state.answers[item.trial_id]=answer;save();task();
@@ -186,8 +268,10 @@ function submit(skipped){
  answer.initialLikert=skipped?null:answer.hateful_likert;
  answer.initialConfidence=skipped?null:(answer.confidence??3);
  state.answers[item.trial_id]=answer;
- const disagreement=CONDITION==='assisted'&&!skipped&&[0,1].includes(answer.initialLabel)&&[0,1].includes(item.ai_hateful_prediction)&&answer.initialLabel!==item.ai_hateful_prediction;
- if(disagreement){state.stage='review';save();task();return;}
+ if(CONDITION==='assisted'&&!skipped&&[0,1].includes(answer.initialLabel)){
+  state.stage='review-loading';save();task();
+  liveAI(item,'review',answer.initialLabel);return;
+ }
  completeResponse({review_response:null,review_shown:false,final_label:answer.initialLabel});
 }
 
@@ -195,7 +279,11 @@ function completeResponse({review_response,review_shown,final_label}){
  const item=current(),answer=state.answers[item?.trial_id]||{};
  if(!item)return;
  const initial=answer.skipped?null:answer.initialLabel;
- const disagreement=CONDITION==='assisted'&&[0,1].includes(initial)&&[0,1].includes(item.ai_hateful_prediction)&&initial!==item.ai_hateful_prediction;
+ const review=state.aiReviews[item.trial_id]||null;
+ const screen=state.aiScreens[item.trial_id]||null;
+ const meta=state.aiMeta[item.trial_id]||null;
+ const disagreement=CONDITION==='assisted'&&[0,1].includes(initial)&&
+  [0,1].includes(review?.ai_hateful_prediction)&&initial!==review.ai_hateful_prediction;
  if(disagreement&&review_response===null)return;
  emit('response',{
   item_index:state.index,
@@ -209,9 +297,14 @@ function completeResponse({review_response,review_shown,final_label}){
   triggering_vote:answer.skipped?null:answer.triggering,
   preferred_not_shown:answer.skipped?null:answer.avoid_preference,
   preferred_not_shown_reason:!answer.skipped&&answer.avoid_preference===1?answer.avoid_reason:null,
-  website_variant:CONDITION,protocol_version:'6.1.0',is_attention_check:false,
-  ai_trigger_detected:CONDITION==='assisted'?item.ai_trigger_flag===true:null,
-  ai_hateful_prediction:CONDITION==='assisted'?item.ai_hateful_prediction:null,
+  website_variant:CONDITION,protocol_version:'7.1.0',is_attention_check:false,
+  ai_inference_source:CONDITION==='assisted'?meta?.source||null:null,
+  ai_inference_model:CONDITION==='assisted'?meta?.model||null:null,
+  ai_screen_wait_ms:CONDITION==='assisted'?meta?.screen_wait_ms??null:null,
+  ai_review_wait_ms:CONDITION==='assisted'?review?.review_wait_ms??null:null,
+  ai_review_unavailable:CONDITION==='assisted'&&!answer.skipped&&[0,1].includes(initial)&&!review,
+  ai_trigger_detected:CONDITION==='assisted'?screen?.potentially_distressing??null:null,
+  ai_hateful_prediction:CONDITION==='assisted'?review?.ai_hateful_prediction??null:null,
   ai_disagreement:disagreement,
   ai_reasoning_presented:review_shown,
   ai_reasoning_verdict:review_response,
@@ -219,11 +312,17 @@ function completeResponse({review_response,review_shown,final_label}){
   reason:answer.skipped?'':answer.reason||'',
   skipped:answer.skipped===true,skip_scope:answer.skipped===true?'entire_example':null,
   elapsed_ms:Math.max(0,Date.now()-(state.opened||Date.now())),
-  image_initially_blurred:CONDITION==='assisted'&&item.ai_trigger_flag===true,
-  caption_euphemized:CONDITION==='assisted'&&item.ai_trigger_flag===true,
+  image_initially_blurred:CONDITION==='assisted'?screen?.potentially_distressing??null:null,
+  caption_euphemized:CONDITION==='assisted'?screen?.potentially_distressing??null:null,
   image_revealed:answer.revealedImage===true,
   caption_revealed:answer.revealedText===true
  },item.trial_id);
+ // Erase transient AI outputs immediately after recording a trial response.
+ delete state.aiScreens[item.trial_id];
+ delete state.aiReviews[item.trial_id];
+ delete state.aiMeta[item.trial_id];
+ delete state.aiErrors[item.trial_id+':screen'];
+ delete state.aiErrors[item.trial_id+':review'];
  state.index++;
  advanceAfterTrial();
 }
@@ -270,7 +369,7 @@ function answerAttention(){
   confidence:response.confidence??3,reason:response.reason||'',
   after_completed_items:state.index,
   completed_fraction:state.order.length?Number((state.index/state.order.length).toFixed(3)):null,
-  protocol_version:'6.1.0'
+  protocol_version:'7.1.0'
  },check.trial_id);
  if(correct){state.attentionDone[id]=true;state.attentionFeedback=null;state.attentionCheck=null;advanceAfterTrial();}
  else {document.querySelector('#error').textContent='This example expresses '+(check.expected===1?'hate toward an identity group. Select a hateful rating (4 or 5).':'no identity-based hate. Select a non-hateful rating (1 or 2).')+' Please try again.';save();}
@@ -322,7 +421,7 @@ function completeSurvey(skipped){
  emit('finish',{
   completed_items:state.index,planned_items:state.order.length,submitted_answers:state.index,
   elapsed_ms:Math.max(0,Date.now()-(state.started||Date.now())),
-  website_variant:CONDITION,study_version:'6.1.0',
+  website_variant:CONDITION,study_version:'7.0.0',
   attention_checks:{hate:state.attentionDone.hate,not_hate:state.attentionDone.not_hate,
     attempts:state.attentionAttempts},
   post_survey_version:'1.0.0',post_survey_completed:completed,
@@ -357,21 +456,25 @@ const actions={
   state.stage='task';state.started=Date.now();state.opened=Date.now();save();
   emit('start',{planned_items:value,consented:true,uniqname:state.uniqname||null,
    practice_correct_count:3,attention_checks_planned:2,post_survey_questions_planned:10,
-   matched_item_assignment:!!state.uniqname,study_version:'6.1.0',
+   matched_item_assignment:!!state.uniqname,study_version:'7.0.0',
    content_shield:CONDITION==='assisted',website_variant:CONDITION});
   render();
  },
  next:()=>submit(false),skip:()=>submit(true),
- 'agree-ai':()=>{if(state.stage==='review')completeResponse({review_response:'ai_correct_changed',review_shown:true,final_label:current()?.ai_hateful_prediction??null});},
+ 'agree-ai':()=>{if(state.stage==='review')completeResponse({review_response:'ai_correct_changed',review_shown:true,final_label:state.aiReviews[current()?.trial_id]?.ai_hateful_prediction??null});},
  'reject-ai':()=>{if(state.stage==='review')completeResponse({review_response:'ai_wrong_kept',review_shown:true,final_label:state.answers[current()?.trial_id]?.initialLabel??null});},
  'reveal-image':()=>reveal('image'),'reveal-text':()=>reveal('text'),
+ 'retry-ai-screen':()=>{const item=current();if(!item)return;delete state.aiErrors[item.trial_id+':screen'];save();task();},
+ 'skip-ai':()=>{if(state.stage==='task')submit(true);},
+ 'retry-ai-review':()=>{const item=current();if(!item)return;delete state.aiErrors[item.trial_id+':review'];state.stage='review-loading';save();task();liveAI(item,'review',state.answers[item.trial_id]?.initialLabel);},
+ 'continue-without-ai':()=>{if(state.stage==='review-failed'){const item=current();const initial=state.answers[item?.trial_id]?.initialLabel;state.stage='task';save();completeResponse({review_response:null,review_shown:false,final_label:initial});}},
  'survey-next':surveyNext,
  'survey-prev':()=>{if(state.stage==='survey'){state.surveyStep=0;save();survey();}},
  'survey-skip':()=>completeSurvey(true),
  restart:()=>{if(queued()){alert('Responses are still pending upload. Retry before starting a new session.');return;}if(!confirm('Begin a new study session?'))return;state=fresh();save();render();}
 };
 function render(){
- if(state.stage==='task'||state.stage==='review')task();
+ if(['task','review','review-loading','review-failed'].includes(state.stage))task();
  else if(state.stage==='attention')attention();
  else if(state.stage==='survey')survey();
  else if(state.stage==='guide')guide();
